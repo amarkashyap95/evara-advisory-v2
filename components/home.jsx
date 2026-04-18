@@ -345,8 +345,8 @@ function Hero({ setPage }) {
             </span>
           </div>
           <h1 className="t-display" style={{ fontSize: 'clamp(56px, 8.4vw, 128px)', lineHeight: 0.94, letterSpacing: '-0.035em', color: 'var(--text)' }}>
-            Capital, <em className="t-display-it" style={{ color: 'var(--text-2)' }}>carefully</em> <br />
-            placed.<span style={{ color: 'var(--text-4)' }}>*</span>
+            Commercial clarity, <br />
+            <em className="t-display-it" style={{ color: 'var(--text-2)' }}>custom-built</em>.<span style={{ color: 'var(--text-4)' }}>*</span>
           </h1>
           <p style={{ marginTop: 24, maxWidth: 600, color: 'var(--text-2)', fontSize: 17, lineHeight: 1.6 }}>
             Transaction support and strategic advisory — for founders raising,
@@ -354,7 +354,7 @@ function Hero({ setPage }) {
             institutional banking, corporate venture, venture capital, private
             equity, and investment advisory. I don't specialise by sector — I
             specialise in <em style={{ color: 'var(--cream)', fontStyle: 'italic' }}>capital questions</em>:
-            how to raise it, price it, deploy it, and defend it.
+            how to raise it, price it, structure it, and defend it.
           </p>
           <div style={{ marginTop: 34, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <button className="btn primary" onClick={() => setPage('Contact')}>Book a call<span className="arrow" /></button>
