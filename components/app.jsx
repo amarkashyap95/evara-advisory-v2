@@ -86,9 +86,9 @@ function applyTweaks(tw) {
     root.style.setProperty('--text-4', '#4A5466');
     root.style.setProperty('--line', '#1F2939');
     root.style.setProperty('--line-2', '#2B3647');
-    root.style.setProperty('--paper', '#F2EFE8');
+    root.style.setProperty('--paper', '#C4BBA5');
     root.style.setProperty('--paper-ink', '#11161F');
-    root.style.setProperty('--paper-muted', '#5A5F68');
+    root.style.setProperty('--paper-muted', '#4A4636');
   }
   const densityPad = tw.density === 'compact' ? '44px 52px' : tw.density === 'airy' ? '96px 96px' : '64px 72px';
   document.querySelectorAll('.page-pad').forEach(el => { el.style.padding = densityPad; });
