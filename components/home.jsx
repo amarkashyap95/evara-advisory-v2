@@ -380,9 +380,9 @@ function Hero({ setPage }) {
           </div>
 
           {/* Mini proof-of-craft teaser — static "sample deliverable" snapshot */}
-          <a href="#valuation-workbench" onClick={(e) => {
+          <a href="#workbench" onClick={(e) => {
               e.preventDefault();
-              const el = document.getElementById('valuation-workbench');
+              const el = document.getElementById('workbench');
               if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
             }} style={{ display: 'block', border: '1px solid var(--line)', background: 'var(--ink-2)', padding: 14, textDecoration: 'none', cursor: 'pointer', transition: 'border-color 0.2s' }}
             onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--live)'}
