@@ -107,9 +107,6 @@ function LiveValuation() {
         .lv-top { display: grid; grid-template-columns: 1fr 1.25fr; }
         .lv-bottom { display: grid; grid-template-columns: 1.2fr 1fr; border-top: 1px solid var(--line); }
         .lv-scen-tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
-        @media (max-width: 1050px) {
-          .lv-top, .lv-bottom { grid-template-columns: 1fr !important; }
-        }
       `}</style>
 
       {/* Header bar */}
@@ -168,8 +165,8 @@ function LiveValuation() {
             <div className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>
               Implied pre-money · {scn.label}
             </div>
-            <div className="t-display" style={{ fontSize: 64, color: 'var(--text)', fontWeight: 300, lineHeight: 1, letterSpacing: '-0.02em' }}>
-              ${fmtM(preMoneyM)}<span style={{ fontSize: 26, color: 'var(--text-3)', marginLeft: 4 }}>m</span>
+            <div className="t-display" style={{ fontSize: 'clamp(40px, 9vw, 64px)', color: 'var(--text)', fontWeight: 300, lineHeight: 1, letterSpacing: '-0.02em' }}>
+              ${fmtM(preMoneyM)}<span style={{ fontSize: 'clamp(18px, 3.5vw, 26px)', color: 'var(--text-3)', marginLeft: 4 }}>m</span>
             </div>
             <div className="t-mono" style={{ marginTop: 6, fontSize: 11, color: 'var(--text-3)', letterSpacing: '0.04em' }}>
               Post-money <span style={{ color: 'var(--text-2)' }}>${fmtM(postMoneyM)}m</span>
@@ -229,38 +226,40 @@ function LiveValuation() {
           <div className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14 }}>
             Sensitivity · Y2 pre-money $m · growth × multiple
           </div>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--ff-mono)', fontSize: 11 }}>
-            <thead>
-              <tr>
-                <th style={{ padding: '6px 4px', textAlign: 'left', color: 'var(--text-4)', fontWeight: 400, fontSize: 10, letterSpacing: '0.08em', borderBottom: '1px solid var(--line)' }}>g \ m×</th>
-                {multAxis.map(mx => (
-                  <th key={mx} style={{ padding: '6px 4px', textAlign: 'right', color: 'var(--text-3)', fontWeight: 400, borderBottom: '1px solid var(--line)' }}>
-                    {mx.toFixed(1)}×
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {sensMatrix.map((row, i) => (
-                <tr key={i}>
-                  <td style={{ padding: '8px 4px', color: 'var(--text-3)', borderBottom: '1px solid var(--line)' }}>{growthAxis[i].toFixed(0)}%</td>
-                  {row.map((v, j) => {
-                    const isCenter = i === 2 && j === 2;
-                    return (
-                      <td key={j} style={{
-                        padding: '8px 4px', textAlign: 'right',
-                        background: sensHeat(v),
-                        color: isCenter ? 'var(--live)' : 'var(--text)',
-                        borderBottom: '1px solid var(--line)',
-                        outline: isCenter ? '1px solid var(--live)' : 'none',
-                        fontWeight: isCenter ? 500 : 400,
-                      }}>${fmtM(v)}</td>
-                    );
-                  })}
+          <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -4px' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--ff-mono)', fontSize: 11 }}>
+              <thead>
+                <tr>
+                  <th style={{ padding: '6px 4px', textAlign: 'left', color: 'var(--text-4)', fontWeight: 400, fontSize: 10, letterSpacing: '0.08em', borderBottom: '1px solid var(--line)' }}>g \ m×</th>
+                  {multAxis.map(mx => (
+                    <th key={mx} style={{ padding: '6px 4px', textAlign: 'right', color: 'var(--text-3)', fontWeight: 400, borderBottom: '1px solid var(--line)' }}>
+                      {mx.toFixed(1)}×
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {sensMatrix.map((row, i) => (
+                  <tr key={i}>
+                    <td style={{ padding: '8px 4px', color: 'var(--text-3)', borderBottom: '1px solid var(--line)' }}>{growthAxis[i].toFixed(0)}%</td>
+                    {row.map((v, j) => {
+                      const isCenter = i === 2 && j === 2;
+                      return (
+                        <td key={j} style={{
+                          padding: '8px 4px', textAlign: 'right',
+                          background: sensHeat(v),
+                          color: isCenter ? 'var(--live)' : 'var(--text)',
+                          borderBottom: '1px solid var(--line)',
+                          outline: isCenter ? '1px solid var(--live)' : 'none',
+                          fontWeight: isCenter ? 500 : 400,
+                        }}>${fmtM(v)}</td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <div className="t-mono" style={{ marginTop: 10, fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.08em' }}>
             // green = higher valuation · outlined cell = current inputs
           </div>
@@ -315,7 +314,7 @@ function DealPipeline() {
         </span>
         <span className="t-mono" style={{ fontSize: 10, color: 'var(--live)' }}>● SYNC</span>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
+      <div className="pipeline-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
         {stages.map((s, i) => (
           <div key={s.name} style={{ padding: 20, borderRight: i < stages.length - 1 ? '1px solid var(--line)' : 'none' }}>
             <div className="t-micro" style={{ color: 'var(--text-4)', marginBottom: 14 }}>{String(i + 1).padStart(2, '0')} · {s.name}</div>
@@ -409,12 +408,6 @@ function Hero({ setPage }) {
         * Patient on process. Rigorous on craft.
       </p>
 
-      <style>{`
-        @media (max-width: 1000px) {
-          .hero-top { grid-template-columns: 1fr !important; }
-          .principal-card { max-width: 100%; }
-        }
-      `}</style>
     </section>
   );
 }
@@ -539,11 +532,13 @@ function DilutionHeatmap() {
     <div style={{ border: '1px solid var(--line)', background: 'var(--ink-2)' }} className="dilution-heatmap">
       <style>{`
         .dh-grid { display: grid; grid-template-columns: 1.6fr 1fr; }
-        @media (max-width: 980px) { .dh-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 900px) { .dh-grid { grid-template-columns: 1fr !important; } }
         .dh-cell { transition: background 0.15s, outline 0.15s, transform 0.1s; cursor: pointer; position: relative; }
         .dh-cell:hover { outline: 1px solid var(--text-3); z-index: 1; }
         .dh-cell.pinned { outline: 2px solid var(--live) !important; z-index: 2; }
         .dh-cell.row-active, .dh-cell.col-active { outline: 1px dashed rgba(79,191,137,0.4); }
+        .dh-math { word-break: break-word; }
+        @media (max-width: 640px) { .dh-math { font-size: 10.5px !important; line-height: 1.75 !important; } }
       `}</style>
 
       <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)', background: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
@@ -663,7 +658,7 @@ function DilutionHeatmap() {
           </div>
 
           {/* Math ledger */}
-          <div style={{ border: '1px solid var(--line)', background: 'var(--ink)', padding: '14px 16px', fontFamily: 'var(--ff-mono)', fontSize: 11.5, lineHeight: 1.9, flex: 1 }}>
+          <div className="dh-math" style={{ border: '1px solid var(--line)', background: 'var(--ink)', padding: '14px 16px', fontFamily: 'var(--ff-mono)', fontSize: 11.5, lineHeight: 1.9, flex: 1 }}>
             <div className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em', marginBottom: 10 }}>// THE MATH</div>
             <div style={{ color: 'var(--text-3)' }}>
               <span style={{ color: 'var(--text-4)' }}>post_money</span> = pre + round<br />

@@ -208,9 +208,6 @@ function Footer({ setPage, pages }) {
         </div>
         <div>
           <div className="t-micro" style={{ marginBottom: 14 }}>Reach</div>
-          <a href="#" onClick={(e) => { e.preventDefault(); window.print(); }} style={{ display: 'block', fontSize: 13, color: 'var(--text-2)', padding: '4px 0' }}>
-            Download one-pager ↓
-          </a>
           <a href="https://www.linkedin.com/in/amar-kashyap" target="_blank" rel="noreferrer" style={{ display: 'block', fontSize: 13, color: 'var(--text-2)', padding: '4px 0' }}>
             LinkedIn ↗
           </a>

@@ -305,7 +305,6 @@ function ServicesPage({ setPage }) {
         </div>
         <style>{`
           @media (max-width: 900px) {
-            .seg-tabs { grid-template-columns: 1fr 1fr !important; }
             .svc-body { grid-template-columns: 1fr !important; }
           }
         `}</style>
@@ -469,7 +468,7 @@ function TrackRecordPage({ setPage }) {
                   <span className="pill live" style={{ fontSize: 9 }}><span className="dot live" /> {e.status}</span>
                 </span>
               </summary>
-              <div style={{ padding: '4px 24px 26px', paddingLeft: 130 + 24 }}>
+              <div className="tr-detail" style={{ padding: '4px 24px 26px' }}>
                 <p style={{ fontSize: 14, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 820 }}>{e.detail}</p>
               </div>
             </details>

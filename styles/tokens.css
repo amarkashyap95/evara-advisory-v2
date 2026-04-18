@@ -411,6 +411,12 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
   .page-pad { padding: 48px 28px !important; }
   .page-pad-sm { padding: 28px 28px; }
   .footer-grid { grid-template-columns: 1fr 1fr !important; padding: 40px 28px 24px !important; }
+  .footer-aphorism { padding: 40px 28px 20px !important; }
+  footer > div:last-child { padding: 18px 28px !important; }
+  .sidebar > nav {
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 20px), transparent);
+    mask-image: linear-gradient(to right, black calc(100% - 20px), transparent);
+  }
 }
 
 @media (max-width: 760px) {
@@ -435,12 +441,19 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
   .ledger-row { grid-template-columns: 1fr !important; gap: 6px !important; padding: 18px 16px !important; }
   /* Hero scale — keep display type punchy but within the viewport */
   h1.t-display, h2.t-display { word-break: break-word; }
+  /* Services segment tabs collapse to single column */
+  .seg-tabs { grid-template-columns: 1fr !important; }
+  .seg-tabs button { border-right: 0 !important; border-bottom: 1px solid var(--line); }
+  .seg-tabs button:last-child { border-bottom: 0 !important; }
 }
 
 @media (max-width: 520px) {
   .btn { padding: 10px 16px; font-size: 10px; }
   .readout-body { padding: 12px !important; }
   .readout-line { padding: 2px 0; }
+  /* Footer padding tightens further on phones (H2) */
+  .footer-aphorism { padding: 32px 20px 16px !important; }
+  footer > div:last-child { padding: 16px 20px !important; }
 }
 
 /* ---------- Mobile pass: tightening for new sections ---------- */
@@ -468,6 +481,11 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
   .flagship-quote { padding: 56px 24px !important; }
   /* Heatmap allows horizontal scroll */
   table { font-size: 10.5px !important; }
+  /* Deal pipeline — 5 stages don't fit on tablet */
+  .pipeline-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+  .pipeline-grid > div { border-right: 1px solid var(--line) !important; border-bottom: 1px solid var(--line); }
+  .pipeline-grid > div:nth-child(3n) { border-right: 0 !important; }
+  .pipeline-grid > div:nth-last-child(-n+2) { border-bottom: 0; }
 }
 
 @media (max-width: 640px) {
@@ -487,6 +505,21 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
   .ai-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
   /* Wrap tags */
   .t-mono { letter-spacing: 0.06em !important; }
+  /* Deal pipeline — stack fully on phones */
+  .pipeline-grid { grid-template-columns: 1fr !important; }
+  .pipeline-grid > div { border-right: 0 !important; border-bottom: 1px solid var(--line); }
+  .pipeline-grid > div:last-child { border-bottom: 0; }
+}
+
+/* ---------- Touch devices: larger slider tap targets (H1) ---------- */
+@media (hover: none) and (pointer: coarse) {
+  input[type=range]::-webkit-slider-thumb { width: 22px !important; height: 22px !important; }
+  input[type=range]::-moz-range-thumb { width: 22px !important; height: 22px !important; }
+}
+
+/* ---------- Track Record: detail indent only on desktop (C2) ---------- */
+@media (min-width: 901px) {
+  .tr-detail { padding-left: 154px !important; }
 }
 
 /* ---------- Tweaks panel ---------- */
