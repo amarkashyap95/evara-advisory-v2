@@ -236,6 +236,50 @@ function Footer({ setPage, pages }) {
   );
 }
 
+// ---------- Back to top ----------
+function BackToTop() {
+  const [show, setShow] = useState(false);
+  const [hover, setHover] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 600);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <button
+      aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: 'fixed',
+        bottom: 24,
+        right: 24,
+        width: 40,
+        height: 40,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'var(--ink)',
+        border: '1px solid var(--line)',
+        borderColor: hover ? 'var(--text-3)' : 'var(--line)',
+        borderRadius: 'var(--radius)',
+        color: hover ? 'var(--text)' : 'var(--text-3)',
+        opacity: show ? 1 : 0,
+        pointerEvents: show ? 'auto' : 'none',
+        transition: 'opacity 0.25s ease, color 0.2s ease, border-color 0.2s ease',
+        zIndex: 40,
+      }}
+    >
+      <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+        <polyline points="3,6 6,3 9,6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+        <line x1="6" y1="3" x2="6" y2="10" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+      </svg>
+    </button>
+  );
+}
+
 // ---------- Section heading (numbered IC-memo style) ----------
 function SectionHead({ num, eyebrow, title, kicker, align = 'left' }) {
   return (
@@ -258,5 +302,5 @@ function SectionHead({ num, eyebrow, title, kicker, align = 'left' }) {
 
 // ---------- Export to window so other modules can see them ----------
 Object.assign(window, {
-  useReveal, Reveal, Logo, Clock, Sidebar, Ticker, Footer, SectionHead, useTick, CapacityPill,
+  useReveal, Reveal, Logo, Clock, Sidebar, Ticker, Footer, SectionHead, useTick, CapacityPill, BackToTop,
 });
