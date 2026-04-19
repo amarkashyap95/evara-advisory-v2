@@ -338,12 +338,9 @@ function Hero({ setPage }) {
     <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 72, paddingBottom: 72 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'start', gap: 40, marginBottom: 44 }} className="hero-top">
         <div>
-          <div className="reveal is-in" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 28 }}>
+          <div className="reveal is-in" style={{ marginBottom: 28 }}>
             <span className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               § Sydney · Est. 2026
-            </span>
-            <span className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.1em' }}>
-              ENG-2026-03
             </span>
           </div>
           <h1 className="t-display" style={{ fontSize: 'clamp(56px, 8.4vw, 128px)', lineHeight: 0.94, letterSpacing: '-0.035em', color: 'var(--text)' }}>
