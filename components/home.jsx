@@ -152,11 +152,11 @@ function LiveValuation() {
           <div style={{ padding: '10px 18px', background: 'var(--ink-3)', borderBottom: '1px solid var(--line)' }}>
             <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Inputs · drag to explore</span>
           </div>
-          <Slider label="Current ARR" value={arr} setValue={setArr} min={500} max={20000} step={100} prefix="$" suffix="k" />
+          <Slider label="Current ARR" value={arr} setValue={setArr} min={100} max={20000} step={50} prefix="$" suffix="k" />
           <Slider label="Growth Rate Y1 (base)" value={growth} setValue={setGrowth} min={20} max={200} step={5} suffix="%" />
           <Slider label="Revenue Multiple (base)" value={mult} setValue={setMult} min={3} max={15} step={0.5} suffix="×" />
           <Slider label="Monthly Burn" value={burn} setValue={setBurn} min={50} max={500} step={10} prefix="$" suffix="k" />
-          <Slider label="Round Size" value={round} setValue={setRound} min={1000} max={30000} step={500} prefix="$" suffix="k" />
+          <Slider label="Round Size" value={round} setValue={setRound} min={50} max={30000} step={50} prefix="$" suffix="k" />
         </div>
 
         {/* Headline + cap table */}
@@ -544,8 +544,22 @@ function DilutionHeatmap() {
   const onPreMoney = v => { setPreMoney(v); setPinned({ r: 3, c: 3 }); };
   const onRound = v => { setRound(v); setPinned({ r: 3, c: 3 }); };
 
-  const fmtAxis = n => n >= 10 ? n.toFixed(0) : n.toFixed(1);
+  // Axis/math formatter — 2 decimals below $1m, 1 decimal up to $10m, 0 above.
+  const fmtAxis = n => n < 1 ? n.toFixed(2) : n < 10 ? n.toFixed(1) : n.toFixed(0);
+  // Friendly $ display — uses $k below $1m, $m above.
+  const fmtDollars = v => v < 1 ? `$${Math.round(v * 1000)}k` : v < 10 ? `$${v.toFixed(1)}m` : `$${v.toFixed(0)}m`;
   const fmtM = n => Number(n).toLocaleString('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+  // Variable-step slider mappings. Finer granularity at the low end so pre-seed
+  // scenarios ($500k pre × $50k round) are representable without shrinking the top end.
+  // Pre-money $0.5m–$5m step $0.1m (46 ticks), $5m–$200m step $1m (195 ticks). 240 positions.
+  const PM_MAX_POS = 240;
+  const preMoneyToPos = v => v <= 5 ? Math.round((v - 0.5) / 0.1) : 45 + Math.round(v - 5);
+  const posToPreMoney = p => p <= 45 ? +(0.5 + p * 0.1).toFixed(1) : 5 + (p - 45);
+  // Round $0.05m–$2m step $0.05m (40 ticks), $2m–$30m step $0.5m (56 ticks). 95 positions.
+  const R_MAX_POS = 95;
+  const roundToPos = v => v <= 2 ? Math.round((v - 0.05) / 0.05) : 39 + Math.round((v - 2) / 0.5);
+  const posToRound = p => p <= 39 ? +(0.05 + p * 0.05).toFixed(2) : +(2 + (p - 39) * 0.5).toFixed(1);
 
   const Slider = ({ label, value, setValue, min, max, step, suffix = '', prefix = '' }) => (
     <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)' }}>
@@ -555,6 +569,19 @@ function DilutionHeatmap() {
       </div>
       <input type="range" min={min} max={max} step={step} value={value}
         onChange={e => setValue(Number(e.target.value))}
+        style={{ width: '100%', accentColor: 'var(--live)', height: 4 }}
+      />
+    </div>
+  );
+
+  const StagedSlider = ({ label, value, setValue, posMax, toPos, fromPos, display }) => (
+    <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 6 }}>
+        <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{label}</span>
+        <span className="t-mono" style={{ fontSize: 13, color: 'var(--text)' }}>{display(value)}</span>
+      </div>
+      <input type="range" min={0} max={posMax} step={1} value={toPos(value)}
+        onChange={e => setValue(fromPos(Number(e.target.value)))}
         style={{ width: '100%', accentColor: 'var(--live)', height: 4 }}
       />
     </div>
@@ -606,8 +633,8 @@ function DilutionHeatmap() {
           <div style={{ padding: '10px 18px', background: 'var(--ink-3)', borderBottom: '1px solid var(--line)' }}>
             <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Inputs · drag to explore</span>
           </div>
-          <Slider label="Pre-money valuation" value={preMoney} setValue={onPreMoney} min={5} max={200} step={1} prefix="$" suffix="m" />
-          <Slider label="Round size" value={round} setValue={onRound} min={0.5} max={30} step={0.5} prefix="$" suffix="m" />
+          <StagedSlider label="Pre-money valuation" value={preMoney} setValue={onPreMoney} posMax={PM_MAX_POS} toPos={preMoneyToPos} fromPos={posToPreMoney} display={fmtDollars} />
+          <StagedSlider label="Round size" value={round} setValue={onRound} posMax={R_MAX_POS} toPos={roundToPos} fromPos={posToRound} display={fmtDollars} />
           <Slider label="ESOP pool · post-round" value={esop} setValue={setEsop} min={0} max={20} step={1} suffix="%" />
           <Slider label="Existing founder ownership · pre" value={founderStart} setValue={setFounderStart} min={40} max={100} step={1} suffix="%" />
         </div>
@@ -620,7 +647,7 @@ function DilutionHeatmap() {
               <span style={{ color: 'var(--live)' }}>● {hover ? 'HOVER' : 'PINNED'}</span>
             </div>
             <div className="t-display" style={{ fontSize: 32, color: 'var(--text)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              ${fmtAxis(aRound)}m <span style={{ color: 'var(--text-3)' }}>into</span> ${fmtAxis(aPre)}m<span style={{ color: 'var(--text-3)' }}>.</span>
+              {fmtDollars(aRound)} <span style={{ color: 'var(--text-3)' }}>into</span> {fmtDollars(aPre)}<span style={{ color: 'var(--text-3)' }}>.</span>
             </div>
             <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.08em', marginTop: 4 }}>
               round · pre-money · esop {esop}% · founder start {founderStart}%
@@ -671,7 +698,7 @@ function DilutionHeatmap() {
               <div className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em', marginBottom: 10 }}>// THE MATH</div>
               <div style={{ color: 'var(--text-3)' }}>
                 <span style={{ color: 'var(--text-4)' }}>post_money</span> = pre + round<br />
-                <span style={{ color: 'var(--live)' }}>  = ${fmtAxis(aPre)} + ${fmtAxis(aRound)} = <span style={{ color: 'var(--text)' }}>${fmtM(aPost)}m</span></span>
+                <span style={{ color: 'var(--live)' }}>  = ${fmtAxis(aPre)} + ${fmtAxis(aRound)} = <span style={{ color: 'var(--text)' }}>${fmtAxis(aPost)}m</span></span>
               </div>
               <div style={{ color: 'var(--text-3)', marginTop: 6 }}>
                 <span style={{ color: 'var(--text-4)' }}>investor</span> = round / post<br />
