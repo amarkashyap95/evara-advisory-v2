@@ -347,13 +347,12 @@ function Hero({ setPage }) {
             Commercial clarity, <br />
             <em className="t-display-it" style={{ color: 'var(--text-2)' }}>custom-built</em>.<span style={{ color: 'var(--text-4)' }}>*</span>
           </h1>
-          <p style={{ marginTop: 24, maxWidth: 600, color: 'var(--text-2)', fontSize: 17, lineHeight: 1.6 }}>
-            Transaction support and strategic advisory — for founders raising,
-            operators scaling, and allocators deploying. Seven years across
-            institutional banking, corporate venture, venture capital, private
-            equity, and investment advisory. I don't specialise by sector — I
-            specialise in <em style={{ color: 'var(--cream)', fontStyle: 'italic' }}>capital questions</em>:
-            how to raise it, price it, structure it, and defend it.
+          <p style={{ marginTop: 24, maxWidth: 620, color: 'var(--text)', fontSize: 22, lineHeight: 1.35, fontFamily: 'var(--ff-display)', letterSpacing: '-0.01em' }}>
+            Clarity on the decisions that move capital.
+          </p>
+          <p style={{ marginTop: 14, maxWidth: 600, color: 'var(--text-2)', fontSize: 16, lineHeight: 1.6 }}>
+            Independent advisory built on institutional rigour — for founders raising,
+            operators scaling, and allocators deploying.
           </p>
           <div style={{ marginTop: 34, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <button className="btn primary" onClick={() => setPage('Contact')}>Book a call<span className="arrow" /></button>
