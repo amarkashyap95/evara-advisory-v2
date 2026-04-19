@@ -122,7 +122,7 @@ function AboutPage({ setPage }) {
             </div>
             <div className="t-micro" style={{ marginTop: 28, marginBottom: 14 }}>Sector exposure</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {['Health & Fitness', 'Beauty & Medical', 'Legal Technology'].map(t => (
+              {['Health & Fitness', 'Beauty & Medical', 'Legal Technology', 'Sportstech', 'Healthtech', 'Consumer', 'Enterprise Software', 'Medtech'].map(t => (
                 <span key={t} style={{ padding: '6px 12px', border: '1px solid var(--line)', fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'var(--text-2)', letterSpacing: '0.04em' }}>{t}</span>
               ))}
             </div>
