@@ -337,7 +337,7 @@ function Hero({ setPage }) {
     <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 72, paddingBottom: 72 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'start', gap: 40, marginBottom: 44 }} className="hero-top">
         <div>
-          <div className="reveal is-in" style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 28 }}>
+          <div className="reveal is-in" style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 28, flexWrap: 'wrap' }}>
             <span className="pill live"><span className="dot live" /> Three mandates live · Q2 2026</span>
             <span className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.1em' }}>
               ENG-2026-03
@@ -362,7 +362,7 @@ function Hero({ setPage }) {
         </div>
 
         {/* Right: principal card + mini proof-of-craft teaser */}
-        <div style={{ minWidth: 300, display: 'flex', flexDirection: 'column', gap: 12 }} className="principal-card">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }} className="principal-card">
           <div className="readout" style={{ fontSize: 11.5 }}>
             <div className="readout-head">
               <span>Principal</span>

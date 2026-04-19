@@ -56,9 +56,19 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   max-width: 100vw;
+}
+
+/* Defensive containment: any descendant of shell/main cannot widen its parent
+   beyond viewport. `clip` is stricter than `hidden` — no scroll, no touch pan,
+   no programmatic scroll access. Prevents Android WebView quirks that let
+   touch-panning expose overflow content. */
+.shell, .main {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 /* Media should never overflow its container. Scoped to replaceable-element types;
@@ -478,6 +488,12 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
 
 /* ---------- Mobile pass: tightening for new sections ---------- */
 @media (max-width: 900px) {
+  /* Any text content must break rather than overflow its container — guards
+     against descendants forcing their ancestor wider than the viewport. */
+  p, h1, h2, h3, h4, h5, h6, li, blockquote, span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
   /* Hero stacks */
   .hero-top { grid-template-columns: 1fr !important; gap: 24px !important; }
   .principal-card { min-width: 0 !important; width: 100%; }
@@ -540,6 +556,9 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
 /* ---------- Track Record: detail indent only on desktop (C2) ---------- */
 @media (min-width: 901px) {
   .tr-detail { padding-left: 154px !important; }
+  /* Principal card desktop min-width (moved from inline style to avoid
+     inline-vs-CSS conflicts on Android WebView during grid track-sizing). */
+  .principal-card { min-width: 300px; }
 }
 
 /* ---------- Tweaks panel ---------- */
