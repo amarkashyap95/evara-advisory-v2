@@ -2,9 +2,10 @@
 
 const { useState: hUseState, useEffect: hUseEffect, useRef: hUseRef, useMemo: hUseMemo } = React;
 
-/* Auto-calculated years in private markets — anchored to mid-2018 start.
+/* Auto-calculated years in private markets — anchored to the first dated
+   entry on the About timeline (January 2019, Institutional Banking at ANZ).
    Updates with every page load; advances automatically every month. */
-const CAREER_START = new Date(2018, 6, 1); // July 2018 (month is 0-indexed)
+const CAREER_START = new Date(2019, 0, 1); // January 2019 (month is 0-indexed)
 function yearsInMarkets() {
   const now = new Date();
   const ms = now - CAREER_START;
@@ -371,7 +372,7 @@ function Hero({ setPage }) {
             <div className="readout-body" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div className="readout-line"><span className="k">NAME</span><span className="v">Amar Kashyap</span></div>
               <div className="readout-line"><span className="k">TENURE</span><span className="v">{yearsInMarkets()}+ yrs</span></div>
-              <div className="readout-line"><span className="k">HERITAGE</span><span className="v">Banking · CVC · VC/PE</span></div>
+              <div className="readout-line"><span className="k">HERITAGE</span><span className="v">Banking · CVC · VC</span></div>
               <div className="readout-line"><span className="k">BASED</span><span className="v">Sydney · AU</span></div>
               <div className="readout-line"><span className="k">STACK</span><span className="v">Claude·GPT·Cursor</span></div>
             </div>

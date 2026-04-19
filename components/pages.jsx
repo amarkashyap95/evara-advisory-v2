@@ -53,7 +53,7 @@ function AboutPage({ setPage }) {
               Every engagement starts with the same question: <em style={{ color: '#8B6A2E' }}>what is this capital actually for?</em>
             </p>
             <p style={{ color: '#404753' }}>
-              The practice is led by Amar Kashyap, drawing on seven years across institutional banking, venture capital, corporate development, and family office. Transaction support, capital strategy, modelling, document preparation, and investor-readiness work — scoped as commercial services to the business itself.
+              The practice is led by Amar Kashyap, drawing on seven years across institutional banking, corporate ventures, and institutional venture capital. Transaction support, capital strategy, modelling, document preparation, and investor-readiness work — scoped as commercial services to the business itself.
             </p>
             <p style={{ color: '#404753' }}>
               Based in Sydney and operating with limited capacity by design. Every engagement is shaped end-to-end by the principal and delivered alongside the client's licensed legal, tax, and financial advisors where relevant.
@@ -96,8 +96,8 @@ function AboutPage({ setPage }) {
         <div className="g2" style={{ borderTop: '1px solid var(--line)', borderLeft: '1px solid var(--line)' }}>
           <div style={{ padding: 36, borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
             <div className="t-micro" style={{ marginBottom: 18 }}>Heritage</div>
-            {['Institutional Banking — M&A & Leveraged Finance', 'Corporate Venture — Growth-stage tech', 'Corporate Development — ASX-listed platform', 'Institutional VC Fund — Founding hire', 'Private Equity / Family Office — Structuring'].map((l, i) => (
-              <div key={i} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', padding: '10px 0', borderBottom: i < 4 ? '1px solid var(--line)' : 'none', fontFamily: 'var(--ff-mono)', fontSize: 12, color: 'var(--text-2)' }}>
+            {['Institutional Banking — M&A & Leveraged Finance', 'Corporate Ventures — ASX-listed proptech platform', 'Institutional VC Fund — Founding investment hire', 'Independent Advisory — Evara Advisory'].map((l, i, arr) => (
+              <div key={i} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', padding: '10px 0', borderBottom: i < arr.length - 1 ? '1px solid var(--line)' : 'none', fontFamily: 'var(--ff-mono)', fontSize: 12, color: 'var(--text-2)' }}>
                 <span style={{ color: 'var(--text-4)' }}>0{i + 1}</span>{l}
               </div>
             ))}
