@@ -361,8 +361,8 @@ function Hero({ setPage }) {
           </div>
         </div>
 
-        {/* Right: principal card + mini proof-of-craft teaser */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }} className="principal-card">
+        {/* Right: principal card */}
+        <div className="principal-card">
           <div className="readout" style={{ fontSize: 11.5 }}>
             <div className="readout-head">
               <span>Principal</span>
@@ -376,30 +376,6 @@ function Hero({ setPage }) {
               <div className="readout-line"><span className="k">STACK</span><span className="v">Claude·GPT·Cursor</span></div>
             </div>
           </div>
-
-          {/* Mini proof-of-craft teaser — static "sample deliverable" snapshot */}
-          <a href="#workbench" onClick={(e) => {
-              e.preventDefault();
-              const el = document.getElementById('workbench');
-              if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
-            }} style={{ display: 'block', border: '1px solid var(--line)', background: 'var(--ink-2)', padding: 14, textDecoration: 'none', cursor: 'pointer', transition: 'border-color 0.2s' }}
-            onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--live)'}
-            onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--line)'}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-              <span className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em' }}>§ SAMPLE · VALUATION MODEL</span>
-              <span className="t-mono" style={{ fontSize: 9, color: 'var(--live)' }}>● LIVE ↓</span>
-            </div>
-            {/* tiny bar chart teaser */}
-            <div style={{ display: 'flex', alignItems: 'end', gap: 4, height: 42, marginBottom: 10 }}>
-              {[22, 38, 56, 78].map((h, i) => (
-                <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--live)', opacity: 0.25 + i * 0.2 }} />
-              ))}
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--ff-mono)', fontSize: 10, color: 'var(--text-3)' }}>
-              <span>Y0 → Y3 ARR</span>
-              <span style={{ color: 'var(--text-2)' }}>Drive it ↓</span>
-            </div>
-          </a>
         </div>
       </div>
 
