@@ -670,6 +670,9 @@ Prospect situation: "${aiScope.trim()}"`;
             </div>
             <div><label className="label">Brief *</label>
               <textarea required data-brief-textarea className="input" value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="What are you trying to accomplish?" rows={5} />
+              <p style={{ marginTop: 8, fontSize: 12.5, color: 'var(--text-3)', fontStyle: 'italic', lineHeight: 1.5 }}>
+                Not sure how to articulate it? Sketch a rough scope below and paste it back in here.
+              </p>
             </div>
             <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
               <button type="submit" className="btn primary" disabled={status === 'sending' || !form.name || !form.email || !form.message}>
