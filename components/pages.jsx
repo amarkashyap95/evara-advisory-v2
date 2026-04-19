@@ -615,8 +615,88 @@ Prospect situation: "${aiScope.trim()}"`;
         </p>
       </section>
 
+      {/* Standard form — now the primary entry point */}
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 60, alignItems: 'start' }} className="form-wrap">
+          <div>
+            <div className="t-micro" style={{ marginBottom: 14 }}>§ Full brief · structured</div>
+            <h3 className="t-display" style={{ fontSize: 32, lineHeight: 1.1, marginBottom: 24 }}>Send the full form.</h3>
+            <div className="readout">
+              <div className="readout-head"><span>Protocol</span><span>v1.4</span></div>
+              <div className="readout-body" style={{ padding: 16 }}>
+                {['Intro call — no charge', 'Written proposal + fixed fee', 'Mutual NDA before materials', 'Milestone-based delivery'].map((l, i) => (
+                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', padding: '6px 0', fontSize: 12.5, color: 'var(--text-2)' }}>
+                    <span style={{ color: 'var(--text-4)' }}>0{i + 1}</span>{l}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ marginTop: 24 }}>
+              <div className="t-micro" style={{ marginBottom: 10 }}>Reach</div>
+              <a href="https://www.linkedin.com/in/amar-kashyap" target="_blank" rel="noreferrer" style={{ display: 'block', fontSize: 14, color: 'var(--text)' }}>LinkedIn ↗</a>
+              <div style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 4 }}>Sydney, Australia · AEST</div>
+            </div>
+          </div>
+
+          <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fg">
+              <div><label className="label">Name *</label><input required className="input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Your name" /></div>
+              <div><label className="label">Email *</label><input required type="email" className="input" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" /></div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fg">
+              <div><label className="label">Company</label><input className="input" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} placeholder="Company / venture" /></div>
+              <div><label className="label">Stage</label>
+                <select className="input" value={form.stage} onChange={e => setForm({ ...form, stage: e.target.value })}>
+                  {['', 'Pre-seed / Idea', 'Seed', 'Series A+', 'Established business', 'Franchise / multi-site', 'Angel investor', 'Fund manager / GP', 'Family office', 'Corporate / corp dev', 'Other'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
+                </select>
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fg">
+              <div><label className="label">Service of interest</label>
+                <select className="input" value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}>
+                  {['', 'Building Foundations', 'Raising Capital', 'Fund Operations Support', 'Scaling Operations', 'AI adoption', 'Not sure'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
+                </select>
+              </div>
+              <div><label className="label">Indicative budget</label>
+                <select className="input" value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })}>
+                  {['', 'Under $5,000', '$5,000 – $15,000', '$15,000 – $50,000', '$50,000+', 'Retainer', 'Not sure'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
+                </select>
+              </div>
+            </div>
+            <div><label className="label">Timeline</label>
+              <select className="input" value={form.timeline} onChange={e => setForm({ ...form, timeline: e.target.value })}>
+                {['', 'Urgent — this week', 'Within 2 weeks', 'Within a month', 'Flexible'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
+              </select>
+            </div>
+            <div><label className="label">Brief *</label>
+              <textarea required data-brief-textarea className="input" value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="What are you trying to accomplish?" rows={5} />
+            </div>
+            <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
+              <button type="submit" className="btn primary" disabled={status === 'sending' || !form.name || !form.email || !form.message}>
+                {status === 'sending' ? 'Transmitting…' : 'Submit brief'}<span className="arrow" />
+              </button>
+              {status === 'error' && <span className="t-mono" style={{ fontSize: 11, color: '#D47056' }}>// TX FAILED — try again or reach via LinkedIn</span>}
+              <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.08em' }}>// ENCRYPTED IN TRANSIT</span>
+            </div>
+          </form>
+          <style>{`
+            @media (max-width: 900px) {
+              .form-wrap { grid-template-columns: 1fr !important; }
+              .fg { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
+        </div>
+      </section>
+
+      {/* Bridge — plain copy invitation to the Scope Drafter below */}
+      <section className="page-pad" style={{ paddingTop: 32, paddingBottom: 16 }}>
+        <p style={{ fontSize: 15, color: 'var(--text-3)', fontStyle: 'italic', fontWeight: 300, lineHeight: 1.5, maxWidth: 620 }}>
+          Unsure of scope? Use the AI-powered scope sketcher below to draft a starting point.
+        </p>
+      </section>
+
       {/* Scope drafter — AI as exploratory tool, not final proposal */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--ink-2)' }}>
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--ink-2)', paddingTop: 48 }}>
         <div style={{ marginBottom: 24 }}>
           <div className="t-mono" style={{ fontSize: 11, color: 'var(--live)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 12 }}>
             <span className="dot live" style={{ display: 'inline-block', marginRight: 8, verticalAlign: 'middle' }} />
@@ -680,7 +760,7 @@ Prospect situation: "${aiScope.trim()}"`;
                     }
                   }, 60);
                 }}>
-                  Use sketch in brief below<span className="arrow" />
+                  Use sketch in brief above<span className="arrow" />
                 </button>
                 <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.08em' }}>
                   // optional — edit freely before sending
@@ -690,79 +770,6 @@ Prospect situation: "${aiScope.trim()}"`;
           </div>
         </div>
         <style>{`@media (max-width: 900px) { .ai-grid { grid-template-columns: 1fr !important; } }`}</style>
-      </section>
-
-      {/* Standard form */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 60, alignItems: 'start' }} className="form-wrap">
-          <div>
-            <div className="t-micro" style={{ marginBottom: 14 }}>§ Full brief · structured</div>
-            <h3 className="t-display" style={{ fontSize: 32, lineHeight: 1.1, marginBottom: 24 }}>Or send the full form.</h3>
-            <div className="readout">
-              <div className="readout-head"><span>Protocol</span><span>v1.4</span></div>
-              <div className="readout-body" style={{ padding: 16 }}>
-                {['Intro call — no charge', 'Written proposal + fixed fee', 'Mutual NDA before materials', 'Milestone-based delivery'].map((l, i) => (
-                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', padding: '6px 0', fontSize: 12.5, color: 'var(--text-2)' }}>
-                    <span style={{ color: 'var(--text-4)' }}>0{i + 1}</span>{l}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ marginTop: 24 }}>
-              <div className="t-micro" style={{ marginBottom: 10 }}>Reach</div>
-              <a href="https://www.linkedin.com/in/amar-kashyap" target="_blank" rel="noreferrer" style={{ display: 'block', fontSize: 14, color: 'var(--text)' }}>LinkedIn ↗</a>
-              <div style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 4 }}>Sydney, Australia · AEST</div>
-            </div>
-          </div>
-
-          <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fg">
-              <div><label className="label">Name *</label><input required className="input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Your name" /></div>
-              <div><label className="label">Email *</label><input required type="email" className="input" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" /></div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fg">
-              <div><label className="label">Company</label><input className="input" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} placeholder="Company / venture" /></div>
-              <div><label className="label">Stage</label>
-                <select className="input" value={form.stage} onChange={e => setForm({ ...form, stage: e.target.value })}>
-                  {['', 'Pre-seed / Idea', 'Seed', 'Series A+', 'Established business', 'Franchise / multi-site', 'Angel investor', 'Fund manager / GP', 'Family office', 'Corporate / corp dev', 'Other'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
-                </select>
-              </div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fg">
-              <div><label className="label">Service of interest</label>
-                <select className="input" value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}>
-                  {['', 'Building Foundations', 'Raising Capital', 'Fund Operations Support', 'Scaling Operations', 'AI adoption', 'Not sure'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
-                </select>
-              </div>
-              <div><label className="label">Indicative budget</label>
-                <select className="input" value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })}>
-                  {['', 'Under $5,000', '$5,000 – $15,000', '$15,000 – $50,000', '$50,000+', 'Retainer', 'Not sure'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
-                </select>
-              </div>
-            </div>
-            <div><label className="label">Timeline</label>
-              <select className="input" value={form.timeline} onChange={e => setForm({ ...form, timeline: e.target.value })}>
-                {['', 'Urgent — this week', 'Within 2 weeks', 'Within a month', 'Flexible'].map(v => <option key={v} value={v}>{v || 'Select…'}</option>)}
-              </select>
-            </div>
-            <div><label className="label">Brief *</label>
-              <textarea required data-brief-textarea className="input" value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="What are you trying to accomplish? (You can start from the scope sketch above.)" rows={5} />
-            </div>
-            <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
-              <button type="submit" className="btn primary" disabled={status === 'sending' || !form.name || !form.email || !form.message}>
-                {status === 'sending' ? 'Transmitting…' : 'Submit brief'}<span className="arrow" />
-              </button>
-              {status === 'error' && <span className="t-mono" style={{ fontSize: 11, color: '#D47056' }}>// TX FAILED — try again or reach via LinkedIn</span>}
-              <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.08em' }}>// ENCRYPTED IN TRANSIT</span>
-            </div>
-          </form>
-          <style>{`
-            @media (max-width: 900px) {
-              .form-wrap { grid-template-columns: 1fr !important; }
-              .fg { grid-template-columns: 1fr !important; }
-            }
-          `}</style>
-        </div>
       </section>
     </>
   );
