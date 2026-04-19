@@ -485,27 +485,39 @@ function ServiceSegments({ setPage }) {
 }
 
 /* ===========================================================
-   Dilution × Valuation Heatmap — second proof-of-craft artifact.
-   Shows implied founder ownership across a grid of (round size) × (pre-money).
-   Editorial framing — "the geometry of a raise".
+   Dilution Calculator — user-driven.
+   Four inputs drive a live 7×7 heatmap whose axes sweep ±60% around
+   the user's chosen pre-money and round. Editorial framing —
+   "the geometry of a raise".
    =========================================================== */
 function DilutionHeatmap() {
-  const rounds = [1, 2, 3, 5, 8, 12, 20];           // $m
-  const preMoneys = [8, 15, 25, 40, 60, 90, 140];   // $m
+  // User inputs
+  const [preMoney, setPreMoney] = hUseState(40);           // $m
+  const [round, setRound] = hUseState(5);                  // $m
+  const [esop, setEsop] = hUseState(10);                   // % post-round
+  const [founderStart, setFounderStart] = hUseState(100);  // % pre-round (existing founder ownership)
 
-  const [esop, setEsop] = hUseState(10);            // % ESOP reserved pre-round
-  // Pin a specific cell (row, col) for the readout. Hover also updates it transiently.
-  const [pinned, setPinned] = hUseState({ r: 3, c: 3 });   // center-ish default
-  const [hover, setHover] = hUseState(null);               // {r,c} or null
+  // Pin a specific cell; hover overrides transiently. Center cell (r=3,c=3) = user's inputs.
+  const [pinned, setPinned] = hUseState({ r: 3, c: 3 });
+  const [hover, setHover] = hUseState(null);
   const active = hover || pinned;
 
-  // Founder % post-round, accounting for ESOP carve-out (taken from pre, diluting founders pre-new-investor)
-  // Simplified mechanic: investor % = round / (pre + round). Remainder splits into founders + ESOP.
-  const founderOf = (r, pre) => {
-    const investorPct = (r / (pre + r)) * 100;
-    return Math.max(0, 100 - investorPct - esop);
-  };
+  // Axes sweep ±60% around the user's inputs (7 values).
+  const axisMul = [0.4, 0.6, 0.8, 1.0, 1.25, 1.5, 2.0];
+  const rounds = axisMul.map(m => round * m);
+  const preMoneys = axisMul.map(m => preMoney * m);
+
+  // Core math. Investor = round / post. ESOP is target post-round pool.
+  // Founder_post = existingFounder% × (100 − investor − esop) / 100.
   const investorOf = (r, pre) => (r / (pre + r)) * 100;
+  const founderOf = (r, pre) => {
+    const remaining = Math.max(0, 100 - investorOf(r, pre) - esop);
+    return (founderStart / 100) * remaining;
+  };
+  const otherExistingOf = (r, pre) => {
+    const remaining = Math.max(0, 100 - investorOf(r, pre) - esop);
+    return ((100 - founderStart) / 100) * remaining;
+  };
   const postMoneyOf = (r, pre) => pre + r;
 
   const grid = rounds.map(r => preMoneys.map(pre => founderOf(r, pre)));
@@ -522,17 +534,55 @@ function DilutionHeatmap() {
   const aPre = preMoneys[active.c];
   const aFounder = founderOf(aRound, aPre);
   const aInvestor = investorOf(aRound, aPre);
+  const aOther = otherExistingOf(aRound, aPre);
   const aPost = postMoneyOf(aRound, aPre);
-  const aPricePerShareMult = aPre / 10;  // arbitrary "per $10m notional"; illustrative multiple
+  const aRemaining = Math.max(0, 100 - aInvestor - esop);
+  const retention = founderStart > 0 ? (aFounder / founderStart) * 100 : 0;
 
+  // Moving pre-money or round slides the whole grid; re-centre the pin so the readout
+  // reflects the newly-chosen scenario rather than an orphan what-if cell.
+  const onPreMoney = v => { setPreMoney(v); setPinned({ r: 3, c: 3 }); };
+  const onRound = v => { setRound(v); setPinned({ r: 3, c: 3 }); };
+
+  const fmtAxis = n => n >= 10 ? n.toFixed(0) : n.toFixed(1);
   const fmtM = n => Number(n).toLocaleString('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+  const Slider = ({ label, value, setValue, min, max, step, suffix = '', prefix = '' }) => (
+    <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 6 }}>
+        <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{label}</span>
+        <span className="t-mono" style={{ fontSize: 13, color: 'var(--text)' }}>{prefix}{value}{suffix}</span>
+      </div>
+      <input type="range" min={min} max={max} step={step} value={value}
+        onChange={e => setValue(Number(e.target.value))}
+        style={{ width: '100%', accentColor: 'var(--live)', height: 4 }}
+      />
+    </div>
+  );
 
   return (
     <div style={{ border: '1px solid var(--line)', background: 'var(--ink-2)' }} className="dilution-heatmap">
       <style>{`
-        .dh-grid { display: grid; grid-template-columns: 1.6fr 1fr; }
-        @media (max-width: 900px) { .dh-grid { grid-template-columns: 1fr !important; } }
-        .dh-cell { transition: background 0.15s, outline 0.15s, transform 0.1s; cursor: pointer; position: relative; }
+        input[type=range] { -webkit-appearance: none; appearance: none; background: var(--line); border-radius: 2px; }
+        input[type=range]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 14px; height: 14px; border-radius: 50%;
+          background: var(--live); border: 2px solid var(--ink-2); cursor: grab;
+        }
+        input[type=range]::-moz-range-thumb {
+          width: 14px; height: 14px; border-radius: 50%;
+          background: var(--live); border: 2px solid var(--ink-2); cursor: grab;
+        }
+        .dh-top { display: grid; grid-template-columns: 1fr 1.25fr; }
+        @media (max-width: 900px) {
+          .dh-top { grid-template-columns: 1fr !important; }
+          .dh-top > div:first-child { border-right: 0 !important; border-bottom: 1px solid var(--line); }
+        }
+        .dh-readout-split { display: grid; grid-template-columns: 1fr 1fr; }
+        @media (max-width: 640px) { .dh-readout-split { grid-template-columns: 1fr !important; }
+          .dh-readout-split > div:first-child { border-right: 0 !important; border-bottom: 1px solid var(--line); }
+        }
+        .dh-cell { transition: background 0.15s, outline 0.15s; cursor: pointer; position: relative; }
         .dh-cell:hover { outline: 1px solid var(--text-3); z-index: 1; }
         .dh-cell.pinned { outline: 2px solid var(--live) !important; z-index: 2; }
         .dh-cell.row-active, .dh-cell.col-active { outline: 1px dashed rgba(79,191,137,0.4); }
@@ -540,107 +590,66 @@ function DilutionHeatmap() {
         @media (max-width: 640px) { .dh-math { font-size: 10.5px !important; line-height: 1.75 !important; } }
       `}</style>
 
+      {/* Header bar */}
       <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)', background: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
         <span className="t-mono" style={{ fontSize: 10.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)' }}>
           <span className="dot live" style={{ display: 'inline-block', marginRight: 8, verticalAlign: 'middle' }} />
-          The geometry of a raise · Dilution × Valuation · INTERACTIVE
+          The geometry of a raise · Dilution Calculator · LIVE
         </span>
-        <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)' }}>/models/dilution-matrix.xlsx · Δ recalc on ESOP</span>
+        <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)' }}>/models/dilution-matrix.xlsx · Δ recalc on inputs</span>
       </div>
 
-      {/* ESOP slider */}
-      <div style={{ padding: '14px 24px', borderBottom: '1px solid var(--line)', display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
-        <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.12em', textTransform: 'uppercase', minWidth: 140 }}>ESOP carve-out · pre</span>
-        <input type="range" min={0} max={20} step={1} value={esop} onChange={e => setEsop(Number(e.target.value))}
-          style={{ flex: 1, minWidth: 200, accentColor: 'var(--live)', height: 4 }} />
-        <span className="t-mono" style={{ fontSize: 13, color: 'var(--text)', minWidth: 40, textAlign: 'right' }}>{esop}%</span>
-      </div>
-
-      <div className="dh-grid">
-        {/* ===== LEFT: the interactive matrix ===== */}
-        <div style={{ padding: '20px 24px', borderRight: '1px solid var(--line)', minWidth: 0 }}>
-          <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.1em', marginBottom: 14 }}>
-            Founder % post-round · rows: round ($m) · cols: pre-money ($m) · <span style={{ color: 'var(--live)' }}>click any cell</span>
+      {/* ===== TOP: inputs (left) · readout (right) ===== */}
+      <div className="dh-top">
+        {/* Inputs */}
+        <div style={{ borderRight: '1px solid var(--line)' }}>
+          <div style={{ padding: '10px 18px', background: 'var(--ink-3)', borderBottom: '1px solid var(--line)' }}>
+            <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Inputs · drag to explore</span>
           </div>
-          <table style={{ borderCollapse: 'collapse', fontFamily: 'var(--ff-mono)', fontSize: 11, width: '100%', tableLayout: 'fixed' }}>
-            <thead>
-              <tr>
-                <th style={{ padding: '8px 4px', textAlign: 'left', color: 'var(--text-4)', fontWeight: 400, fontSize: 9, letterSpacing: '0.06em', borderBottom: '1px solid var(--line)', width: '14%' }}>r↓/p→</th>
-                {preMoneys.map((p, j) => (
-                  <th key={p} style={{ padding: '8px 2px', textAlign: 'center', fontWeight: 400, borderBottom: '1px solid var(--line)', fontSize: 10,
-                    color: active.c === j ? 'var(--live)' : 'var(--text-3)',
-                  }}>${p}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {grid.map((row, i) => (
-                <tr key={i}>
-                  <td style={{ padding: '9px 4px', borderBottom: '1px solid var(--line)', fontSize: 10.5,
-                    color: active.r === i ? 'var(--live)' : 'var(--text-3)',
-                    fontWeight: active.r === i ? 500 : 400,
-                  }}>${rounds[i]}m</td>
-                  {row.map((v, j) => {
-                    const isPinned = pinned.r === i && pinned.c === j;
-                    const rowActive = active.r === i;
-                    const colActive = active.c === j;
-                    const cls = ['dh-cell', isPinned && 'pinned', rowActive && !isPinned && 'row-active', colActive && !isPinned && 'col-active'].filter(Boolean).join(' ');
-                    return (
-                      <td key={j} className={cls}
-                        onClick={() => setPinned({ r: i, c: j })}
-                        onMouseEnter={() => setHover({ r: i, c: j })}
-                        onMouseLeave={() => setHover(null)}
-                        style={{
-                          padding: '9px 2px', textAlign: 'center',
-                          background: heat(v),
-                          color: isPinned ? 'var(--live)' : 'var(--text)',
-                          borderBottom: '1px solid var(--line)',
-                          fontWeight: isPinned ? 600 : 400,
-                          fontSize: 11,
-                        }}>{v.toFixed(0)}</td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="t-mono" style={{ marginTop: 14, fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.08em', lineHeight: 1.7 }}>
-            // green-shade intensity = founder retention · darker = more dilution<br/>
-            // outlined cell = pinned · click to pin any cell · dashed = row/col of active
-          </div>
+          <Slider label="Pre-money valuation" value={preMoney} setValue={onPreMoney} min={5} max={200} step={1} prefix="$" suffix="m" />
+          <Slider label="Round size" value={round} setValue={onRound} min={0.5} max={30} step={0.5} prefix="$" suffix="m" />
+          <Slider label="ESOP pool · post-round" value={esop} setValue={setEsop} min={0} max={20} step={1} suffix="%" />
+          <Slider label="Existing founder ownership · pre" value={founderStart} setValue={setFounderStart} min={40} max={100} step={1} suffix="%" />
         </div>
 
-        {/* ===== RIGHT: live readout ===== */}
-        <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column' }}>
-          <div className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 14, display: 'flex', justifyContent: 'space-between' }}>
-            <span>§ Cell readout</span>
-            <span style={{ color: 'var(--live)' }}>● {hover ? 'HOVER' : 'PINNED'}</span>
-          </div>
-
-          {/* Scenario title */}
-          <div style={{ marginBottom: 20 }}>
+        {/* Readout */}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ padding: '18px 24px 14px' }}>
+            <div className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 12, display: 'flex', justifyContent: 'space-between' }}>
+              <span>§ Cell readout</span>
+              <span style={{ color: 'var(--live)' }}>● {hover ? 'HOVER' : 'PINNED'}</span>
+            </div>
             <div className="t-display" style={{ fontSize: 32, color: 'var(--text)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-              ${aRound}m <span style={{ color: 'var(--text-3)' }}>into</span> ${aPre}m<span style={{ color: 'var(--text-3)' }}>.</span>
+              ${fmtAxis(aRound)}m <span style={{ color: 'var(--text-3)' }}>into</span> ${fmtAxis(aPre)}m<span style={{ color: 'var(--text-3)' }}>.</span>
             </div>
             <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.08em', marginTop: 4 }}>
-              pre-money · round · esop {esop}%
+              round · pre-money · esop {esop}% · founder start {founderStart}%
             </div>
           </div>
 
           {/* Split bar */}
-          <div style={{ marginBottom: 18 }}>
+          <div style={{ padding: '4px 24px 18px', borderBottom: '1px solid var(--line)' }}>
             <div style={{ display: 'flex', height: 14, border: '1px solid var(--line)', borderRadius: 1, overflow: 'hidden', marginBottom: 10 }}>
               <div style={{ width: `${aFounder}%`, background: 'var(--text-2)', transition: 'width 0.25s' }} />
+              {aOther > 0.1 && <div style={{ width: `${aOther}%`, background: 'var(--text-3)', opacity: 0.55, transition: 'width 0.25s' }} />}
               <div style={{ width: `${aInvestor}%`, background: 'var(--live)', transition: 'width 0.25s' }} />
               <div style={{ width: `${esop}%`, background: 'var(--text-4)', transition: 'width 0.25s' }} />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, fontFamily: 'var(--ff-mono)', fontSize: 10.5 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: founderStart < 100 ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)', gap: 10, fontFamily: 'var(--ff-mono)', fontSize: 10.5 }}>
               <div>
                 <div style={{ display: 'flex', gap: 6, alignItems: 'center', color: 'var(--text-3)', fontSize: 9.5 }}>
                   <span style={{ width: 7, height: 7, background: 'var(--text-2)' }} /> FOUNDERS
                 </div>
                 <div style={{ color: 'var(--text)', fontSize: 16, marginTop: 4 }}>{aFounder.toFixed(1)}%</div>
               </div>
+              {founderStart < 100 && (
+                <div>
+                  <div style={{ display: 'flex', gap: 6, alignItems: 'center', color: 'var(--text-3)', fontSize: 9.5 }}>
+                    <span style={{ width: 7, height: 7, background: 'var(--text-3)', opacity: 0.55 }} /> OTHER EXISTING
+                  </div>
+                  <div style={{ color: 'var(--text)', fontSize: 16, marginTop: 4 }}>{aOther.toFixed(1)}%</div>
+                </div>
+              )}
               <div>
                 <div style={{ display: 'flex', gap: 6, alignItems: 'center', color: 'var(--text-3)', fontSize: 9.5 }}>
                   <span style={{ width: 7, height: 7, background: 'var(--live)' }} /> INVESTOR
@@ -656,35 +665,101 @@ function DilutionHeatmap() {
             </div>
           </div>
 
-          {/* Math ledger */}
-          <div className="dh-math" style={{ border: '1px solid var(--line)', background: 'var(--ink)', padding: '14px 16px', fontFamily: 'var(--ff-mono)', fontSize: 11.5, lineHeight: 1.9, flex: 1 }}>
-            <div className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em', marginBottom: 10 }}>// THE MATH</div>
-            <div style={{ color: 'var(--text-3)' }}>
-              <span style={{ color: 'var(--text-4)' }}>post_money</span> = pre + round<br />
-              <span style={{ color: 'var(--live)' }}>  = ${aPre} + ${aRound} = <span style={{ color: 'var(--text)' }}>${aPost.toFixed(0)}m</span></span>
+          {/* Math ledger + verdict */}
+          <div className="dh-readout-split" style={{ flex: 1 }}>
+            <div className="dh-math" style={{ padding: '14px 18px', fontFamily: 'var(--ff-mono)', fontSize: 11.5, lineHeight: 1.9, borderRight: '1px solid var(--line)' }}>
+              <div className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em', marginBottom: 10 }}>// THE MATH</div>
+              <div style={{ color: 'var(--text-3)' }}>
+                <span style={{ color: 'var(--text-4)' }}>post_money</span> = pre + round<br />
+                <span style={{ color: 'var(--live)' }}>  = ${fmtAxis(aPre)} + ${fmtAxis(aRound)} = <span style={{ color: 'var(--text)' }}>${fmtM(aPost)}m</span></span>
+              </div>
+              <div style={{ color: 'var(--text-3)', marginTop: 6 }}>
+                <span style={{ color: 'var(--text-4)' }}>investor</span> = round / post<br />
+                <span style={{ color: 'var(--live)' }}>  = <span style={{ color: 'var(--text)' }}>{aInvestor.toFixed(2)}%</span></span>
+              </div>
+              <div style={{ color: 'var(--text-3)', marginTop: 6 }}>
+                <span style={{ color: 'var(--text-4)' }}>remaining</span> = 100 − inv − esop<br />
+                <span style={{ color: 'var(--live)' }}>  = <span style={{ color: 'var(--text)' }}>{aRemaining.toFixed(2)}%</span></span>
+              </div>
+              <div style={{ color: 'var(--text-3)', marginTop: 6 }}>
+                <span style={{ color: 'var(--text-4)' }}>founder</span> = start × remaining<br />
+                <span style={{ color: 'var(--live)' }}>  = {founderStart}% × {aRemaining.toFixed(1)}% = <span style={{ color: 'var(--text)' }}>{aFounder.toFixed(2)}%</span></span>
+              </div>
             </div>
-            <div style={{ color: 'var(--text-3)', marginTop: 6 }}>
-              <span style={{ color: 'var(--text-4)' }}>investor_pct</span> = round / post<br />
-              <span style={{ color: 'var(--live)' }}>  = {aRound} / {aPost.toFixed(0)} = <span style={{ color: 'var(--text)' }}>{aInvestor.toFixed(2)}%</span></span>
-            </div>
-            <div style={{ color: 'var(--text-3)', marginTop: 6 }}>
-              <span style={{ color: 'var(--text-4)' }}>founder_pct</span> = 100 − inv − esop<br />
-              <span style={{ color: 'var(--live)' }}>  = 100 − {aInvestor.toFixed(2)} − {esop} = <span style={{ color: 'var(--text)' }}>{aFounder.toFixed(2)}%</span></span>
-            </div>
-          </div>
 
-          {/* Verdict strip */}
-          <div style={{ marginTop: 14, padding: '12px 14px', background: aFounder >= 75 ? 'rgba(79,191,137,0.08)' : aFounder >= 65 ? 'rgba(255,255,255,0.03)' : 'rgba(200,90,63,0.08)', border: `1px solid ${aFounder >= 75 ? 'rgba(79,191,137,0.3)' : aFounder >= 65 ? 'var(--line-2)' : 'rgba(200,90,63,0.3)'}` }}>
-            <div className="t-mono" style={{ fontSize: 9.5, letterSpacing: '0.14em', marginBottom: 4, color: aFounder >= 75 ? 'var(--live)' : aFounder >= 65 ? 'var(--text-3)' : 'var(--warn, #C85A3F)' }}>
-              § VERDICT
-            </div>
-            <div style={{ fontSize: 12.5, color: 'var(--text-2)', lineHeight: 1.55 }}>
-              {aFounder >= 80 && <>Founders retain majority control — typical for a healthy Seed or Series A.</>}
-              {aFounder >= 75 && aFounder < 80 && <>Dilution is in the expected Series A zone. Reasonable for the round size.</>}
-              {aFounder >= 65 && aFounder < 75 && <>Meaningful dilution. Worth pressure-testing the pre-money before signing.</>}
-              {aFounder < 65 && <>Heavy dilution. Either round is too large, pre-money too low, or ESOP overreserved.</>}
+            <div style={{ padding: '14px 18px' }}>
+              <div className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em', marginBottom: 10 }}>
+                // RETENTION · {retention.toFixed(0)}% OF START
+              </div>
+              <div style={{ padding: '10px 12px', background: retention >= 80 ? 'rgba(79,191,137,0.08)' : retention >= 70 ? 'rgba(255,255,255,0.03)' : 'rgba(200,90,63,0.08)', border: `1px solid ${retention >= 80 ? 'rgba(79,191,137,0.3)' : retention >= 70 ? 'var(--line-2)' : 'rgba(200,90,63,0.3)'}` }}>
+                <div className="t-mono" style={{ fontSize: 9.5, letterSpacing: '0.14em', marginBottom: 4, color: retention >= 80 ? 'var(--live)' : retention >= 70 ? 'var(--text-3)' : 'var(--warn, #C85A3F)' }}>
+                  § VERDICT
+                </div>
+                <div style={{ fontSize: 12.5, color: 'var(--text-2)', lineHeight: 1.55 }}>
+                  {retention >= 85 && <>Clean dilution — founders retain strong control relative to starting position.</>}
+                  {retention >= 78 && retention < 85 && <>Dilution in the expected zone for this round shape.</>}
+                  {retention >= 70 && retention < 78 && <>Meaningful dilution. Worth pressure-testing pre-money before signing.</>}
+                  {retention < 70 && <>Heavy dilution. Round too large, pre-money too low, or ESOP overreserved.</>}
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ===== BOTTOM: heatmap full-width ===== */}
+      <div style={{ padding: '20px 24px', borderTop: '1px solid var(--line)' }}>
+        <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.1em', marginBottom: 14, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+          <span>Founder % post-round · rows: round ($m) · cols: pre-money ($m) · <span style={{ color: 'var(--live)' }}>click any cell</span></span>
+          <span style={{ color: 'var(--text-4)' }}>// axes sweep ±60% around your inputs</span>
+        </div>
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+          <table style={{ borderCollapse: 'collapse', fontFamily: 'var(--ff-mono)', fontSize: 11, width: '100%', tableLayout: 'fixed', minWidth: 520 }}>
+            <thead>
+              <tr>
+                <th style={{ padding: '8px 4px', textAlign: 'left', color: 'var(--text-4)', fontWeight: 400, fontSize: 9, letterSpacing: '0.06em', borderBottom: '1px solid var(--line)', width: '12%' }}>r↓/p→</th>
+                {preMoneys.map((p, j) => (
+                  <th key={j} style={{ padding: '8px 2px', textAlign: 'center', fontWeight: 400, borderBottom: '1px solid var(--line)', fontSize: 10,
+                    color: active.c === j ? 'var(--live)' : 'var(--text-3)',
+                  }}>${fmtAxis(p)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {grid.map((row, i) => (
+                <tr key={i}>
+                  <td style={{ padding: '9px 4px', borderBottom: '1px solid var(--line)', fontSize: 10.5,
+                    color: active.r === i ? 'var(--live)' : 'var(--text-3)',
+                    fontWeight: active.r === i ? 500 : 400,
+                  }}>${fmtAxis(rounds[i])}m</td>
+                  {row.map((v, j) => {
+                    const isPinned = pinned.r === i && pinned.c === j;
+                    const rowActive = active.r === i;
+                    const colActive = active.c === j;
+                    const cls = ['dh-cell', isPinned && 'pinned', rowActive && !isPinned && 'row-active', colActive && !isPinned && 'col-active'].filter(Boolean).join(' ');
+                    return (
+                      <td key={j} className={cls}
+                        onClick={() => setPinned({ r: i, c: j })}
+                        onMouseEnter={() => setHover({ r: i, c: j })}
+                        onMouseLeave={() => setHover(null)}
+                        style={{
+                          padding: '10px 2px', textAlign: 'center',
+                          background: heat(v),
+                          color: isPinned ? 'var(--live)' : 'var(--text)',
+                          borderBottom: '1px solid var(--line)',
+                          fontWeight: isPinned ? 600 : 400,
+                          fontSize: 11,
+                        }}>{v.toFixed(0)}</td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="t-mono" style={{ marginTop: 12, fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.08em', lineHeight: 1.7 }}>
+          // green-shade intensity = founder retention · darker = more dilution<br/>
+          // outlined cell = your inputs · click any cell to pin a what-if · dashed = row/col of active
         </div>
       </div>
     </div>
