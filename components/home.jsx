@@ -338,8 +338,7 @@ function Hero({ setPage }) {
     <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 72, paddingBottom: 72 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'start', gap: 40, marginBottom: 44 }} className="hero-top">
         <div>
-          <div className="reveal is-in" style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 28, flexWrap: 'wrap' }}>
-            <span className="pill live"><span className="dot live" /> Three mandates live · Q2 2026</span>
+          <div className="reveal is-in" style={{ marginBottom: 28 }}>
             <span className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.1em' }}>
               ENG-2026-03
             </span>
