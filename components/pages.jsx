@@ -7,10 +7,10 @@ const { useState: pUseState, useEffect: pUseEffect, useRef: pUseRef } = React;
    =========================================================== */
 function AboutPage({ setPage }) {
   const timeline = [
-    { year: '2019', role: 'Institutional Banking', org: 'ANZ', desc: 'M&A advisory and leveraged finance — structuring and syndicating facilities for PE sponsors. Moved into the bank\'s venture arm, deploying capital into growth-stage fintech from Series A.' },
-    { year: '2022', role: 'Corporate Development', org: 'PEXA Group', desc: 'Proptech venture investments and corporate development strategy for a major ASX-listed technology platform.' },
-    { year: '2023', role: 'Founding Hire', org: 'Institutional Venture Fund', desc: 'Founding hire at an institutional venture fund backed by one of Australia\'s largest health insurance groups. Sole-led due diligence and IC approvals on behalf of the fund.' },
-    { year: '2026', role: 'Founder', org: 'Evara Advisory', desc: 'Independent commercial advisory practice. Three mandates in the first quarter — structuring analysis, investor readiness, and strategic advisory.' },
+    { year: '2019', role: 'Institutional Banking', org: 'ANZ', desc: 'M&A advisory and leveraged finance in the bank\'s Institutional division — structuring and syndicating facilities for PE sponsors across Australian and Asia-Pacific transactions. Transitioned into the bank\'s ventures arm, deploying capital into growth-stage fintech from Series A through pre-IPO.' },
+    { year: '2022', role: 'Corporate Ventures & Strategy', org: 'PEXA Group', desc: 'Proptech venture investments and corporate development strategy for a major ASX-listed technology platform. Sourced and assessed minority investments across Australian proptech; supported platform partnerships and M&A pipeline for the executive team.' },
+    { year: '2023', role: 'Investment Manager & Founding Hire', org: 'Institutional Venture Fund', desc: 'Founding investment hire at an institutional venture fund backed by one of Australia\'s largest health insurance groups. Managed the entire investment function — led due diligence and built investment committee cases on seven IC-approved investments across healthtech, fintech, and enterprise software.' },
+    { year: '2026', role: 'Founder & Principal', org: 'Evara Advisory', desc: 'Independent commercial advisory practice. Three mandates in the first quarter spanning structuring analysis, investor readiness, and strategic advisory for founders and allocators.' },
   ];
 
   return (
