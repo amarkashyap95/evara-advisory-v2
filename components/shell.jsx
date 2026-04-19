@@ -134,7 +134,6 @@ function Sidebar({ page, setPage, pages }) {
 function CapacityPill() {
   const states = [
     { label: 'Taking briefs', live: true },
-    { label: '2 slots · Q2', live: true },
     { label: 'NDA-first', live: false },
     { label: 'Selective', live: false },
   ];
@@ -155,7 +154,6 @@ function CapacityPill() {
 function Ticker() {
   const items = [
     ['WORKING WITH', 'FOUNDERS · OPERATORS · INVESTORS', '', ''],
-    ['CAPACITY', '2 SLOTS Q2 2026', 'OPEN', 'up'],
     ['RESPONSE', 'WITHIN DAYS · NDA-FIRST', '', ''],
     ['MANDATES', '3 ACTIVE', 'LIVE', 'up'],
     ['SECTORS', 'FINTECH · PROPTECH · HEALTH · LEGAL', '', ''],
