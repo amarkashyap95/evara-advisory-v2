@@ -343,7 +343,7 @@ function Hero({ setPage }) {
               § Sydney · Est. 2026
             </span>
           </div>
-          <h1 className="t-display" style={{ fontSize: 'clamp(56px, 8.4vw, 128px)', lineHeight: 0.94, letterSpacing: '-0.035em', color: 'var(--text)' }}>
+          <h1 className="t-display" style={{ fontSize: 'clamp(44px, 6.7vw, 102px)', lineHeight: 0.94, letterSpacing: '-0.035em', color: 'var(--text)' }}>
             Commercial clarity, <br />
             <em className="t-display-it" style={{ color: 'var(--text-2)' }}>custom-built</em>.<span style={{ color: 'var(--text-4)' }}>*</span>
           </h1>
