@@ -852,9 +852,9 @@ function HomePage({ setPage }) {
 
         {/* Artifact 01 — Valuation Workbench */}
         <Reveal delay={80}>
-          <div className="t-mono" style={{ fontSize: 10, color: 'var(--live)', letterSpacing: '0.18em', marginBottom: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderTop: '1px solid var(--line)', paddingTop: 20 }}>
+          <div className="t-mono" style={{ fontSize: 10, color: 'var(--live)', letterSpacing: '0.18em', marginBottom: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 8, borderTop: '1px solid var(--line)', paddingTop: 20 }}>
             <span>▸ ARTIFACT 01 · Valuation &amp; round builder</span>
-            <span style={{ color: 'var(--text-4)', letterSpacing: '0.08em' }}>/models/valuation-v3.xlsx</span>
+            <span style={{ color: 'var(--text-4)', letterSpacing: '0.08em', overflowWrap: 'anywhere' }}>/models/valuation-v3.xlsx</span>
           </div>
         </Reveal>
         <Reveal delay={100}><LiveValuation /></Reveal>
@@ -864,9 +864,9 @@ function HomePage({ setPage }) {
 
         {/* Artifact 02 — Dilution Heatmap */}
         <Reveal delay={60}>
-          <div className="t-mono" style={{ fontSize: 10, color: 'var(--live)', letterSpacing: '0.18em', marginBottom: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderTop: '1px solid var(--line)', paddingTop: 20 }}>
+          <div className="t-mono" style={{ fontSize: 10, color: 'var(--live)', letterSpacing: '0.18em', marginBottom: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 8, borderTop: '1px solid var(--line)', paddingTop: 20 }}>
             <span>▸ ARTIFACT 02 · Dilution × valuation matrix</span>
-            <span style={{ color: 'var(--text-4)', letterSpacing: '0.08em' }}>/models/dilution-matrix.xlsx</span>
+            <span style={{ color: 'var(--text-4)', letterSpacing: '0.08em', overflowWrap: 'anywhere' }}>/models/dilution-matrix.xlsx</span>
           </div>
         </Reveal>
         <Reveal delay={80}><DilutionHeatmap /></Reveal>

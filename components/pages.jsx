@@ -662,7 +662,7 @@ Prospect situation: "${aiScope.trim()}"`;
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <label className="label">Scope sketch</label>
-            <div style={{ background: 'var(--ink)', border: '1px solid var(--line)', padding: 20, flex: 1, minHeight: 240, maxHeight: 440, overflow: 'auto', fontFamily: 'var(--ff-mono)', fontSize: 12.5, lineHeight: 1.8, color: 'var(--text-2)', whiteSpace: 'pre-wrap' }}>
+            <div style={{ background: 'var(--ink)', border: '1px solid var(--line)', padding: 20, flex: 1, minHeight: 240, maxHeight: 440, overflow: 'auto', fontFamily: 'var(--ff-mono)', fontSize: 12.5, lineHeight: 1.8, color: 'var(--text-2)', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>
               {aiLoading && <span style={{ color: 'var(--live)' }}>▸ parsing brief…<br />▸ matching segment…<br />▸ drafting scope…</span>}
               {!aiLoading && !aiResult && <span style={{ color: 'var(--text-4)' }}>{'// Indicative sketch will appear here.'}</span>}
               {!aiLoading && aiResult && aiResult}
