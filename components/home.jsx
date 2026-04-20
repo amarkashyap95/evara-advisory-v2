@@ -892,7 +892,7 @@ function HomePage({ setPage }) {
       <section className="page-pad" style={{ paddingTop: 120, paddingBottom: 120, textAlign: 'center', borderBottom: '1px solid var(--line)' }}>
         <Reveal>
           <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>→ Next step</div>
-          <h2 className="t-display" style={{ fontSize: 'clamp(40px, 6vw, 84px)', lineHeight: 1, color: 'var(--text)', letterSpacing: '-0.03em' }}>
+          <h2 className="t-display" style={{ fontSize: 'clamp(20px, 3vw, 42px)', lineHeight: 1, color: 'var(--text)', letterSpacing: '-0.03em' }}>
             Send a brief.<br /><em className="t-display-it t-muted">The conversation starts there.</em>
           </h2>
           <div style={{ marginTop: 40, display: 'flex', justifyContent: 'center', gap: 12 }}>
