@@ -430,7 +430,7 @@ function TrackRecordPage({ setPage }) {
             <div className="t-mono" style={{ fontSize: 10, color: 'var(--text-3)', letterSpacing: '0.08em', marginTop: 4 }}>FOUNDER · EARLY-STAGE</div>
           </div>
           <div>
-            <div className="t-display flagship-body" style={{ fontSize: 'clamp(32px, 4.2vw, 56px)', lineHeight: 1.15, letterSpacing: '-0.02em', color: 'var(--text)', textWrap: 'pretty' }}>
+            <div className="t-display flagship-body" style={{ fontSize: 'clamp(22px, 2.94vw, 39px)', lineHeight: 1.15, letterSpacing: '-0.02em', color: 'var(--text)', textWrap: 'pretty' }}>
               <style>{`.flagship-body em { display: inline !important; font-style: italic; color: var(--cream); }`}</style>
               "His knowledge across commercial agreements and financial modelling gave us a real sense of confidence. He understood our business quickly and delivered exactly what we needed to <em>move forward</em>."
             </div>
