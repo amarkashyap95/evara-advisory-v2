@@ -19,7 +19,7 @@ function AboutPage({ setPage }) {
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 60, alignItems: 'end' }} className="about-hero">
           <div>
             <div className="t-micro" style={{ marginBottom: 28 }}>§ The Principal · About</div>
-            <h1 className="t-display" style={{ fontSize: 'clamp(48px, 7vw, 108px)', lineHeight: 0.95, letterSpacing: '-0.035em' }}>
+            <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 0.95, letterSpacing: '-0.035em' }}>
               Seven years <em className="t-display-it t-muted">inside</em><br /> private markets.
             </h1>
           </div>
@@ -232,7 +232,7 @@ function ServicesPage({ setPage }) {
     <>
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
         <div className="t-micro" style={{ marginBottom: 28 }}>§ Capabilities</div>
-        <h1 className="t-display" style={{ fontSize: 'clamp(48px, 7vw, 104px)', lineHeight: 1.02, letterSpacing: '-0.035em', maxWidth: 980, paddingBottom: '0.08em' }}>
+        <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em', maxWidth: 980, paddingBottom: '0.08em' }}>
           Every phase of the <em className="t-display-it t-muted">capital life-cycle</em>.
         </h1>
         <p style={{ marginTop: 40, maxWidth: 620, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
@@ -394,7 +394,7 @@ function TrackRecordPage({ setPage }) {
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 40, alignItems: 'end' }} className="tr-hero">
           <div>
             <div className="t-micro" style={{ marginBottom: 28 }}>§ Track Record</div>
-            <h1 className="t-display" style={{ fontSize: 'clamp(48px, 7vw, 104px)', lineHeight: 1.02, letterSpacing: '-0.035em' }}>
+            <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em' }}>
               The engagement <em className="t-display-it t-muted">ledger.</em>
             </h1>
           </div>
@@ -607,7 +607,7 @@ Prospect situation: "${aiScope.trim()}"`;
     <>
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
         <div className="t-micro" style={{ marginBottom: 28 }}>§ Contact</div>
-        <h1 className="t-display" style={{ fontSize: 'clamp(48px, 7vw, 108px)', lineHeight: 0.95, letterSpacing: '-0.035em' }}>
+        <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 0.95, letterSpacing: '-0.035em' }}>
           Send a <em className="t-display-it t-muted">brief.</em>
         </h1>
         <p style={{ marginTop: 28, maxWidth: 540, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
