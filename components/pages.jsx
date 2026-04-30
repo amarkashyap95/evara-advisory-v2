@@ -38,7 +38,7 @@ function AboutPage({ setPage }) {
 
       {/* Principal portrait — image paired with bio + quote */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 290px) 1.4fr', gap: 56, alignItems: 'start' }} className="about-portrait">
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 290px) 1fr', gap: 64, alignItems: 'start' }} className="about-portrait">
           <div style={{ width: '100%', maxWidth: 290 }}>
             <div style={{ position: 'relative', border: '1px solid var(--line)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)' }}>
               <img
@@ -66,12 +66,12 @@ function AboutPage({ setPage }) {
               Amar Kashyap · Principal · Sydney
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 760 }}>
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Heritage · Trajectory</div>
-            <p style={{ fontSize: 17, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+            <p style={{ fontSize: 17, color: 'var(--text-2)', lineHeight: 1.7 }}>
               Seven years across institutional banking, corporate ventures, and institutional venture capital — deploying capital, structuring transactions, and building investment cases inside three different sides of the same market. Now independent.
             </p>
-            <p style={{ fontSize: 22, lineHeight: 1.35, color: 'var(--text)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 22, borderLeft: '2px solid var(--cream)', margin: '12px 0 0', maxWidth: 640 }}>
+            <p style={{ fontSize: 22, lineHeight: 1.35, color: 'var(--text)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 22, borderLeft: '2px solid var(--cream)', margin: '12px 0 0' }}>
               "I've sat on both sides of the table. The work is translating <em style={{ color: 'var(--cream)' }}>fluently</em> between them."
             </p>
 
@@ -79,13 +79,13 @@ function AboutPage({ setPage }) {
             <div style={{ width: 40, height: 1, background: 'var(--line-2)', marginTop: 28 }} />
 
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Off the desk</div>
-            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
               Outside of work, I enjoy playing sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney. It's where I switch off, get some movement in, and spend time around good people. Alongside this I have always been into strength training, running, and the long-term habits that quietly compound.
             </p>
-            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
               When I get the chance to take proper time off, I gravitate toward places that combine great outdoors, good food, and the kind of culture you can feel.
             </p>
-            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
               I'm a foodie at heart. Always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
             </p>
           </div>
@@ -93,7 +93,7 @@ function AboutPage({ setPage }) {
         <style>{`
           .about-portrait { grid-template-columns: 1fr !important; gap: 40px !important; }
           @media (min-width: 900px) {
-            .about-portrait { grid-template-columns: minmax(0, 290px) 1.4fr !important; gap: 56px !important; }
+            .about-portrait { grid-template-columns: minmax(0, 290px) 1fr !important; gap: 64px !important; }
           }
         `}</style>
       </section>
