@@ -15,7 +15,7 @@ function AboutPage({ setPage }) {
 
   return (
     <>
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80, paddingBottom: 80 }}>
+      <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80, paddingBottom: 80 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 60, alignItems: 'end' }} className="about-hero">
           <div>
             <div className="t-micro" style={{ marginBottom: 28 }}>§ The Principal · About</div>
@@ -292,7 +292,7 @@ function ServicesPage({ setPage }) {
 
   return (
     <>
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
+      <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
         <div className="t-micro" style={{ marginBottom: 28 }}>§ Capabilities</div>
         <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em', maxWidth: 980, paddingBottom: '0.08em' }}>
           Every phase of the <em className="t-display-it t-muted">capital life-cycle</em>.
@@ -452,7 +452,7 @@ function TrackRecordPage({ setPage }) {
 
   return (
     <>
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
+      <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 40, alignItems: 'end' }} className="tr-hero">
           <div>
             <div className="t-micro" style={{ marginBottom: 28 }}>§ Track Record</div>
@@ -660,7 +660,7 @@ Prospect situation: "${aiScope.trim()}"`;
 
   return (
     <>
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
+      <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
         <div className="t-micro" style={{ marginBottom: 28 }}>§ Contact</div>
         <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 0.95, letterSpacing: '-0.035em' }}>
           Send a <em className="t-display-it t-muted">brief.</em>

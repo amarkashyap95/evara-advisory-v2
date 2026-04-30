@@ -602,7 +602,7 @@ function DilutionHeatmap() {
 function WorkbenchPage({ setPage }) {
   return (
     <>
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80, paddingBottom: 56 }}>
+      <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80, paddingBottom: 56 }}>
         <Reveal>
           <div className="t-micro" style={{ marginBottom: 28 }}>§ Workbench</div>
           <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em' }}>
