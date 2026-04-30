@@ -153,61 +153,11 @@ function AboutPage({ setPage }) {
         `}</style>
       </section>
 
-      {/* Credentials grid */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <div className="g2" style={{ borderTop: '1px solid var(--line)', borderLeft: '1px solid var(--line)' }}>
-          <div style={{ padding: 36, borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-            <div className="t-micro" style={{ marginBottom: 18 }}>Heritage</div>
-            {['Institutional Banking — M&A & Leveraged Finance', 'Corporate Ventures — ASX-listed proptech platform', 'Institutional VC Fund — Founding investment hire', 'Independent Advisory — Evara Advisory'].map((l, i, arr) => (
-              <div key={i} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', padding: '10px 0', borderBottom: i < arr.length - 1 ? '1px solid var(--line)' : 'none', fontFamily: 'var(--ff-mono)', fontSize: 12, color: 'var(--text-2)' }}>
-                <span style={{ color: 'var(--text-4)' }}>0{i + 1}</span>{l}
-              </div>
-            ))}
-          </div>
-          <div style={{ padding: 36, borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-            <div className="t-micro" style={{ marginBottom: 18 }}>Education</div>
-            <div style={{ marginBottom: 24 }}>
-              <div className="t-display" style={{ fontSize: 22, color: 'var(--text)' }}>UNSW Sydney</div>
-              <div style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 4 }}>B.Commerce / B.Information Systems · Distinction</div>
-            </div>
-            <div>
-              <div className="t-display" style={{ fontSize: 22, color: 'var(--text)' }}>UIUC · University of Illinois</div>
-              <div style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 4 }}>12-month international exchange · 4.0 GPA</div>
-            </div>
-          </div>
-          <div style={{ padding: 36, borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-            <div className="t-micro" style={{ marginBottom: 18 }}>Who I Work With</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {['Family offices', 'PE-backed platforms', 'Seed/A founders', 'Franchise groups', 'SMB operators'].map(t => (
-                <span key={t} style={{ padding: '6px 12px', border: '1px solid var(--line)', fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'var(--text-2)', letterSpacing: '0.04em' }}>{t}</span>
-              ))}
-            </div>
-            <div className="t-micro" style={{ marginTop: 28, marginBottom: 14 }}>Sector exposure</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {['Health & Fitness', 'Beauty & Medical', 'Legal Technology', 'Sportstech', 'Healthtech', 'Consumer', 'Enterprise Software', 'Medtech'].map(t => (
-                <span key={t} style={{ padding: '6px 12px', border: '1px solid var(--line)', fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'var(--text-2)', letterSpacing: '0.04em' }}>{t}</span>
-              ))}
-            </div>
-          </div>
-          <div style={{ padding: 36, borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-            <div className="t-micro" style={{ marginBottom: 18 }}>Operating Principles</div>
-            {[['01', 'Outcome-scoped.', 'Deliverables over hours.'], ['02', 'NDA-first.', 'Before any sensitive exchange.'], ['03', 'Commercial services only.', 'No financial product advice; no AFSL held.'], ['04', 'Institutional output.', 'Boutique delivery.']].map(([n, h, d], i) => (
-              <div key={i} style={{ display: 'grid', gridTemplateColumns: '34px 1fr', gap: 10, padding: '14px 0', borderBottom: i < 3 ? '1px solid var(--line)' : 'none' }}>
-                <span className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.1em' }}>{n}</span>
-                <div>
-                  <div style={{ fontSize: 15, color: 'var(--text)', marginBottom: 2 }}>{h}</div>
-                  <div style={{ fontSize: 12.5, color: 'var(--text-3)' }}>{d}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
       {/* Scope of services — clear disclaimer */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--ink-2)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 60, alignItems: 'start' }} className="scope-disc">
           <div>
-            <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 16 }}>§05 · Scope of services</div>
+            <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 16 }}>§04 · Scope of services</div>
             <h3 className="t-display" style={{ fontSize: 36, lineHeight: 1.05, color: 'var(--text)', letterSpacing: '-0.02em' }}>
               What Evara is,<br /><em className="t-display-it t-muted">and is not.</em>
             </h3>
