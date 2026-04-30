@@ -79,7 +79,7 @@ function LiveValuation() {
   const sensMax = Math.max(...sensMatrix.flat());
   const sensHeat = v => {
     const t = (v - sensMin) / Math.max(0.01, (sensMax - sensMin));
-    return `rgba(217,119,87,${0.06 + t * 0.42})`;
+    return `rgba(123,155,142,${0.08 + t * 0.45})`;
   };
 
   return (
@@ -328,7 +328,7 @@ function DilutionHeatmap() {
   const max = Math.max(...allVals);
   const heat = v => {
     const t = (v - min) / Math.max(0.01, max - min);
-    return `rgba(217,119,87,${0.06 + t * 0.42})`;
+    return `rgba(123,155,142,${0.08 + t * 0.45})`;
   };
 
   // Active cell metrics
@@ -414,7 +414,7 @@ function DilutionHeatmap() {
         .dh-cell { transition: background 0.15s, outline 0.15s; cursor: pointer; position: relative; }
         .dh-cell:hover { outline: 1px solid var(--text-3); z-index: 1; }
         .dh-cell.pinned { outline: 2px solid var(--live) !important; z-index: 2; }
-        .dh-cell.row-active, .dh-cell.col-active { outline: 1px dashed rgba(217,119,87,0.4); }
+        .dh-cell.row-active, .dh-cell.col-active { outline: 1px dashed rgba(123,155,142,0.45); }
         .dh-math { word-break: break-word; }
         @media (max-width: 640px) { .dh-math { font-size: 10.5px !important; line-height: 1.75 !important; } }
       `}</style>
@@ -520,7 +520,7 @@ function DilutionHeatmap() {
               <div className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.12em', marginBottom: 10 }}>
                 // RETENTION · {retention.toFixed(0)}% OF START
               </div>
-              <div style={{ padding: '10px 12px', background: retention >= 80 ? 'rgba(217,119,87,0.10)' : retention >= 70 ? 'rgba(255,255,255,0.03)' : 'rgba(184,74,62,0.10)', border: `1px solid ${retention >= 80 ? 'rgba(217,119,87,0.35)' : retention >= 70 ? 'var(--line-2)' : 'rgba(184,74,62,0.35)'}` }}>
+              <div style={{ padding: '10px 12px', background: retention >= 80 ? 'rgba(123,155,142,0.10)' : retention >= 70 ? 'rgba(255,255,255,0.03)' : 'rgba(184,74,62,0.10)', border: `1px solid ${retention >= 80 ? 'rgba(123,155,142,0.35)' : retention >= 70 ? 'var(--line-2)' : 'rgba(184,74,62,0.35)'}` }}>
                 <div className="t-mono" style={{ fontSize: 9.5, letterSpacing: '0.14em', marginBottom: 4, color: retention >= 80 ? 'var(--live)' : retention >= 70 ? 'var(--text-3)' : 'var(--warn, #C85A3F)' }}>
                   § VERDICT
                 </div>

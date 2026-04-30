@@ -132,7 +132,7 @@ function AboutPage({ setPage }) {
             <span>YR</span><span>ROLE</span><span>ORG</span><span>DETAIL</span>
           </div>
           {timeline.map((t, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '100px 200px 240px 1fr', padding: '26px 24px', borderBottom: i < timeline.length - 1 ? '1px solid var(--line)' : 'none', alignItems: 'start', background: i === timeline.length - 1 ? 'rgba(217,119,87,0.05)' : 'transparent' }} className="ledger-row">
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '100px 200px 240px 1fr', padding: '26px 24px', borderBottom: i < timeline.length - 1 ? '1px solid var(--line)' : 'none', alignItems: 'start', background: i === timeline.length - 1 ? 'rgba(123,155,142,0.06)' : 'transparent' }} className="ledger-row">
               <span className="t-display" style={{ fontSize: 28, color: i === timeline.length - 1 ? 'var(--live)' : 'var(--text-2)', lineHeight: 1 }}>{t.year}</span>
               <span className="t-mono" style={{ fontSize: 11.5, color: 'var(--text-2)', letterSpacing: '0.06em' }}>{t.role}</span>
               <span style={{ fontSize: 16, color: 'var(--text)', fontFamily: 'var(--ff-display)' }}>{t.org}</span>

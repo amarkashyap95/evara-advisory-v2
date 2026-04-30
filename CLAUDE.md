@@ -42,7 +42,7 @@ When editing: if you need a helper from another file, confirm it's already expor
 
 ## Design system
 
-- **Colors** (dark/"ink" default — Anthropic-inspired warm palette): `--ink: #141413` (warm near-black), `--text: #E8E6DC` (warm white), `--cream: #EDE5CC`, `--live: #D97757` (terracotta — functional accent only)
+- **Colors** (dark/"ink" default — Anthropic-inspired warm palette): `--ink: #141413` (warm near-black), `--text: #E8E6DC` (warm white), `--cream: #EDE5CC`, `--live: #7B9B8E` (muted teal — functional accent only; lifted variant `--live-bright: #8FB5A6` for small dots)
 - **Fonts**: Newsreader (display serif), Inter Tight (UI sans), IBM Plex Mono (numerical/technical)
 - **Voice**: institutional finance + AI substrate. Numbered sections (§02, §03...). Mono for data, serif for headers.
 - **No stock photography.** Proof via working artifacts, not decorative imagery.

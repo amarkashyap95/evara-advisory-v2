@@ -27,8 +27,9 @@
   --text-4: #565148;
 
   /* Signals — functional, restrained */
-  --live: #D97757;             /* Anthropic Orange — active engagements, live model */
-  --live-glow: rgba(217, 119, 87, 0.25);
+  --live: #7B9B8E;             /* muted teal — active engagements, live model */
+  --live-bright: #8FB5A6;      /* lifted variant for small dots/indicators (5–8px) */
+  --live-glow: rgba(123, 155, 142, 0.25);
   --warn: #D4A656;             /* warnings, key signals (gold — distinct from --live) */
   --accent: #A89E8A;           /* subtle warm accent */
 
@@ -288,7 +289,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .pill.live {
   border-color: var(--live);
   color: var(--live);
-  background: rgba(217,119,87,0.06);
+  background: rgba(123,155,142,0.07);
 }
 .dot {
   width: 6px;
@@ -298,13 +299,13 @@ input, select, textarea { font: inherit; color: inherit; }
   flex-shrink: 0;
 }
 .dot.live {
-  background: var(--live);
+  background: var(--live-bright);
   box-shadow: 0 0 0 0 var(--live-glow);
   animation: pulseDot 2s infinite;
 }
 @keyframes pulseDot {
   0%, 100% { box-shadow: 0 0 0 0 var(--live-glow); }
-  50% { box-shadow: 0 0 0 6px rgba(217,119,87,0); }
+  50% { box-shadow: 0 0 0 6px rgba(123,155,142,0); }
 }
 
 /* ---------- Mono panels (terminal / readout) ---------- */
@@ -369,7 +370,7 @@ input, select, textarea { font: inherit; color: inherit; }
   pointer-events: none;
   background:
     radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 8%),
-    radial-gradient(circle at 75% 60%, rgba(255, 255, 255, 0.06) 0%, transparent 6%),
+    radial-gradient(circle at 75% 60%, rgba(123, 155, 142, 0.07) 0%, transparent 7%),
     radial-gradient(circle at 45% 80%, rgba(255, 255, 255, 0.07) 0%, transparent 7%),
     radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 5%),
     radial-gradient(circle at 10% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 6%);
