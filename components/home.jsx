@@ -183,7 +183,7 @@ function HomePage({ setPage }) {
       </section>
 
       {/* Pull quote */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 12px rgba(0, 0, 0, 0.20)' }}>
         <div style={{ maxWidth: 1040 }}>
           <div className="t-mono" style={{ fontSize: 11, color: 'var(--paper-muted)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 24 }}>
             Client · Consumer · Medical

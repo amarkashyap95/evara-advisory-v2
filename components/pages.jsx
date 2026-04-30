@@ -40,7 +40,7 @@ function AboutPage({ setPage }) {
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 290px) 1fr', gap: 64, alignItems: 'start' }} className="about-portrait">
           <div style={{ width: '100%', maxWidth: 290 }}>
-            <div style={{ position: 'relative', border: '1px solid var(--line)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)' }}>
+            <div style={{ position: 'relative', border: '1px solid var(--line)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 12px rgba(0, 0, 0, 0.20)' }}>
               <img
                 src="/principal-portrait.webp"
                 alt="Amar Kashyap, Principal — Evara Advisory"
@@ -132,7 +132,7 @@ function AboutPage({ setPage }) {
             <span>YR</span><span>ROLE</span><span>ORG</span><span>DETAIL</span>
           </div>
           {timeline.map((t, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '100px 200px 240px 1fr', padding: '26px 24px', borderBottom: i < timeline.length - 1 ? '1px solid var(--line)' : 'none', alignItems: 'start', background: i === timeline.length - 1 ? 'rgba(123,155,142,0.06)' : 'transparent' }} className="ledger-row">
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '100px 200px 240px 1fr', padding: '26px 24px', borderBottom: i < timeline.length - 1 ? '1px solid var(--line)' : 'none', alignItems: 'start', background: i === timeline.length - 1 ? 'rgba(143,181,166,0.07)' : 'transparent' }} className="ledger-row">
               <span className="t-display" style={{ fontSize: 28, color: i === timeline.length - 1 ? 'var(--live)' : 'var(--text-2)', lineHeight: 1 }}>{t.year}</span>
               <span className="t-mono" style={{ fontSize: 11.5, color: 'var(--text-2)', letterSpacing: '0.06em' }}>{t.role}</span>
               <span style={{ fontSize: 16, color: 'var(--text)', fontFamily: 'var(--ff-display)' }}>{t.org}</span>
@@ -387,7 +387,7 @@ function ServicesPage({ setPage }) {
             </p>
           </div>
           <div>
-            <div style={{ border: '1px solid var(--line)', padding: 28, background: 'linear-gradient(180deg, var(--ink-3) 0%, var(--ink-2) 100%)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
+            <div style={{ border: '1px solid var(--line)', padding: 28, background: 'linear-gradient(180deg, var(--ink-3) 0%, var(--ink-2) 100%)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 12px rgba(0, 0, 0, 0.20)' }}>
               <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--paper-muted)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 22 }}>Engagement spine · four phases</div>
               {[
                 ['01', 'Scope', 'Thesis, question set, and model architecture built by hand. Nothing begins until the shape of the work is clear.'],
@@ -803,7 +803,7 @@ Prospect situation: "${aiScope.trim()}"`;
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <label className="label">Scope sketch</label>
-            <div style={{ background: 'var(--ink)', border: '1px solid var(--line)', padding: 20, flex: 1, minHeight: 240, maxHeight: 440, overflow: 'auto', fontFamily: 'var(--ff-mono)', fontSize: 12.5, lineHeight: 1.8, color: 'var(--text-2)', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>
+            <div style={{ background: 'var(--ink)', border: '1px solid var(--line)', padding: 20, flex: 1, minHeight: 240, maxHeight: 440, overflow: 'auto', fontFamily: 'var(--ff-mono)', fontSize: 12.5, lineHeight: 1.8, color: 'var(--text-2)', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 12px rgba(0, 0, 0, 0.20)' }}>
               {aiLoading && <span style={{ color: 'var(--live)' }}>▸ parsing brief…<br />▸ matching segment…<br />▸ drafting scope…</span>}
               {!aiLoading && !aiResult && <span style={{ color: 'var(--text-4)' }}>{'// Indicative sketch will appear here.'}</span>}
               {!aiLoading && aiResult && aiResult}

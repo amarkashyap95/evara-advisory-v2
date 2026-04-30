@@ -67,7 +67,7 @@ function applyTweaks(tw) {
     root.style.setProperty('--paper', '#252523');
     root.style.setProperty('--paper-top', '#2A2A27');
     root.style.setProperty('--paper-bot', '#1F1F1C');
-    root.style.setProperty('--paper-ink', '#E8E6DC');
+    root.style.setProperty('--paper-ink', '#F5F4EE');
     root.style.setProperty('--paper-muted', '#847D6E');
   } else if (tw.palette === 'paper') {
     root.style.setProperty('--ink', '#FAF9F5');
@@ -88,8 +88,8 @@ function applyTweaks(tw) {
     root.style.setProperty('--ink', '#141413');
     root.style.setProperty('--ink-2', '#1C1C1A');
     root.style.setProperty('--ink-3', '#252523');
-    root.style.setProperty('--text', '#E8E6DC');
-    root.style.setProperty('--text-2', '#B5B0A1');
+    root.style.setProperty('--text', '#F5F4EE');
+    root.style.setProperty('--text-2', '#C5C1B1');
     root.style.setProperty('--text-3', '#847D6E');
     root.style.setProperty('--text-4', '#565148');
     root.style.setProperty('--line', '#2C2C29');
@@ -97,7 +97,7 @@ function applyTweaks(tw) {
     root.style.setProperty('--paper', '#1F1F1D');
     root.style.setProperty('--paper-top', '#2A2A27');
     root.style.setProperty('--paper-bot', '#1F1F1D');
-    root.style.setProperty('--paper-ink', '#E8E6DC');
+    root.style.setProperty('--paper-ink', '#F5F4EE');
     root.style.setProperty('--paper-muted', '#847D6E');
   }
   const densityPad = tw.density === 'compact' ? '44px 52px' : tw.density === 'airy' ? '96px 96px' : '64px 72px';
