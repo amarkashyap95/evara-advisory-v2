@@ -84,6 +84,22 @@ function AboutPage({ setPage }) {
         `}</style>
       </section>
 
+      {/* Off the desk — personal note */}
+      <section className="page-pad" style={{ borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
+        <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 28 }}>§ Off the desk</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 720 }}>
+          <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
+            Outside of work, I keep things pretty simple. I play a lot of sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney for years now. It's where I switch off, get some movement in, and be around good people.
+          </p>
+          <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
+            Travel is the other thing I really love. I gravitate toward places with a mix of great outdoors, good food, and a bit of culture — Morocco, Japan, Bali, New Zealand, South America, and pretty much anywhere across Southeast Asia. I'm always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
+          </p>
+          <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
+            I'm also big on strength training, running, and the habits that quietly compound over the long run.
+          </p>
+        </div>
+      </section>
+
       {/* Thesis */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }} className="about-thesis">
