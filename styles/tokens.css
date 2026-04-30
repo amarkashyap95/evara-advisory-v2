@@ -11,8 +11,11 @@
   --line-2: #2B3647;           /* stronger dividers */
 
   /* Paper (elevated section surfaces — dark-elevated, sit above --ink-3 on dark palettes;
+     cards use a vertical gradient between --paper-top and --paper-bot for subtle lift;
      paper palette mode in applyTweaks() inverts these to a light treatment) */
-  --paper: #1A2230;            /* elevated section card on dark */
+  --paper: #1A2230;            /* flat fallback (cards use gradient stops below) */
+  --paper-top: #1F2A38;        /* gradient top stop — ~7% lift */
+  --paper-bot: #161D2B;        /* gradient bottom stop (= --ink-3) */
   --paper-2: #20293A;          /* deeper elevation variant */
   --paper-ink: #E8EAED;        /* primary text on paper (matches --text) */
   --paper-muted: #7B8594;      /* muted text on paper (matches --text-3) */

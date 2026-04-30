@@ -37,7 +37,7 @@ function AboutPage({ setPage }) {
       </section>
 
       {/* Thesis */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--paper)', color: 'var(--paper-ink)' }}>
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }} className="about-thesis">
           <div>
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--paper-muted)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>§02 · Operating thesis</div>
@@ -310,7 +310,7 @@ function ServicesPage({ setPage }) {
       </section>
 
       {/* Methodology — finance-forward, AI as ambient tool */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--paper)', color: 'var(--paper-ink)' }}>
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 60 }} className="ai-band">
           <div>
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--paper-muted)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>§04 · Methodology</div>
@@ -476,7 +476,7 @@ function TrackRecordPage({ setPage }) {
       </section>
 
       {/* Testimonials */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--paper)', color: 'var(--paper-ink)' }}>
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
         <div className="t-mono" style={{ fontSize: 11, color: 'var(--paper-muted)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>§03 · Client feedback</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 40, maxWidth: 820 }} className="tm-grid">
           {[

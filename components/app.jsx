@@ -65,6 +65,8 @@ function applyTweaks(tw) {
     root.style.setProperty('--ink-2', '#0B101A');
     root.style.setProperty('--ink-3', '#111826');
     root.style.setProperty('--paper', '#161E2A');
+    root.style.setProperty('--paper-top', '#1A2330');
+    root.style.setProperty('--paper-bot', '#111826');
     root.style.setProperty('--paper-ink', '#E8EAED');
     root.style.setProperty('--paper-muted', '#7B8594');
   } else if (tw.palette === 'paper') {
@@ -78,6 +80,8 @@ function applyTweaks(tw) {
     root.style.setProperty('--line', '#D3CDBE');
     root.style.setProperty('--line-2', '#BFB8A6');
     root.style.setProperty('--paper', '#11161F');
+    root.style.setProperty('--paper-top', '#11161F');
+    root.style.setProperty('--paper-bot', '#11161F');
     root.style.setProperty('--paper-ink', '#F2EFE8');
     root.style.setProperty('--paper-muted', '#8C909A');
   } else {
@@ -91,6 +95,8 @@ function applyTweaks(tw) {
     root.style.setProperty('--line', '#1F2939');
     root.style.setProperty('--line-2', '#2B3647');
     root.style.setProperty('--paper', '#1A2230');
+    root.style.setProperty('--paper-top', '#1F2A38');
+    root.style.setProperty('--paper-bot', '#161D2B');
     root.style.setProperty('--paper-ink', '#E8EAED');
     root.style.setProperty('--paper-muted', '#7B8594');
   }
