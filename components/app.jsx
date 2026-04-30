@@ -7,6 +7,7 @@ const PAGES = [
   { name: 'About' },
   { name: 'Services' },
   { name: 'Track Record' },
+  { name: 'Workbench' },
   { name: 'Contact' },
 ];
 
@@ -195,6 +196,7 @@ function App() {
   else if (page === 'About') pageEl = <AboutPage setPage={nav} />;
   else if (page === 'Services') pageEl = <ServicesPage setPage={nav} />;
   else if (page === 'Track Record') pageEl = <TrackRecordPage setPage={nav} />;
+  else if (page === 'Workbench') pageEl = <WorkbenchPage setPage={nav} />;
   else if (page === 'Contact') pageEl = <ContactPage setPage={nav} />;
   else pageEl = <NotFoundPage setPage={nav} missing={page === '__404' ? window.location.hash : page} />;
 
