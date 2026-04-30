@@ -325,7 +325,7 @@ function ServicesPage({ setPage }) {
             </p>
           </div>
           <div>
-            <div style={{ border: '1px solid #CFC8B8', padding: 28, background: 'rgba(255,255,255,0.35)' }}>
+            <div style={{ border: '1px solid var(--line)', padding: 28, background: 'linear-gradient(180deg, var(--ink-3) 0%, var(--ink-2) 100%)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
               <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--paper-muted)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 22 }}>Engagement spine · four phases</div>
               {[
                 ['01', 'Scope', 'Thesis, question set, and model architecture built by hand. Nothing begins until the shape of the work is clear.'],
@@ -333,7 +333,7 @@ function ServicesPage({ setPage }) {
                 ['03', 'Review', 'Every number traced, every assumption stress-tested, every sentence rewritten until it would hold up in front of an IC.'],
                 ['04', 'Ship', 'Delivered only once I would stake my name on it. Because I am.'],
               ].map(([n, h, d], i, arr) => (
-                <div key={n} style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 16, padding: '18px 0', borderBottom: i < arr.length - 1 ? '1px solid #CFC8B8' : 'none' }}>
+                <div key={n} style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 16, padding: '18px 0', borderBottom: i < arr.length - 1 ? '1px solid var(--line)' : 'none' }}>
                   <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--paper-muted)', letterSpacing: '0.1em' }}>{n}</span>
                   <div>
                     <div style={{ fontSize: 16, color: 'var(--paper-ink)', fontFamily: 'var(--ff-display)', marginBottom: 4 }}>{h}</div>
@@ -475,7 +475,7 @@ function TrackRecordPage({ setPage }) {
           {[
             { q: 'Amar built a robust set of key company agreements, financial model, and investor deck. He was a key part of our team feeling confident approaching investors and being fully prepared.', a: 'Founder & CEO', s: 'Consumer · Beauty & Medical' },
           ].map((t, i) => (
-            <div key={i} style={{ borderTop: '1px solid #CFC8B8', paddingTop: 28 }}>
+            <div key={i} style={{ borderTop: '1px solid var(--line)', paddingTop: 28 }}>
               <div className="t-display" style={{ fontSize: 26, lineHeight: 1.35, color: 'var(--paper-ink)', letterSpacing: '-0.01em' }}>
                 "{t.q}"
               </div>
