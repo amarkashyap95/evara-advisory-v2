@@ -115,37 +115,10 @@ function Sidebar({ page, setPage, pages }) {
         })}
       </nav>
 
-      <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span className="pill live">
-            <span className="dot live" /> Taking briefs
-          </span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', paddingTop: 12, borderTop: '1px solid var(--line)' }}>
-          <Clock />
-        </div>
+      <div style={{ marginTop: 24, display: 'flex', alignItems: 'center' }}>
+        <Clock />
       </div>
     </aside>
-  );
-}
-
-// ---------- Capacity pill (rotates through capacity signals) ----------
-function CapacityPill() {
-  const states = [
-    { label: 'Taking briefs', live: true },
-    { label: 'NDA-first', live: false },
-    { label: 'Selective', live: false },
-  ];
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setI(x => (x + 1) % states.length), 3600);
-    return () => clearInterval(id);
-  }, []);
-  const s = states[i];
-  return (
-    <span className="pill live" style={{ transition: 'opacity 0.3s' }}>
-      <span className="dot live" /> {s.label}
-    </span>
   );
 }
 
@@ -154,7 +127,6 @@ function Ticker() {
   const items = [
     ['WORKING WITH', 'FOUNDERS · OPERATORS · INVESTORS', '', ''],
     ['RESPONSE', 'WITHIN DAYS · NDA-FIRST', '', ''],
-    ['MANDATES', '3 ACTIVE', 'LIVE', 'up'],
     ['SECTORS', 'FINTECH · PROPTECH · HEALTH · LEGAL', '', ''],
     ['BASED', 'SYDNEY', 'AEST', ''],
     ['NDA', 'FIRST', '', ''],
@@ -216,9 +188,6 @@ function Footer({ setPage, pages }) {
           <button className="btn primary" onClick={() => setPage('Contact')}>
             Request call <span className="arrow" />
           </button>
-          <div style={{ marginTop: 14, fontSize: 11, color: 'var(--text-4)', lineHeight: 1.6, fontFamily: 'var(--ff-mono)' }}>
-            NDA-first · Selective capacity
-          </div>
         </div>
       </div>
       <div style={{ borderTop: '1px solid var(--line)', padding: '20px 72px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, fontFamily: 'var(--ff-mono)', fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.06em' }}>
@@ -295,5 +264,5 @@ function SectionHead({ num, eyebrow, title, kicker, align = 'left' }) {
 
 // ---------- Export to window so other modules can see them ----------
 Object.assign(window, {
-  useReveal, Reveal, Logo, Clock, Sidebar, Ticker, Footer, SectionHead, useTick, CapacityPill, BackToTop,
+  useReveal, Reveal, Logo, Clock, Sidebar, Ticker, Footer, SectionHead, useTick, BackToTop,
 });

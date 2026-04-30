@@ -48,7 +48,6 @@ function Hero({ setPage }) {
           <div className="readout" style={{ fontSize: 11.5 }}>
             <div className="readout-head">
               <span>Principal</span>
-              <span style={{ color: 'var(--live)' }}>● ACTIVE</span>
             </div>
             <div className="readout-body" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div className="readout-line"><span className="k">NAME</span><span className="v">Amar Kashyap</span></div>
@@ -76,11 +75,10 @@ function StatsStrip() {
   const stats = [
     [`${yearsInMarkets()}+`, 'Years in private markets', '+yrs'],
     ['$10M+', 'Capital decisions supported prior to Evara', ''],
-    ['3', 'Active mandates', 'live'],
     ['1', 'Principal on every brief', 'sig'],
   ];
   return (
-    <div className="g4" style={{ borderBottom: '1px solid var(--line)' }}>
+    <div className="g3" style={{ borderBottom: '1px solid var(--line)' }}>
       {stats.map(([v, l, tag], i) => (
         <div key={i} className="cell" style={{ padding: '36px 32px' }}>
           <div className="t-display" style={{ fontSize: 48, color: 'var(--text)', lineHeight: 1 }}>{v}</div>
@@ -171,7 +169,7 @@ function HomePage({ setPage }) {
             <div key={s.num} style={{ padding: '32px 28px', borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)', display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 22, gap: 12 }}>
                 <span className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em' }}>§ {s.num}</span>
-                <span className="t-mono" style={{ fontSize: 9.5, color: 'var(--live)', letterSpacing: '0.1em', textAlign: 'right' }}>● {s.signal}</span>
+                <span className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-3)', letterSpacing: '0.1em', textAlign: 'right' }}>{s.signal}</span>
               </div>
               <div className="t-display" style={{ fontSize: 26, color: 'var(--text)', letterSpacing: '-0.015em', lineHeight: 1.15, marginBottom: 6 }}>{s.label}</div>
               <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-3)', letterSpacing: '0.06em', marginBottom: 22 }}>{s.sub}</div>

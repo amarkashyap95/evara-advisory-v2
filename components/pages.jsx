@@ -383,9 +383,9 @@ function ServicesPage({ setPage }) {
    =========================================================== */
 function TrackRecordPage({ setPage }) {
   const engagements = [
-    { id: 'ENG-2026-01', sector: 'Health & Fitness', persona: 'BOARD · FRANCHISE', client: 'Franchise Group · Board Engagement', type: ['Structuring Analysis', 'Financial Modelling', 'Investor Materials'], status: 'ACTIVE', detail: 'Supported the board on structuring analysis and document preparation alongside external counsel. Developed the full financial model — vehicle architecture, deployment logic, waterfall mechanics, scenario analysis. Produced the Information Memorandum and board-level presentation materials. Investment decisions and licensed dealings remain with the board and their AFSL-licensed advisors.' },
-    { id: 'ENG-2026-02', sector: 'Beauty & Medical', persona: 'FOUNDER · SERIES A', client: 'Consumer Business · Founder & CEO', type: ['Commercial Agreements', 'Financial Model', 'Investor Deck'], status: 'ACTIVE', detail: 'Engaged by the founder to prepare materials ahead of their first capital raise. Drafting key commercial agreements, building the financial model, developing the full investor deck. Narrative refinement, data room build-out, and investor-list research — each deliverable stress-tested before it leaves the desk. Investor contact and decisions led by the founder.' },
-    { id: 'ENG-2026-03', sector: 'Legal Technology', persona: 'FOUNDER · EARLY-STAGE', client: 'Legaltech Platform · Founder', type: ['Strategic Advisory', 'Financial Modelling', 'Investor Readiness'], status: 'ACTIVE', detail: 'Strategic advisor to the founder of an early-stage platform. Ongoing coaching, investor deck and multi-scenario model, end-to-end fundraising preparation. Supporting the founder on commercial positioning and capital strategy toward first institutional raise.' },
+    { id: 'ENG-2026-01', sector: 'Health & Fitness', persona: 'BOARD · FRANCHISE', client: 'Franchise Group · Board Engagement', type: ['Structuring Analysis', 'Financial Modelling', 'Investor Materials'], detail: 'Supported the board on structuring analysis and document preparation alongside external counsel. Developed the full financial model — vehicle architecture, deployment logic, waterfall mechanics, scenario analysis. Produced the Information Memorandum and board-level presentation materials. Investment decisions and licensed dealings remain with the board and their AFSL-licensed advisors.' },
+    { id: 'ENG-2026-02', sector: 'Beauty & Medical', persona: 'FOUNDER · SERIES A', client: 'Consumer Business · Founder & CEO', type: ['Commercial Agreements', 'Financial Model', 'Investor Deck'], detail: 'Engaged by the founder to prepare materials ahead of their first capital raise. Drafting key commercial agreements, building the financial model, developing the full investor deck. Narrative refinement, data room build-out, and investor-list research — each deliverable stress-tested before it leaves the desk. Investor contact and decisions led by the founder.' },
+    { id: 'ENG-2026-03', sector: 'Legal Technology', persona: 'FOUNDER · EARLY-STAGE', client: 'Legaltech Platform · Founder', type: ['Strategic Advisory', 'Financial Modelling', 'Investor Readiness'], detail: 'Strategic advisor to the founder of an early-stage platform. Ongoing coaching, investor deck and multi-scenario model, end-to-end fundraising preparation. Supporting the founder on commercial positioning and capital strategy toward first institutional raise.' },
   ];
 
   return (
@@ -399,12 +399,8 @@ function TrackRecordPage({ setPage }) {
             </h1>
           </div>
           <div>
-            <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.1em', marginBottom: 10 }}>2026 · Q1 SUMMARY</div>
+            <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.1em', marginBottom: 10 }}>ENGAGEMENT SCOPE</div>
             <div style={{ display: 'flex', gap: 32 }}>
-              <div>
-                <div className="t-display" style={{ fontSize: 48, color: 'var(--live)' }}>3</div>
-                <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Active</div>
-              </div>
               <div>
                 <div className="t-display" style={{ fontSize: 48, color: 'var(--text-2)' }}>3</div>
                 <div className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Sectors</div>
@@ -448,12 +444,12 @@ function TrackRecordPage({ setPage }) {
       {/* Engagement ledger */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
         <div style={{ border: '1px solid var(--line)', background: 'var(--ink-2)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '130px 180px 1fr 100px', padding: '14px 24px', background: 'var(--ink-3)', borderBottom: '1px solid var(--line)', fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-4)' }} className="ledger-head">
-            <span>ID</span><span>SECTOR</span><span>CLIENT · PERSONA · SCOPE</span><span style={{ textAlign: 'right' }}>STATUS</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '130px 180px 1fr', padding: '14px 24px', background: 'var(--ink-3)', borderBottom: '1px solid var(--line)', fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-4)' }} className="ledger-head">
+            <span>ID</span><span>SECTOR</span><span>CLIENT · PERSONA · SCOPE</span>
           </div>
           {engagements.map((e, i) => (
             <details key={e.id} style={{ borderBottom: i < engagements.length - 1 ? '1px solid var(--line)' : 'none' }}>
-              <summary style={{ display: 'grid', gridTemplateColumns: '130px 180px 1fr 100px', padding: '22px 24px', cursor: 'pointer', alignItems: 'center', listStyle: 'none' }} className="ledger-row">
+              <summary style={{ display: 'grid', gridTemplateColumns: '130px 180px 1fr', padding: '22px 24px', cursor: 'pointer', alignItems: 'center', listStyle: 'none' }} className="ledger-row">
                 <span className="t-mono" style={{ fontSize: 11, color: 'var(--live)', letterSpacing: '0.06em' }}>{e.id}</span>
                 <span className="t-mono" style={{ fontSize: 11, color: 'var(--text-2)', letterSpacing: '0.06em' }}>{e.sector}</span>
                 <span>
@@ -462,9 +458,6 @@ function TrackRecordPage({ setPage }) {
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                     {e.type.map(t => <span key={t} style={{ padding: '3px 8px', border: '1px solid var(--line-2)', fontFamily: 'var(--ff-mono)', fontSize: 10, color: 'var(--text-3)', letterSpacing: '0.04em' }}>{t}</span>)}
                   </div>
-                </span>
-                <span style={{ textAlign: 'right' }}>
-                  <span className="pill live" style={{ fontSize: 9 }}><span className="dot live" /> {e.status}</span>
                 </span>
               </summary>
               <div className="tr-detail" style={{ padding: '4px 24px 26px' }}>
