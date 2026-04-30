@@ -243,12 +243,6 @@ function ServicesPage({ setPage }) {
         <p style={{ marginTop: 28, maxWidth: 620, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
           Four distinct segments, each scoped around the outcome rather than the hour. Every deliverable is shaped end-to-end by the principal.
         </p>
-        <div style={{ marginTop: 64, maxWidth: 1100 }}>
-          <div className="t-mono" style={{ fontSize: 10, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>§ Principle</div>
-          <div className="t-display" style={{ fontSize: 'clamp(24px, 3vw, 36px)', lineHeight: 1.3, letterSpacing: '-0.015em', color: 'var(--text-2)', fontStyle: 'italic', fontFamily: 'var(--ff-display)', borderTop: '1px solid var(--line)', paddingTop: 28 }}>
-            Good capital work is <em style={{ color: 'var(--cream)' }}>boring on purpose</em>. Documented. Defensible. Ready for the harder question that comes next.
-          </div>
-        </div>
       </section>
 
       {/* Segment tabs */}
