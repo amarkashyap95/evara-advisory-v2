@@ -10,11 +10,12 @@
   --line: #1F2939;             /* dividers */
   --line-2: #2B3647;           /* stronger dividers */
 
-  /* Paper (inverse surfaces) */
-  --paper: #C4BBA5;            /* muted warm stone, section contrast on dark */
-  --paper-2: #AFA690;          /* deeper stone */
-  --paper-ink: #11161F;        /* ink on paper — ~9:1 on --paper */
-  --paper-muted: #4A4636;      /* warm dark brown-gray — AA on --paper */
+  /* Paper (elevated section surfaces — dark-elevated, sit above --ink-3 on dark palettes;
+     paper palette mode in applyTweaks() inverts these to a light treatment) */
+  --paper: #1A2230;            /* elevated section card on dark */
+  --paper-2: #20293A;          /* deeper elevation variant */
+  --paper-ink: #E8EAED;        /* primary text on paper (matches --text) */
+  --paper-muted: #7B8594;      /* muted text on paper (matches --text-3) */
 
   /* Type on ink */
   --text: #E8EAED;

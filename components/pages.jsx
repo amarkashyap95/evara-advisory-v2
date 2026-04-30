@@ -50,12 +50,12 @@ function AboutPage({ setPage }) {
               Evara Advisory was founded to deliver institutional-quality commercial and strategic advisory directly to founders and operating businesses — <em>without</em> the overhead of a large firm.
             </p>
             <p style={{ fontSize: 20, lineHeight: 1.4, color: 'var(--paper-ink)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 20, borderLeft: '2px solid #C7A05A', margin: '8px 0' }}>
-              Every engagement starts with the same question: <em style={{ color: '#8B6A2E' }}>what is this capital actually for?</em>
+              Every engagement starts with the same question: <em style={{ color: 'var(--cream)' }}>what is this capital actually for?</em>
             </p>
-            <p style={{ color: '#404753' }}>
+            <p style={{ color: 'var(--text-2)' }}>
               The practice is led by Amar Kashyap, drawing on seven years across institutional banking, corporate ventures, and institutional venture capital. Transaction support, capital strategy, modelling, document preparation, and investor-readiness work — scoped as commercial services to the business itself.
             </p>
-            <p style={{ color: '#404753' }}>
+            <p style={{ color: 'var(--text-2)' }}>
               Based in Sydney and operating with limited capacity by design. Every engagement is shaped end-to-end by the principal and delivered alongside the client's licensed legal, tax, and financial advisors where relevant.
             </p>
           </div>
@@ -317,10 +317,10 @@ function ServicesPage({ setPage }) {
             <h2 className="t-display" style={{ fontSize: 52, lineHeight: 1, letterSpacing: '-0.03em' }}>
               How the work<br /><em className="t-display-it">gets done.</em>
             </h2>
-            <p style={{ fontSize: 16, color: '#404753', lineHeight: 1.7, marginTop: 20, maxWidth: 480 }}>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, marginTop: 20, maxWidth: 480 }}>
               Every engagement runs on the same four-phase spine — scoping, building, reviewing, shipping. Institutional-grade output from a boutique operator, scaled by modern tooling the way prior decades scaled on Bloomberg and Excel.
             </p>
-            <p style={{ fontSize: 16, color: '#404753', lineHeight: 1.7, marginTop: 16, maxWidth: 480 }}>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, marginTop: 16, maxWidth: 480 }}>
               The thinking is mine. The craft is mine. The sign-off is mine.
             </p>
           </div>
@@ -337,7 +337,7 @@ function ServicesPage({ setPage }) {
                   <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--paper-muted)', letterSpacing: '0.1em' }}>{n}</span>
                   <div>
                     <div style={{ fontSize: 16, color: 'var(--paper-ink)', fontFamily: 'var(--ff-display)', marginBottom: 4 }}>{h}</div>
-                    <div style={{ fontSize: 13, color: '#404753', lineHeight: 1.6 }}>{d}</div>
+                    <div style={{ fontSize: 13, color: 'var(--text-2)', lineHeight: 1.6 }}>{d}</div>
                   </div>
                 </div>
               ))}
