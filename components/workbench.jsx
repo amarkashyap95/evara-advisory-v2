@@ -664,6 +664,16 @@ function WorkbenchPage({ setPage }) {
           <button className="btn" onClick={() => setPage('Services')}>See capabilities</button>
         </div>
       </section>
+
+      {/* Closing aphorism — sign-off */}
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80, paddingBottom: 80 }}>
+        <div className="t-display" style={{ fontSize: 'clamp(36px, 5vw, 72px)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--text)' }}>
+          The work is <em className="t-display-it" style={{ color: 'var(--cream)' }}>the proof.</em>
+        </div>
+        <div className="t-mono" style={{ marginTop: 24, fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em' }}>
+          — EVARA ADVISORY · ONE PRINCIPAL · EVERY ENGAGEMENT
+        </div>
+      </section>
     </>
   );
 }

@@ -482,7 +482,6 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
   .page-pad { padding: 48px 28px !important; }
   .page-pad-sm { padding: 28px 28px; }
   .footer-grid { grid-template-columns: 1fr 1fr !important; padding: 40px 28px 24px !important; }
-  .footer-aphorism { padding: 40px 28px 20px !important; }
   footer > div:last-child { padding: 18px 28px !important; }
   /* Subtle right-edge fade hints that the nav is horizontally scrollable */
   .sidebar > nav {
@@ -524,7 +523,6 @@ select.input { appearance: none; cursor: pointer; background-image: linear-gradi
   .readout-body { padding: 12px !important; }
   .readout-line { padding: 2px 0; }
   /* Footer padding tightens further on phones (H2) */
-  .footer-aphorism { padding: 32px 20px 16px !important; }
   footer > div:last-child { padding: 16px 20px !important; }
 }
 

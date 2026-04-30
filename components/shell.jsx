@@ -155,11 +155,6 @@ function Ticker() {
 function Footer({ setPage, pages }) {
   return (
     <footer style={{ borderTop: '1px solid var(--line)', background: 'var(--ink)' }}>
-      <div style={{ padding: '56px 72px 28px', borderBottom: '1px solid var(--line)' }} className="footer-aphorism">
-        <div className="t-display" style={{ fontSize: 'clamp(22px, 3.6vw, 45px)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text)', maxWidth: 980 }}>
-          The work is <em className="t-display-it" style={{ color: 'var(--cream)' }}>the proof.</em>
-        </div>
-      </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', padding: '48px 72px 32px', gap: 40 }} className="footer-grid">
         <div>
           <Logo size={30} />
