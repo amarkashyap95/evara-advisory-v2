@@ -40,22 +40,24 @@ function AboutPage({ setPage }) {
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 440px) 1.4fr', gap: 64, alignItems: 'start' }} className="about-portrait">
           <div style={{ width: '100%', maxWidth: 440 }}>
-            {/* Source: Unsplash – Conor Sexton (free commercial use, no attribution required) */}
             <img
-              src="https://images.unsplash.com/photo-1518750838984-c630396ac394?fm=jpg&q=80&w=1200&auto=format&fit=crop"
-              alt="Architectural detail"
+              src="/principal-portrait.webp"
+              alt="Amar Kashyap, Principal — Evara Advisory"
               loading="lazy"
               style={{
                 width: '100%',
                 aspectRatio: '3 / 4',
                 objectFit: 'cover',
-                objectPosition: 'center center',
+                objectPosition: 'center top',
                 filter: 'grayscale(100%)',
                 border: '1px solid var(--line)',
                 boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
                 display: 'block',
               }}
             />
+            <div className="t-mono" style={{ marginTop: 16, fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              Amar Kashyap · Principal · Sydney
+            </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Heritage · Trajectory</div>
