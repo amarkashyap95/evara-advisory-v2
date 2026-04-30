@@ -203,18 +203,6 @@ function HomePage({ setPage }) {
         </div>
       </section>
 
-      {/* Heritage logo bar */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <div className="t-micro" style={{ textAlign: 'center', marginBottom: 32, color: 'var(--text-4)' }}>
-          Institutional heritage
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 40, maxWidth: 980, margin: '0 auto' }}>
-          {['Institutional Banking', 'Corporate Venture', 'Venture Capital', 'Private Equity', 'Investment Advisory', 'UNSW', 'UIUC'].map((n, i) => (
-            <span key={n} className="t-display" style={{ fontSize: 22, color: 'var(--text-3)', letterSpacing: '-0.005em', opacity: 0.8 }}>{n}</span>
-          ))}
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="page-pad" style={{ paddingTop: 120, paddingBottom: 120, textAlign: 'center', borderBottom: '1px solid var(--line)' }}>
         <Reveal>
