@@ -49,7 +49,6 @@ function AboutPage({ setPage }) {
                 aspectRatio: '3 / 4',
                 objectFit: 'cover',
                 objectPosition: 'center top',
-                filter: 'grayscale(100%)',
                 border: '1px solid var(--line)',
                 boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
                 display: 'block',
