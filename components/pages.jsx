@@ -38,8 +38,8 @@ function AboutPage({ setPage }) {
 
       {/* Principal portrait — image paired with bio + quote */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 280px) 1.4fr', gap: 56, alignItems: 'start' }} className="about-portrait">
-          <div style={{ width: '100%', maxWidth: 280 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 360px) 1.4fr', gap: 56, alignItems: 'start' }} className="about-portrait">
+          <div style={{ width: '100%', maxWidth: 360 }}>
             <div style={{ position: 'relative', border: '1px solid var(--line)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)' }}>
               <img
                 src="/principal-portrait.webp"
@@ -80,7 +80,7 @@ function AboutPage({ setPage }) {
 
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Off the desk</div>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
-              Outside of work, I keep things pretty simple. I play a lot of sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney for years now. It's where I switch off, get some movement in, and be around good people.
+              Outside of work, I play a lot of sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney for years now. It's where I switch off, get some movement in, and be around good people.
             </p>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
               Travel is the other thing I really love. I gravitate toward places with a mix of great outdoors, good food, and a bit of culture — Morocco, Japan, Bali, New Zealand, South America, and pretty much anywhere across Southeast Asia. I'm always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
@@ -93,7 +93,7 @@ function AboutPage({ setPage }) {
         <style>{`
           .about-portrait { grid-template-columns: 1fr !important; gap: 40px !important; }
           @media (min-width: 900px) {
-            .about-portrait { grid-template-columns: minmax(0, 280px) 1.4fr !important; gap: 56px !important; }
+            .about-portrait { grid-template-columns: minmax(0, 360px) 1.4fr !important; gap: 56px !important; }
           }
         `}</style>
       </section>
