@@ -3,39 +3,39 @@
    ========================================================= */
 
 :root {
-  /* Canvas */
-  --ink: #0A0E14;              /* near-black navy, primary surface */
-  --ink-2: #0F1520;            /* card / elevated */
-  --ink-3: #161D2B;            /* hover / active */
-  --line: #1F2939;             /* dividers */
-  --line-2: #2B3647;           /* stronger dividers */
+  /* Canvas — Anthropic-inspired warm near-black */
+  --ink: #141413;              /* Anthropic Dark, primary surface */
+  --ink-2: #1C1C1A;            /* card / elevated */
+  --ink-3: #252523;            /* hover / active */
+  --line: #2C2C29;             /* dividers */
+  --line-2: #3A3A36;           /* stronger dividers */
 
   /* Paper (elevated section surfaces — dark-elevated, sit above --ink-3 on dark palettes;
      cards use a vertical gradient between --paper-top and --paper-bot for subtle lift;
      paper palette mode in applyTweaks() inverts these to a light treatment) */
-  --paper: #1A2230;            /* flat fallback (cards use gradient stops below) */
-  --paper-top: #1F2A38;        /* gradient top stop — ~7% lift */
-  --paper-bot: #161D2B;        /* gradient bottom stop (= --ink-3) */
-  --paper-2: #20293A;          /* deeper elevation variant */
-  --paper-ink: #E8EAED;        /* primary text on paper (matches --text) */
-  --paper-muted: #7B8594;      /* muted text on paper (matches --text-3) */
+  --paper: #1F1F1D;            /* flat fallback (cards use gradient stops below) */
+  --paper-top: #2A2A27;        /* gradient top stop — ~7% lift */
+  --paper-bot: #1F1F1D;        /* gradient bottom stop */
+  --paper-2: #2D2D2A;          /* deeper elevation variant */
+  --paper-ink: #E8E6DC;        /* primary text on paper (matches --text) */
+  --paper-muted: #847D6E;      /* muted text on paper (matches --text-3) */
 
-  /* Type on ink */
-  --text: #E8EAED;
-  --text-2: #B3BAC6;
-  --text-3: #7B8594;
-  --text-4: #4A5466;
+  /* Type on ink — warm whites/greys */
+  --text: #E8E6DC;             /* Anthropic Light Gray */
+  --text-2: #B5B0A1;
+  --text-3: #847D6E;
+  --text-4: #565148;
 
   /* Signals — functional, restrained */
-  --live: #4FBF89;             /* active engagements, live model */
-  --live-glow: rgba(79, 191, 137, 0.25);
-  --warn: #D4A656;             /* warnings, key signals */
-  --accent: #9FB3C8;            /* subtle cool accent */
+  --live: #D97757;             /* Anthropic Orange — active engagements, live model */
+  --live-glow: rgba(217, 119, 87, 0.25);
+  --warn: #D4A656;             /* warnings, key signals (gold — distinct from --live) */
+  --accent: #A89E8A;           /* subtle warm accent */
 
   /* Signature warm — used sparingly: italic highlights, active dot, hover traces */
-  --cream: #E8DFCE;
-  --cream-dim: rgba(232, 223, 206, 0.65);
-  --cream-line: rgba(232, 223, 206, 0.22);
+  --cream: #EDE5CC;
+  --cream-dim: rgba(237, 229, 204, 0.65);
+  --cream-line: rgba(237, 229, 204, 0.22);
 
   /* Families */
   --ff-display: "Newsreader", "Source Serif 4", Georgia, serif;
@@ -209,7 +209,7 @@ input, select, textarea { font: inherit; color: inherit; }
   gap: 10px;
 }
 .ticker .up { color: var(--live); }
-.ticker .dn { color: #D47056; }
+.ticker .dn { color: #B84A3E; }
 @keyframes ticker {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -288,7 +288,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .pill.live {
   border-color: var(--live);
   color: var(--live);
-  background: rgba(79,191,137,0.04);
+  background: rgba(217,119,87,0.06);
 }
 .dot {
   width: 6px;
@@ -304,7 +304,7 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 @keyframes pulseDot {
   0%, 100% { box-shadow: 0 0 0 0 var(--live-glow); }
-  50% { box-shadow: 0 0 0 6px rgba(79,191,137,0); }
+  50% { box-shadow: 0 0 0 6px rgba(217,119,87,0); }
 }
 
 /* ---------- Mono panels (terminal / readout) ---------- */

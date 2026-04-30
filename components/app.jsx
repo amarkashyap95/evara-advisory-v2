@@ -61,44 +61,44 @@ function TweaksPanel({ open, setOpen, tweaks, setTweaks }) {
 function applyTweaks(tw) {
   const root = document.documentElement;
   if (tw.palette === 'deep') {
-    root.style.setProperty('--ink', '#06090F');
-    root.style.setProperty('--ink-2', '#0B101A');
-    root.style.setProperty('--ink-3', '#111826');
-    root.style.setProperty('--paper', '#161E2A');
-    root.style.setProperty('--paper-top', '#1A2330');
-    root.style.setProperty('--paper-bot', '#111826');
-    root.style.setProperty('--paper-ink', '#E8EAED');
-    root.style.setProperty('--paper-muted', '#7B8594');
+    root.style.setProperty('--ink', '#0E0E0D');
+    root.style.setProperty('--ink-2', '#161614');
+    root.style.setProperty('--ink-3', '#1F1F1C');
+    root.style.setProperty('--paper', '#252523');
+    root.style.setProperty('--paper-top', '#2A2A27');
+    root.style.setProperty('--paper-bot', '#1F1F1C');
+    root.style.setProperty('--paper-ink', '#E8E6DC');
+    root.style.setProperty('--paper-muted', '#847D6E');
   } else if (tw.palette === 'paper') {
-    root.style.setProperty('--ink', '#F2EFE8');
-    root.style.setProperty('--ink-2', '#E8E4D9');
-    root.style.setProperty('--ink-3', '#DDD7C8');
-    root.style.setProperty('--text', '#11161F');
-    root.style.setProperty('--text-2', '#3A414D');
-    root.style.setProperty('--text-3', '#5A5F68');
-    root.style.setProperty('--text-4', '#8C909A');
-    root.style.setProperty('--line', '#D3CDBE');
-    root.style.setProperty('--line-2', '#BFB8A6');
-    root.style.setProperty('--paper', '#11161F');
-    root.style.setProperty('--paper-top', '#11161F');
-    root.style.setProperty('--paper-bot', '#11161F');
-    root.style.setProperty('--paper-ink', '#F2EFE8');
-    root.style.setProperty('--paper-muted', '#8C909A');
+    root.style.setProperty('--ink', '#FAF9F5');
+    root.style.setProperty('--ink-2', '#F0EEE3');
+    root.style.setProperty('--ink-3', '#E5E2D2');
+    root.style.setProperty('--text', '#1A1A18');
+    root.style.setProperty('--text-2', '#4A463D');
+    root.style.setProperty('--text-3', '#6B6759');
+    root.style.setProperty('--text-4', '#95907F');
+    root.style.setProperty('--line', '#DAD5C4');
+    root.style.setProperty('--line-2', '#C5BFA8');
+    root.style.setProperty('--paper', '#1A1A18');
+    root.style.setProperty('--paper-top', '#1A1A18');
+    root.style.setProperty('--paper-bot', '#1A1A18');
+    root.style.setProperty('--paper-ink', '#FAF9F5');
+    root.style.setProperty('--paper-muted', '#95907F');
   } else {
-    root.style.setProperty('--ink', '#0A0E14');
-    root.style.setProperty('--ink-2', '#0F1520');
-    root.style.setProperty('--ink-3', '#161D2B');
-    root.style.setProperty('--text', '#E8EAED');
-    root.style.setProperty('--text-2', '#B3BAC6');
-    root.style.setProperty('--text-3', '#7B8594');
-    root.style.setProperty('--text-4', '#4A5466');
-    root.style.setProperty('--line', '#1F2939');
-    root.style.setProperty('--line-2', '#2B3647');
-    root.style.setProperty('--paper', '#1A2230');
-    root.style.setProperty('--paper-top', '#1F2A38');
-    root.style.setProperty('--paper-bot', '#161D2B');
-    root.style.setProperty('--paper-ink', '#E8EAED');
-    root.style.setProperty('--paper-muted', '#7B8594');
+    root.style.setProperty('--ink', '#141413');
+    root.style.setProperty('--ink-2', '#1C1C1A');
+    root.style.setProperty('--ink-3', '#252523');
+    root.style.setProperty('--text', '#E8E6DC');
+    root.style.setProperty('--text-2', '#B5B0A1');
+    root.style.setProperty('--text-3', '#847D6E');
+    root.style.setProperty('--text-4', '#565148');
+    root.style.setProperty('--line', '#2C2C29');
+    root.style.setProperty('--line-2', '#3A3A36');
+    root.style.setProperty('--paper', '#1F1F1D');
+    root.style.setProperty('--paper-top', '#2A2A27');
+    root.style.setProperty('--paper-bot', '#1F1F1D');
+    root.style.setProperty('--paper-ink', '#E8E6DC');
+    root.style.setProperty('--paper-muted', '#847D6E');
   }
   const densityPad = tw.density === 'compact' ? '44px 52px' : tw.density === 'airy' ? '96px 96px' : '64px 72px';
   document.querySelectorAll('.page-pad').forEach(el => { el.style.padding = densityPad; });
@@ -125,7 +125,7 @@ function NotFoundPage({ setPage, missing }) {
           ERR · ROUTE_NOT_FOUND · 404
         </div>
         <h1 className="t-display" style={{ fontSize: 'clamp(48px, 7vw, 96px)', lineHeight: 0.98, letterSpacing: '-0.035em' }}>
-          That page <em className="t-display-it" style={{ color: 'var(--cream, #D9C9A3)' }}>didn't resolve.</em>
+          That page <em className="t-display-it" style={{ color: 'var(--cream, #EDE5CC)' }}>didn't resolve.</em>
         </h1>
         <div style={{ marginTop: 36, border: '1px solid var(--line)', background: 'var(--ink-2)' }}>
           <div style={{ padding: '12px 18px', borderBottom: '1px solid var(--line)', background: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between' }}>
@@ -137,7 +137,7 @@ function NotFoundPage({ setPage, missing }) {
             <div style={{ color: 'var(--text-4)', marginTop: 12 }}>{trace.map((t, i) => <div key={i}>{t}</div>)}</div>
             <div style={{ marginTop: 18, color: 'var(--text-3)' }}>
               <span style={{ color: 'var(--live)' }}>›</span> <span style={{ color: 'var(--text-2)' }}>navigator.goto(</span>
-              <span style={{ color: 'var(--cream, #D9C9A3)' }}>"Home"</span>
+              <span style={{ color: 'var(--cream, #EDE5CC)' }}>"Home"</span>
               <span style={{ color: 'var(--text-2)' }}>)</span>
               <span style={{ color: 'var(--live)', opacity: blink ? 1 : 0, marginLeft: 2 }}>▊</span>
             </div>

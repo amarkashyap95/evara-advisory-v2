@@ -111,7 +111,7 @@ function AboutPage({ setPage }) {
             <p>
               Evara Advisory was founded to deliver institutional-quality commercial and strategic advisory directly to founders and operating businesses — <em>without</em> the overhead of a large firm.
             </p>
-            <p style={{ fontSize: 20, lineHeight: 1.4, color: 'var(--paper-ink)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 20, borderLeft: '2px solid #C7A05A', margin: '8px 0' }}>
+            <p style={{ fontSize: 20, lineHeight: 1.4, color: 'var(--paper-ink)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 20, borderLeft: '2px solid var(--cream)', margin: '8px 0' }}>
               Every engagement starts with the same question: <em style={{ color: 'var(--cream)' }}>what is this capital actually for?</em>
             </p>
             <p style={{ color: 'var(--text-2)' }}>
@@ -132,7 +132,7 @@ function AboutPage({ setPage }) {
             <span>YR</span><span>ROLE</span><span>ORG</span><span>DETAIL</span>
           </div>
           {timeline.map((t, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '100px 200px 240px 1fr', padding: '26px 24px', borderBottom: i < timeline.length - 1 ? '1px solid var(--line)' : 'none', alignItems: 'start', background: i === timeline.length - 1 ? 'rgba(79,191,137,0.03)' : 'transparent' }} className="ledger-row">
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '100px 200px 240px 1fr', padding: '26px 24px', borderBottom: i < timeline.length - 1 ? '1px solid var(--line)' : 'none', alignItems: 'start', background: i === timeline.length - 1 ? 'rgba(217,119,87,0.05)' : 'transparent' }} className="ledger-row">
               <span className="t-display" style={{ fontSize: 28, color: i === timeline.length - 1 ? 'var(--live)' : 'var(--text-2)', lineHeight: 1 }}>{t.year}</span>
               <span className="t-mono" style={{ fontSize: 11.5, color: 'var(--text-2)', letterSpacing: '0.06em' }}>{t.role}</span>
               <span style={{ fontSize: 16, color: 'var(--text)', fontFamily: 'var(--ff-display)' }}>{t.org}</span>
@@ -733,7 +733,7 @@ Prospect situation: "${aiScope.trim()}"`;
               <button type="submit" className="btn primary" disabled={status === 'sending' || !form.name || !form.email || !form.message}>
                 {status === 'sending' ? 'Transmitting…' : 'Submit brief'}<span className="arrow" />
               </button>
-              {status === 'error' && <span className="t-mono" style={{ fontSize: 11, color: '#D47056' }}>// TX FAILED — try again or reach via LinkedIn</span>}
+              {status === 'error' && <span className="t-mono" style={{ fontSize: 11, color: 'var(--warn)' }}>// TX FAILED — try again or reach via LinkedIn</span>}
               <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.08em' }}>// ENCRYPTED IN TRANSIT</span>
             </div>
           </form>
