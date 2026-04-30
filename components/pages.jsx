@@ -233,13 +233,6 @@ function ServicesPage({ setPage }) {
   const [active, setActive] = pUseState('FND');
   const seg = segments.find(s => s.id === active);
 
-  const process = [
-    { step: '01', t: 'Scoping call', d: '30-min intro to understand your situation. No charge.' },
-    { step: '02', t: 'Proposal & scope', d: 'Written scope, deliverables, timeline, fixed fee or retainer.' },
-    { step: '03', t: 'NDA & kickoff', d: 'Mutual NDA. Access to materials. Structured kickoff.' },
-    { step: '04', t: 'Delivery & review', d: 'Iterative delivery with milestone check-ins.' },
-  ];
-
   return (
     <>
       <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80 }}>
@@ -362,20 +355,6 @@ function ServicesPage({ setPage }) {
         <style>{`
           @media (max-width: 900px) { .ai-band { grid-template-columns: 1fr !important; } }
         `}</style>
-      </section>
-
-      {/* Onboarding protocol — concrete next-step steps, distinct from methodology */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <SectionHead num="05" eyebrow="Onboarding" title={<>From first call <em className="t-display-it">to kickoff.</em></>} />
-        <div className="g4" style={{ borderTop: '1px solid var(--line)', borderLeft: '1px solid var(--line)' }}>
-          {process.map((p, i) => (
-            <div key={i} style={{ padding: 32, borderRight: '1px solid var(--line)', borderBottom: '1px solid var(--line)', minHeight: 200 }}>
-              <div className="t-mono" style={{ fontSize: 11, color: 'var(--live)', letterSpacing: '0.14em', marginBottom: 20 }}>▸ {p.step}</div>
-              <div style={{ fontSize: 22, color: 'var(--text)', fontFamily: 'var(--ff-display)', marginBottom: 10 }}>{p.t}</div>
-              <div style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.65 }}>{p.d}</div>
-            </div>
-          ))}
-        </div>
       </section>
 
       <section className="page-pad" style={{ paddingTop: 100, paddingBottom: 100, borderBottom: '1px solid var(--line)' }}>
