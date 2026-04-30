@@ -74,30 +74,28 @@ function AboutPage({ setPage }) {
             <p style={{ fontSize: 22, lineHeight: 1.35, color: 'var(--text)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 22, borderLeft: '2px solid var(--cream)', margin: '12px 0 0', maxWidth: 640 }}>
               "I've sat on both sides of the table. The work is translating <em style={{ color: 'var(--cream)' }}>fluently</em> between them."
             </p>
+
+            {/* Quiet separator — sub-section break inside the bio block */}
+            <div style={{ width: 40, height: 1, background: 'var(--line-2)', marginTop: 28 }} />
+
+            <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Off the desk</div>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+              Outside of work, I keep things pretty simple. I play a lot of sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney for years now. It's where I switch off, get some movement in, and be around good people.
+            </p>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+              Travel is the other thing I really love. I gravitate toward places with a mix of great outdoors, good food, and a bit of culture — Morocco, Japan, Bali, New Zealand, South America, and pretty much anywhere across Southeast Asia. I'm always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
+            </p>
+            <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+              I'm also big on strength training, running, and the habits that quietly compound over the long run.
+            </p>
           </div>
         </div>
         <style>{`
-          .about-portrait { grid-template-columns: 1fr !important; }
+          .about-portrait { grid-template-columns: 1fr !important; gap: 40px !important; }
           @media (min-width: 900px) {
             .about-portrait { grid-template-columns: minmax(0, 280px) 1.4fr !important; gap: 56px !important; }
           }
         `}</style>
-      </section>
-
-      {/* Off the desk — personal note */}
-      <section className="page-pad" style={{ borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-        <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 28 }}>§ Off the desk</div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 720 }}>
-          <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
-            Outside of work, I keep things pretty simple. I play a lot of sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney for years now. It's where I switch off, get some movement in, and be around good people.
-          </p>
-          <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
-            Travel is the other thing I really love. I gravitate toward places with a mix of great outdoors, good food, and a bit of culture — Morocco, Japan, Bali, New Zealand, South America, and pretty much anywhere across Southeast Asia. I'm always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
-          </p>
-          <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7 }}>
-            I'm also big on strength training, running, and the habits that quietly compound over the long run.
-          </p>
-        </div>
       </section>
 
       {/* Thesis */}
