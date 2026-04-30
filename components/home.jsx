@@ -17,7 +17,7 @@ function yearsInMarkets() {
    =========================================================== */
 function Hero({ setPage }) {
   return (
-    <section className="page-pad page-hero-bg" style={{ borderBottom: '1px solid var(--line)', paddingTop: 72, paddingBottom: 72 }}>
+    <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 72, paddingBottom: 72 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'start', gap: 40, marginBottom: 44 }} className="hero-top">
         <div>
           <div className="reveal is-in" style={{ marginBottom: 28 }}>
