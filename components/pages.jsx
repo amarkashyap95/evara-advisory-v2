@@ -36,6 +36,45 @@ function AboutPage({ setPage }) {
         </div>
       </section>
 
+      {/* Principal portrait — image paired with bio + quote */}
+      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 440px) 1.4fr', gap: 64, alignItems: 'start' }} className="about-portrait">
+          <div style={{ width: '100%', maxWidth: 440 }}>
+            {/* Source: Unsplash – Conor Sexton (free commercial use, no attribution required) */}
+            <img
+              src="https://images.unsplash.com/photo-1518750838984-c630396ac394?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+              alt="Architectural detail"
+              loading="lazy"
+              style={{
+                width: '100%',
+                aspectRatio: '3 / 4',
+                objectFit: 'cover',
+                objectPosition: 'center center',
+                filter: 'grayscale(100%)',
+                border: '1px solid var(--line)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
+                display: 'block',
+              }}
+            />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+            <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Heritage · Trajectory</div>
+            <p style={{ fontSize: 17, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
+              Seven years across institutional banking, corporate ventures, and institutional venture capital — deploying capital, structuring transactions, and building investment cases inside three different sides of the same market. Now independent.
+            </p>
+            <p style={{ fontSize: 22, lineHeight: 1.35, color: 'var(--text)', fontFamily: 'var(--ff-display)', fontStyle: 'italic', paddingLeft: 22, borderLeft: '2px solid var(--cream)', margin: '12px 0 0', maxWidth: 640 }}>
+              "I've sat on both sides of the table. The work is translating <em style={{ color: 'var(--cream)' }}>fluently</em> between them."
+            </p>
+          </div>
+        </div>
+        <style>{`
+          .about-portrait { grid-template-columns: 1fr !important; }
+          @media (min-width: 900px) {
+            .about-portrait { grid-template-columns: minmax(0, 440px) 1.4fr !important; gap: 64px !important; }
+          }
+        `}</style>
+      </section>
+
       {/* Thesis */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%)', color: 'var(--paper-ink)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.03)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }} className="about-thesis">
