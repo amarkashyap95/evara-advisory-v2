@@ -80,13 +80,13 @@ function AboutPage({ setPage }) {
 
             <div className="t-mono" style={{ fontSize: 11, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>§ Off the desk</div>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
-              Outside of work, I play a lot of sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney for years now. It's where I switch off, get some movement in, and be around good people.
+              Outside of work, I enjoy playing sport — cricket, soccer, tennis, and I'm always keen to try something new. I've been a long-term member of community sports clubs and multi-sport leagues around Sydney. It's where I switch off, get some movement in, and spend time around good people. Alongside this I have always been into strength training, running, and the long-term habits that quietly compound.
             </p>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
-              Travel is the other thing I really love. I gravitate toward places with a mix of great outdoors, good food, and a bit of culture — Morocco, Japan, Bali, New Zealand, South America, and pretty much anywhere across Southeast Asia. I'm always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
+              When I get the chance to take proper time off, I gravitate toward places that combine great outdoors, good food, and the kind of culture you can feel.
             </p>
             <p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.7, maxWidth: 620 }}>
-              I'm also big on strength training, running, and the habits that quietly compound over the long run.
+              I'm a foodie at heart. Always on the hunt for hidden gems — fusion restaurants, family-run spots, the kind of places doing something a bit different.
             </p>
           </div>
         </div>
