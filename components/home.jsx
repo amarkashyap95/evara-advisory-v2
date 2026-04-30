@@ -297,40 +297,6 @@ function LiveValuation() {
 
 
 /* ===========================================================
-   Deal Pipeline — animated small-multiples
-   =========================================================== */
-function DealPipeline() {
-  const stages = [
-    { name: 'Brief', count: 8, pct: 100 },
-    { name: 'NDA', count: 6, pct: 75 },
-    { name: 'Scoping', count: 5, pct: 62 },
-    { name: 'Engaged', count: 3, pct: 38 },
-    { name: 'Closed', count: 2, pct: 25 },
-  ];
-  return (
-    <div style={{ border: '1px solid var(--line)', background: 'var(--ink-2)' }}>
-      <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)', background: 'var(--ink-3)', display: 'flex', justifyContent: 'space-between' }}>
-        <span className="t-mono" style={{ fontSize: 10.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)' }}>
-          Pipeline · Rolling 90d
-        </span>
-        <span className="t-mono" style={{ fontSize: 10, color: 'var(--live)' }}>● SYNC</span>
-      </div>
-      <div className="pipeline-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
-        {stages.map((s, i) => (
-          <div key={s.name} style={{ padding: 20, borderRight: i < stages.length - 1 ? '1px solid var(--line)' : 'none' }}>
-            <div className="t-micro" style={{ color: 'var(--text-4)', marginBottom: 14 }}>{String(i + 1).padStart(2, '0')} · {s.name}</div>
-            <div className="t-display" style={{ fontSize: 38, color: 'var(--text)' }}>{s.count}</div>
-            <div style={{ height: 2, background: 'var(--line)', marginTop: 14, position: 'relative' }}>
-              <div style={{ position: 'absolute', inset: 0, width: `${s.pct}%`, background: 'var(--live)', opacity: 0.7 }} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ===========================================================
    Hero
    =========================================================== */
 function Hero({ setPage }) {
@@ -851,12 +817,6 @@ function HomePage({ setPage }) {
         </div>
       </section>
 
-      {/* Pipeline */}
-      <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <Reveal><SectionHead num="05" eyebrow="OPERATIONS" title={<>Selective, by design.</>} kicker="A deliberately narrow client list. Every brief receives full attention; every deliverable is shaped end-to-end by the principal." /></Reveal>
-        <Reveal><DealPipeline /></Reveal>
-      </section>
-
       {/* Pull quote */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', background: 'var(--paper)', color: 'var(--paper-ink)' }}>
         <div style={{ maxWidth: 1040 }}>
@@ -904,4 +864,4 @@ function HomePage({ setPage }) {
   );
 }
 
-Object.assign(window, { HomePage, LiveValuation, DealPipeline, DilutionHeatmap });
+Object.assign(window, { HomePage, LiveValuation, DilutionHeatmap });
