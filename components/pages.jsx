@@ -38,8 +38,8 @@ function AboutPage({ setPage }) {
 
       {/* Principal portrait — image paired with bio + quote */}
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 440px) 1.4fr', gap: 64, alignItems: 'start' }} className="about-portrait">
-          <div style={{ width: '100%', maxWidth: 440 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 310px) 1.4fr', gap: 56, alignItems: 'start' }} className="about-portrait">
+          <div style={{ width: '100%', maxWidth: 310 }}>
             <div style={{ position: 'relative', border: '1px solid var(--line)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)' }}>
               <img
                 src="/principal-portrait.webp"
@@ -79,7 +79,7 @@ function AboutPage({ setPage }) {
         <style>{`
           .about-portrait { grid-template-columns: 1fr !important; }
           @media (min-width: 900px) {
-            .about-portrait { grid-template-columns: minmax(0, 440px) 1.4fr !important; gap: 64px !important; }
+            .about-portrait { grid-template-columns: minmax(0, 310px) 1.4fr !important; gap: 56px !important; }
           }
         `}</style>
       </section>
