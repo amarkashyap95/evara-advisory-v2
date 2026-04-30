@@ -40,20 +40,28 @@ function AboutPage({ setPage }) {
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 440px) 1.4fr', gap: 64, alignItems: 'start' }} className="about-portrait">
           <div style={{ width: '100%', maxWidth: 440 }}>
-            <img
-              src="/principal-portrait.webp"
-              alt="Amar Kashyap, Principal — Evara Advisory"
-              loading="lazy"
-              style={{
-                width: '100%',
-                aspectRatio: '3 / 4',
-                objectFit: 'cover',
-                objectPosition: 'center top',
-                border: '1px solid var(--line)',
-                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
-                display: 'block',
-              }}
-            />
+            <div style={{ position: 'relative', border: '1px solid var(--line)', boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)' }}>
+              <img
+                src="/principal-portrait.webp"
+                alt="Amar Kashyap, Principal — Evara Advisory"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  aspectRatio: '3 / 4',
+                  objectFit: 'cover',
+                  objectPosition: 'center top',
+                  filter: 'saturate(78%) brightness(0.94) contrast(0.96)',
+                  display: 'block',
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(180deg, rgba(15, 22, 32, 0.08) 0%, rgba(15, 22, 32, 0.18) 100%)',
+                mixBlendMode: 'multiply',
+                pointerEvents: 'none',
+              }} />
+            </div>
             <div className="t-mono" style={{ marginTop: 16, fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               Amar Kashyap · Principal · Sydney
             </div>
