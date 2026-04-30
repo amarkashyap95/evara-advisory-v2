@@ -622,7 +622,7 @@ Prospect situation: "${aiScope.trim()}"`;
             <div className="t-micro" style={{ marginBottom: 14 }}>§ Full brief · structured</div>
             <h3 className="t-display" style={{ fontSize: 32, lineHeight: 1.1, marginBottom: 24 }}>Send the full form.</h3>
             <div className="readout">
-              <div className="readout-head"><span>Protocol</span><span>v1.4</span></div>
+              <div className="readout-head"><span>Protocol</span></div>
               <div className="readout-body" style={{ padding: 16 }}>
                 {['Intro call — no charge', 'Written proposal + fixed fee', 'Mutual NDA before materials', 'Milestone-based delivery'].map((l, i) => (
                   <div key={i} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', padding: '6px 0', fontSize: 12.5, color: 'var(--text-2)' }}>

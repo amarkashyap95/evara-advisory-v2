@@ -26,7 +26,7 @@ function TweaksPanel({ open, setOpen, tweaks, setTweaks }) {
   return (
     <div className={`tweaks-panel ${open ? 'open' : ''}`}>
       <div className="tweaks-head">
-        <span>Tweaks · v1.4</span>
+        <span>Tweaks</span>
         <button onClick={() => setOpen(false)} style={{ color: 'var(--text-3)' }}>×</button>
       </div>
       <div className="tweaks-body">

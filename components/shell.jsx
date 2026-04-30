@@ -121,9 +121,8 @@ function Sidebar({ page, setPage, pages }) {
             <span className="dot live" /> Taking briefs
           </span>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 12, borderTop: '1px solid var(--line)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', paddingTop: 12, borderTop: '1px solid var(--line)' }}>
           <Clock />
-          <span className="t-mono" style={{ fontSize: 10.5, color: 'var(--text-4)' }}>v1.4.26</span>
         </div>
       </div>
     </aside>
@@ -225,7 +224,6 @@ function Footer({ setPage, pages }) {
       <div style={{ borderTop: '1px solid var(--line)', padding: '20px 72px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, fontFamily: 'var(--ff-mono)', fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.06em' }}>
         <span>© 2026 EVARA ADVISORY PTY LTD</span>
         <span>COMMERCIAL & STRATEGIC ADVISORY ONLY · NOT FINANCIAL PRODUCT ADVICE · NO AFSL HELD OR REPRESENTED</span>
-        <span>V1.4.26</span>
       </div>
     </footer>
   );
