@@ -604,12 +604,13 @@ function WorkbenchPage({ setPage }) {
     <>
       <section className="page-pad" style={{ borderBottom: '1px solid var(--line)', paddingTop: 80, paddingBottom: 56 }}>
         <Reveal>
-          <SectionHead
-            num="01"
-            eyebrow="WORKBENCH"
-            title={<>Live from the <em className="t-display-it">bench.</em></>}
-            kicker="Two of the interactive artifacts behind a typical engagement — built to be moved, not read. Drag a slider, click a cell, watch the math redrive."
-          />
+          <div className="t-micro" style={{ marginBottom: 28 }}>§ Workbench</div>
+          <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em' }}>
+            Live from the <em className="t-display-it">bench.</em>
+          </h1>
+          <p className="t-serif" style={{ fontSize: 16, color: 'var(--text-3)', marginTop: 16, maxWidth: 600, fontStyle: 'italic' }}>
+            Two of the interactive artifacts behind a typical engagement — built to be moved, not read. Drag a slider, click a cell, watch the math redrive.
+          </p>
         </Reveal>
       </section>
 
