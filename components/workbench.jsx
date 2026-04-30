@@ -608,7 +608,7 @@ function WorkbenchPage({ setPage }) {
           <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em' }}>
             Live from the <em className="t-display-it">bench.</em>
           </h1>
-          <p className="t-serif" style={{ fontSize: 16, color: 'var(--text-3)', marginTop: 16, maxWidth: 600, fontStyle: 'italic' }}>
+          <p style={{ marginTop: 28, maxWidth: 620, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
             Two of the interactive artifacts behind a typical engagement — built to be moved, not read. Drag a slider, click a cell, watch the math redrive.
           </p>
         </Reveal>

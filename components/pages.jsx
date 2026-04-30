@@ -297,7 +297,7 @@ function ServicesPage({ setPage }) {
         <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 1.02, letterSpacing: '-0.035em', maxWidth: 980, paddingBottom: '0.08em' }}>
           Every phase of the <em className="t-display-it t-muted">capital life-cycle</em>.
         </h1>
-        <p style={{ marginTop: 40, maxWidth: 620, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
+        <p style={{ marginTop: 28, maxWidth: 620, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
           Four distinct segments, each scoped around the outcome rather than the hour. Every deliverable is shaped end-to-end by the principal.
         </p>
         <div style={{ marginTop: 64, maxWidth: 1100 }}>
@@ -665,7 +665,7 @@ Prospect situation: "${aiScope.trim()}"`;
         <h1 className="t-display" style={{ fontSize: 'clamp(35px, 5.4vw, 82px)', lineHeight: 0.95, letterSpacing: '-0.035em' }}>
           Send a <em className="t-display-it t-muted">brief.</em>
         </h1>
-        <p style={{ marginTop: 28, maxWidth: 540, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
+        <p style={{ marginTop: 28, maxWidth: 620, fontSize: 17, color: 'var(--text-2)', lineHeight: 1.6 }}>
           Every enquiry reviewed directly. NDA before any sensitive exchange. All correspondence treated as confidential.
         </p>
       </section>
