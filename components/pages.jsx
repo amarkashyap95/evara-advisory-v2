@@ -772,6 +772,9 @@ Prospect situation: "${aiScope.trim()}"`;
             <label className="label">Your situation</label>
             <textarea className="input" placeholder="e.g. Series A consumer brand, $3M ARR, 80% growth. Thinking of raising $8M. Need model, deck, and investor plan."
               value={aiScope} onChange={e => setAiScope(e.target.value)} rows={8} style={{ flex: 1, minHeight: 180 }} />
+            <div className="t-mono" style={{ marginTop: 12, fontSize: 10.5, color: 'var(--text-4)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              POWERED BY CLAUDE · <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dotted var(--text-4)' }}>ANTHROPIC</a>
+            </div>
             <div style={{ marginTop: 10, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               <span className="t-mono" style={{ fontSize: 9.5, color: 'var(--text-4)', letterSpacing: '0.1em', alignSelf: 'center', marginRight: 4 }}>EXAMPLES</span>
               {[
@@ -805,6 +808,11 @@ Prospect situation: "${aiScope.trim()}"`;
               {!aiLoading && !aiResult && <span style={{ color: 'var(--text-4)' }}>{'// Indicative sketch will appear here.'}</span>}
               {!aiLoading && aiResult && aiResult}
             </div>
+            {!aiLoading && aiResult && (
+              <div className="t-mono" style={{ marginTop: 10, fontSize: 10.5, color: 'var(--text-3)', fontStyle: 'italic', lineHeight: 1.5 }}>
+                Drafted by Claude · indicative starting point — refine before relying on it
+              </div>
+            )}
             {!aiLoading && aiResult && (
               <div style={{ marginTop: 12, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
                 <button type="button" className="btn" onClick={() => {
