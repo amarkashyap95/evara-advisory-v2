@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.evaraadvisory.com.au/sitemap.xml
