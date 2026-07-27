@@ -31,19 +31,9 @@ function Hero({ setPage, tweaks = {} }) {
         <div className="g12 over" style={{ marginTop: 'clamp(40px,6vw,80px)', alignItems: 'end', rowGap: 40 }}>
           <SplitLines tag="h1" className="display c1-8" base={300}
             lines={['Commercial clarity,', 'custom-built.']} />
-          <div className="c9-12 rise" style={{ '--d': '620ms' }}>
-            <p className="note" style={{ maxWidth: 300 }}>
-              I spent seven years inside institutions deciding whose capital went where.
-              Evara is that judgement, available directly, without the layers a firm puts
-              between you and the person doing the thinking.
-            </p>
-            <hr className="rule" style={{ margin: '22px 0 12px', maxWidth: 300 }} />
-            <p className="label" style={{ color: 'var(--ink-2)' }}>Amar Kashyap</p>
-            <p className="label" style={{ marginTop: 4, color: 'var(--ink-4)' }}>Founder &amp; Principal</p>
-          </div>
         </div>
 
-        <div className="g12 over" style={{ marginTop: 'clamp(56px,8vw,110px)', rowGap: 28 }}>
+        <div className="g12 over" style={{ marginTop: 'clamp(17px,3vw,33px)', rowGap: 28 }}>
           <p className="standfirst c1-6 rise" style={{ '--d': '760ms' }}>
             Clarity on the decisions that move capital, for founders raising,
             operators scaling, and allocators deploying.

@@ -482,7 +482,7 @@ html[data-atmosphere="bare"] .globe,
 html[data-atmosphere="bare"] .colrules,
 html[data-atmosphere="bare"] .skyline{display:none}
 html[data-atmosphere="bare"] body::after{opacity:.022}
-html[data-atmosphere="instrument"]{--globe-op:.52;--globe-right:33%;--globe-size:94}
+html[data-atmosphere="instrument"]{--globe-op:.52;--globe-right:20%;--globe-size:94}
 html[data-atmosphere="instrument"] .colrules span{border-color:var(--rule)}
 html[data-atmosphere="instrument"] .skyline{opacity:.34}
 
@@ -529,7 +529,7 @@ html[data-atmosphere="instrument"] .skyline{opacity:.34}
 /* ---------- Armillary globe ----------
    Sits in the hero's right field so it never runs under the headline. */
 .globe{
-  position:absolute;top:var(--globe-top,50%);right:var(--globe-right,14%);
+  position:absolute;top:var(--globe-top,50%);right:var(--globe-right,2%);
   width:min(calc(var(--globe-size,74) * 1vw),900px);
   height:min(calc(var(--globe-size,74) * 1vw),900px);
   transform:translateY(-50%);

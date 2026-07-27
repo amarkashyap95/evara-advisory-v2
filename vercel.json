@@ -7,7 +7,7 @@
   },
   "headers": [
     {
-      "source": "/(.*)\\.(html|js|jsx|css)",
+      "source": "/(.*)\\.(html|js|jsx|css|ico|png|webp|svg|webmanifest|xml|txt)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
