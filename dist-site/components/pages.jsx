@@ -7,15 +7,14 @@ const DOSSIER = [
   { y: '2026–', r: 'Founder & Principal', o: 'Evara Advisory', n: 'Independent practice. Founders raising, operators scaling, allocators deploying.' },
 ];
 
-function PageMast({ kicker, lines, standfirst }) {
+function PageMast({ kicker, lines }) {
   return (
-    <section className="sec-tight" style={{ paddingTop: 'clamp(36px,5vw,72px)' }}>
+    <section className="sec-tight" style={{ paddingTop: 'clamp(36px,5vw,72px)', paddingBottom: 'clamp(20px,3vw,36px)' }}>
       <div className="wrap">
         <p className="label rise" style={{ marginBottom: 14, '--d': '60ms' }}>{kicker}</p>
         <hr className="rule-draw" />
-        <div className="g12" style={{ marginTop: 'clamp(36px,5vw,68px)', rowGap: 32, alignItems: 'end' }}>
+        <div className="g12" style={{ marginTop: 'clamp(24px,3vw,40px)', rowGap: 32, alignItems: 'end' }}>
           <SplitLines tag="h1" className="display-m c1-7" base={300} lines={lines} />
-          {standfirst && <p className="note c9-12 rise" style={{ maxWidth: 300, '--d': '600ms' }}>{standfirst}</p>}
         </div>
       </div>
     </section>
@@ -28,7 +27,6 @@ function AboutPage({ setPage }) {
       <PageMast
         kicker="About the practice"
         lines={['Both sides of', 'the table.']}
-        standfirst="Seven years inside institutions, now turned outward. One principal, personally accountable for every page."
       />
 
       <section className="sec">
@@ -50,19 +48,25 @@ function AboutPage({ setPage }) {
               </div>
               <div className="prose" style={{ maxWidth: 620 }}>
                 <p>
-                  Evara is the independent practice of Amar Kashyap. The path ran through
-                  institutional banking at ANZ, corporate ventures and strategy at PEXA Group,
-                  and most recently XT Ventures, where he was the founding investment hire and
-                  managed the entire investment function.
+                  Evara is the independent practice of Amar Kashyap. He started at ANZ across
+                  institutional banking and ventures, backing companies from Series A onward.
                 </p>
                 <p>
-                  The work spanned healthtech, consumer, sportstech, enterprise software and
-                  medtech. Sourced, modelled, negotiated, and held through to close.
+                  The range has run both directions since. Sell-side, building the models and
+                  information memoranda that carry a business to market. Buy-side, on the other
+                  end of the same documents, deciding what to believe. On the ventures side that
+                  meant commercial modelling rather than financing structures: unit economics,
+                  cohorts, the shape of a business before the accounts show it.
                 </p>
                 <p>
-                  There is no associate pool here, and no capability deck. Every model, memo
-                  and conversation is Amar's own work. That is the whole proposition, and it is
-                  also what limits how many engagements can run at any one time.
+                  Then corporate ventures and strategy at PEXA Group, and XT Ventures as the
+                  founding investment hire, running the whole investment function. Enough rooms
+                  to learn that the hard part is rarely the model. It is getting a table of
+                  intelligent people to agree on what it says.
+                </p>
+                <p>
+                  Outside the work: training, too much sport, and travel that involves a decent
+                  hike and a market worth getting up early for.
                 </p>
               </div>
             </div>
@@ -128,7 +132,6 @@ function ServicesPage({ setPage }) {
       <PageMast
         kicker="Services"
         lines={['The work, and', <>the <i>shape</i> it takes.</>]}
-        standfirst="Five areas of work. Four ways to engage. One principal across all of them."
       />
 
       <section className="sec">
@@ -218,7 +221,6 @@ function TrackRecordPage({ setPage }) {
       <PageMast
         kicker="Track record"
         lines={['Work I can', 'talk about.']}
-        standfirst="A few examples of the work. Client names are held in confidence."
       />
 
       <section className="sec">

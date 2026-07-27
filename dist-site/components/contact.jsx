@@ -116,7 +116,6 @@ function ContactPage() {
       <PageMast
         kicker="Contact"
         lines={['Send a', 'brief.']}
-        standfirst="Every enquiry reviewed directly. Mutual NDA before any sensitive exchange."
       />
 
       <section className="sec">
