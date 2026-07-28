@@ -118,7 +118,7 @@ function ContactPage() {
         lines={['Send a', 'brief.']}
       />
 
-      <section className="sec">
+      <section className="sec" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="g12" style={{ rowGap: 48, alignItems: 'start' }}>
             <div className="c1-3">
@@ -176,7 +176,7 @@ function ContactPage() {
       <section className="sec sec-band">
         <div className="wrap">
           <Opener label="Scope sketch">
-            <h2 className="h2" style={{ maxWidth: '18ch', marginBottom: 16 }}>
+            <h2 className="h2" style={{ marginBottom: 14 }}>
               Unsure where you fit? Sketch a rough scope.
             </h2>
             <p className="note" style={{ maxWidth: 520, marginBottom: 40 }}>

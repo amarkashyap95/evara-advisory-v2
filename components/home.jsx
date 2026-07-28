@@ -17,7 +17,7 @@ const SELECTED = [
 
 function Hero({ setPage, tweaks = {} }) {
   return (
-    <section className="sec" style={{ paddingTop: 'clamp(40px,6vw,84px)', overflow: 'hidden' }}>
+    <section className="sec" style={{ paddingTop: 'clamp(40px,6vw,84px)', paddingBottom: 'clamp(84px,12vw,190px)', overflow: 'hidden' }}>
       <div className="wrap ruled">
         <Globe detail={tweaks.atmosphere === 'instrument' ? 'dense' : 'fine'} showArcs={tweaks.atmosphere !== 'bare'} />
         <div className="colrules" aria-hidden="true">
@@ -38,7 +38,7 @@ function Hero({ setPage, tweaks = {} }) {
             Clarity on the decisions that move capital, for founders raising,
             operators scaling, and allocators deploying.
           </p>
-          <div className="c1-6 rise" style={{ '--d': '860ms', display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div className="c1-6 rise" style={{ '--d': '860ms', display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center', marginTop: 8 }}>
             <button className="cta" onClick={() => setPage('Contact')}>Start a conversation</button>
             <button className="cta-line" onClick={() => setPage('Services')}>See the practice areas</button>
           </div>
@@ -50,15 +50,13 @@ function Hero({ setPage, tweaks = {} }) {
 
 function PracticeIndex({ setPage }) {
   return (
-    <section className="sec">
+    <>
+      <StripHead label="Practice areas">
+        <h2 className="h2">Five lines of work, <i>one operator</i> behind each.</h2>
+      </StripHead>
+      <section className="sec-tight" style={{ paddingTop: 'clamp(19px,2.4vw,35px)' }}>
       <div className="wrap">
-        <Opener label="Practice areas">
-          <h2 className="h2" style={{ maxWidth: '15ch', marginBottom: 'clamp(36px,5vw,64px)' }}>
-            Five lines of work, <i>one operator</i> behind each.
-          </h2>
-        </Opener>
-
-        <div className="g12" style={{ marginTop: 8 }}>
+        <div className="g12">
           <div className="c1-12">
             {PRACTICE.map((p, i) => (
               <div className="index-row" key={p.t}>
@@ -76,20 +74,21 @@ function PracticeIndex({ setPage }) {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
 
 function SelectedWork({ setPage }) {
   return (
-    <section className="sec-tight">
+    <>
+      <StripHead label="Selected engagements">
+        <h2 className="h2">Client names are <i>held in confidence.</i></h2>
+      </StripHead>
+      <section className="sec-tight" style={{ paddingTop: 'clamp(19px,2.4vw,35px)' }}>
       <div className="wrap">
         <div className="g12" style={{ rowGap: 32, alignItems: 'start' }}>
-          <div className="c1-3">
-            <hr className="rule" />
-            <p className="label" style={{ marginTop: 12 }}>Selected engagements</p>
-          </div>
-          <div className="c4-12">
+          <div className="c1-12">
             {SELECTED.map(d => (
               <div className="desk-row" key={d.w}>
                 <span style={{ fontSize: 17, color: 'var(--ink)' }}>{d.w}</span>
@@ -102,7 +101,8 @@ function SelectedWork({ setPage }) {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -112,8 +112,8 @@ function PullQuote() {
       <img className="skyline" src="skyline.svg" alt="" aria-hidden="true" loading="lazy" />
       <div className="wrap">
         <div className="g12" style={{ rowGap: 28 }}>
-          <p className="label c1-12" style={{ marginBottom: 'clamp(28px,4vw,52px)' }}>In their words</p>
-          <blockquote className="pull c2-8" style={{ margin: 0 }}>
+          <p className="label c1-12" style={{ marginBottom: 'clamp(18px,2.4vw,30px)' }}>In their words</p>
+          <blockquote className="pull c2-9" style={{ margin: 0 }}>
             “The model behaves less like a spreadsheet and more like a live tool.
             It has given the board more clarity on the decisions in front of us than
             anything we have worked with before.”
@@ -133,14 +133,14 @@ function PullQuote() {
 
 function Closing({ setPage }) {
   return (
-    <section className="sec">
+    <section className="sec" style={{ paddingTop: 'clamp(48px,6.5vw,88px)', paddingBottom: 'clamp(48px,6.5vw,88px)' }}>
       <div className="wrap">
-        <div className="g12" style={{ rowGap: 32, alignItems: 'end' }}>
+        <div className="g12" style={{ rowGap: 24, alignItems: 'end' }}>
           <h2 className="display-m c1-7">
             Worth a<br />conversation?
           </h2>
           <div className="c9-12">
-            <p className="note" style={{ maxWidth: 300, marginBottom: 24 }}>
+            <p className="note" style={{ maxWidth: 300, marginBottom: 18 }}>
               An intro call costs nothing and usually clarifies more than a brief does.
               Every enquiry is read personally.
             </p>

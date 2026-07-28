@@ -126,6 +126,22 @@ function Opener({ label, children, className = '' }) {
   );
 }
 
+/* Dark heading strip. Breaks the paper run without competing with the spread. */
+function StripHead({ label, children }) {
+  return (
+    <div className="strip-dark">
+      <div className="wrap">
+        <div className="g12" style={{ alignItems: 'baseline', rowGap: 8 }}>
+          <div className="c1-3">
+            <p className="label rise" style={{ '--d': '40ms' }}>{label}</p>
+          </div>
+          <div className="c4-12 rise" style={{ '--d': '150ms' }}>{children}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Colophon({ setPage }) {
   return (
     <footer className="colophon">
@@ -165,13 +181,18 @@ function Colophon({ setPage }) {
             </div>
           </div>
         </div>
+        <p className="colophon-note">
+          Evara Advisory does not hold an Australian Financial Services Licence. All work is
+          commercial in nature and is not financial product advice, investment advice, or a
+          recommendation to deal in any financial product.
+        </p>
         <div className="colophon-foot">
           <span>© {new Date().getFullYear()} Evara Advisory Pty Ltd</span>
-          <span>Set in Instrument Serif &amp; Instrument Sans</span>
+          <span>Sydney, Australia</span>
         </div>
       </div>
     </footer>
   );
 }
 
-Object.assign(window, { Masthead, Colophon, Opener, ROMAN, SplitLines, useParallax, REDUCED });
+Object.assign(window, { StripHead, Masthead, Colophon, Opener, ROMAN, SplitLines, useParallax, REDUCED });

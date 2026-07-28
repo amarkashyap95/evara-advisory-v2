@@ -9,7 +9,7 @@ const DOSSIER = [
 
 function PageMast({ kicker, lines }) {
   return (
-    <section className="sec-tight" style={{ paddingTop: 'clamp(36px,5vw,72px)', paddingBottom: 'clamp(20px,3vw,36px)' }}>
+    <section className="sec-tight" style={{ paddingTop: 'clamp(36px,5vw,72px)', paddingBottom: 'clamp(30px,4vw,56px)' }}>
       <div className="wrap">
         <p className="label rise" style={{ marginBottom: 14, '--d': '60ms' }}>{kicker}</p>
         <hr className="rule-draw" />
@@ -29,7 +29,7 @@ function AboutPage({ setPage }) {
         lines={['Both sides of', 'the table.']}
       />
 
-      <section className="sec">
+      <section className="sec" style={{ paddingTop: 0, paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
         <div className="wrap">
           <div className="g12" style={{ rowGap: 40, alignItems: 'start' }}>
             <figure className="c1-4 portrait" ref={useParallax(18)}>
@@ -74,22 +74,32 @@ function AboutPage({ setPage }) {
         </div>
       </section>
 
-      <section className="sec-tight">
+      <section className="sec-tight" style={{ paddingTop: 0, paddingBottom: 'clamp(46px,6.2vw,88px)' }}>
         <div className="wrap">
           <div className="g12">
-            <blockquote className="pull c2-8" style={{ margin: 0, fontSize: 'clamp(24px,3.2vw,42px)' }}>
-              “I’ve sat on both sides of the table. The work is <i>translating fluently</i> between them.”
-            </blockquote>
+            <figure className="lift c2-10">
+              <div className="lift-body">
+                <blockquote className="lift-quote">
+                  I’ve sat on both sides of the table. The work is <i>translating fluently</i> between them.
+                </blockquote>
+                <div className="lift-foot">
+                  <hr />
+                  <span>Amar Kashyap · Founder &amp; Principal</span>
+                </div>
+              </div>
+            </figure>
           </div>
         </div>
       </section>
 
-      <section className="sec">
+      <StripHead label="Dossier">
+        <h2 className="h2">The route here.</h2>
+      </StripHead>
+
+      <section className="sec" style={{ paddingTop: 'clamp(30px,4vw,54px)', paddingBottom: 0 }}>
         <div className="wrap">
-          <Opener label="Dossier">
-            <h2 className="h2" style={{ maxWidth: '14ch', marginBottom: 'clamp(32px,4vw,56px)' }}>
-              The route here.
-            </h2>
+          <div className="g12">
+            <div className="c4-12">
             {DOSSIER.map(d => (
               <div className="dossier-row" key={d.y}>
                 <span className="label tabular" style={{ paddingTop: 5 }}>{d.y}</span>
@@ -100,7 +110,8 @@ function AboutPage({ setPage }) {
                 </div>
               </div>
             ))}
-          </Opener>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -134,14 +145,13 @@ function ServicesPage({ setPage }) {
         lines={['The work, and', <>the <i>shape</i> it takes.</>]}
       />
 
-      <section className="sec">
+      <StripHead label="Areas of work">
+        <h2 className="h2">What I am hired to do.</h2>
+      </StripHead>
+
+      <section className="sec" style={{ paddingTop: 'clamp(26px,3.4vw,48px)', paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
         <div className="wrap">
-          <Opener label="Areas of work">
-            <h2 className="h2" style={{ maxWidth: '15ch', marginBottom: 'clamp(32px,4vw,56px)' }}>
-              What I am hired to do.
-            </h2>
-          </Opener>
-          <div className="g12" style={{ marginTop: 8 }}>
+          <div className="g12">
             <div className="c1-12">
               {SERVICES.map((s, i) => (
                 <div className="index-row" key={s.t}>
@@ -155,31 +165,42 @@ function ServicesPage({ setPage }) {
         </div>
       </section>
 
-      <section className="sec sec-band">
+      <section className="band-slate">
         <div className="wrap">
-          <Opener label="Engagement shapes">
-            <h2 className="h2" style={{ maxWidth: '14ch', marginBottom: 'clamp(32px,4vw,56px)' }}>
-              Four ways in.
-            </h2>
-            <div className="cols-2">
-              {SHAPES.map(s => (
-                <div key={s.n} style={{ borderTop: '1px solid var(--ink)', paddingTop: 16 }}>
-                  <h3 className="h3" style={{ marginBottom: 10 }}>{s.n}</h3>
-                  <p className="note">{s.d}</p>
-                </div>
-              ))}
+          <div className="g12" style={{ alignItems: 'baseline', rowGap: 8, marginBottom: 'clamp(26px,3.4vw,44px)' }}>
+            <div className="c1-3">
+              <p className="label">Engagement shapes</p>
             </div>
-          </Opener>
+            <div className="c4-12">
+              <h2 className="h2">Four ways in.</h2>
+            </div>
+          </div>
+          <div className="g12">
+            <div className="c4-12">
+              <div className="cols-2">
+                {SHAPES.map(s => (
+                  <div key={s.n} style={{ borderTop: '1px solid var(--rule)', paddingTop: 16 }}>
+                    <h3 className="h3" style={{ marginBottom: 10 }}>{s.n}</h3>
+                    <p className="note">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="sec">
+      <section className="sec" style={{ paddingTop: 'clamp(34px,4.6vw,68px)', paddingBottom: 0 }}>
         <div className="wrap">
           <Opener label="A note on method">
             <p className="standfirst" style={{ maxWidth: '36ch' }}>
               AI tools sit underneath most of what I do. They take the grind out of research,
               first drafts and document work. What they do not do is decide anything, and
               nothing leaves here without me having gone through it line by line.
+            </p>
+            <p className="note" style={{ maxWidth: '56ch', marginTop: 26, color: 'var(--ink-3)', fontSize: 13 }}>
+              Engagements are commercial advisory only. No Australian Financial Services
+              Licence is held, and nothing provided is financial product advice.
             </p>
           </Opener>
         </div>
@@ -223,14 +244,13 @@ function TrackRecordPage({ setPage }) {
         lines={['Work I can', 'talk about.']}
       />
 
-      <section className="sec">
+      <StripHead label="Engagement notes">
+        <h2 className="h2">A selection.</h2>
+      </StripHead>
+
+      <section className="sec" style={{ paddingTop: 'clamp(26px,3.4vw,48px)', paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
         <div className="wrap">
-          <Opener label="Engagement notes">
-            <h2 className="h2" style={{ maxWidth: '16ch', marginBottom: 'clamp(32px,4vw,56px)' }}>
-              A selection.
-            </h2>
-          </Opener>
-          <div className="g12" style={{ marginTop: 8 }}>
+          <div className="g12">
             <div className="c1-12">
               {ENGAGEMENTS.map((e, i) => (
                 <div className="index-row" key={e.t}>
@@ -244,17 +264,29 @@ function TrackRecordPage({ setPage }) {
               ))}
             </div>
           </div>
-          <div className="g12" style={{ marginTop: 32 }}>
-            <p className="note c1-6" style={{ color: 'var(--ink-3)' }}>
-              These are examples rather than a full list. Client identities and engagement
-              documents are held in confidence. Anonymised work samples and references are
-              available under NDA.
-            </p>
+        </div>
+      </section>
+
+      <section className="band-slate">
+        <div className="wrap">
+          <div className="g12" style={{ alignItems: 'baseline', rowGap: 8 }}>
+            <div className="c1-3">
+              <p className="label">On confidentiality</p>
+            </div>
+            <div className="c4-12">
+              <p className="standfirst" style={{ maxWidth: '44ch', margin: 0 }}>
+                These are examples rather than a full list. Client identities and engagement
+                documents are held in confidence.
+              </p>
+              <p className="note" style={{ marginTop: 18, maxWidth: '48ch' }}>
+                Anonymised work samples and references are available under NDA.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <Closer setPage={setPage} title={<>Want the<br />long version?</>} note="References and anonymised work samples are available under NDA." />
+      <Closer setPage={setPage} title={<>Want the<br />long version?</>} note="Happy to walk through any of these in detail on a call." />
     </div>
   );
 }
@@ -263,12 +295,12 @@ function TrackRecordPage({ setPage }) {
 
 function Closer({ setPage, title, note, cta = 'Start a conversation' }) {
   return (
-    <section className="sec">
+    <section className="sec" style={{ paddingTop: 'clamp(48px,6.5vw,88px)', paddingBottom: 'clamp(48px,6.5vw,88px)' }}>
       <div className="wrap">
-        <div className="g12" style={{ rowGap: 32, alignItems: 'end' }}>
+        <div className="g12" style={{ rowGap: 24, alignItems: 'end' }}>
           <h2 className="display-m c1-7">{title}</h2>
           <div className="c9-12">
-            <p className="note" style={{ maxWidth: 300, marginBottom: 24 }}>{note}</p>
+            <p className="note" style={{ maxWidth: 300, marginBottom: 18 }}>{note}</p>
             <button className="cta" onClick={() => setPage('Contact')}>{cta}</button>
           </div>
         </div>

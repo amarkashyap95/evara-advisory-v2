@@ -83,6 +83,9 @@ img{max-width:100%;display:block}
 .c1-4{grid-column:1/5}
 .c1-3{grid-column:1/4}
 .c2-8{grid-column:2/9}
+.c2-9{grid-column:2/10}
+.c1-10{grid-column:1/11}
+.c2-10{grid-column:2/11}
 .c4-12{grid-column:4/13}
 .c5-12{grid-column:5/13}
 .c6-12{grid-column:6/13}
@@ -92,7 +95,7 @@ img{max-width:100%;display:block}
 .c1-12{grid-column:1/13}
 
 @media(max-width:900px){
-  .c1-7,.c1-8,.c1-6,.c1-5,.c1-4,.c1-3,.c2-8,.c4-12,.c5-12,.c6-12,.c7-12,.c9-12,.c8-13,.c1-12{grid-column:1/13}
+  .c1-7,.c1-8,.c1-6,.c1-5,.c1-4,.c1-3,.c1-10,.c2-10,.c2-8,.c2-9,.c4-12,.c5-12,.c6-12,.c7-12,.c9-12,.c8-13,.c1-12{grid-column:1/13}
 }
 
 /* ---------- Type ---------- */
@@ -121,11 +124,12 @@ img{max-width:100%;display:block}
 .h2{
   font-family:var(--serif);
   font-weight:400;
-  font-size:clamp(25px,3.6vw,48px);
-  line-height:1.08;
-  letter-spacing:-.02em;
+  font-size:clamp(20px,2.3vw,30px);
+  line-height:1.2;
+  letter-spacing:-.014em;
   margin:0;
-  text-wrap:balance;
+  text-wrap:normal;
+  max-width:none;
 }
 .h2 i{font-style:italic}
 
@@ -282,12 +286,30 @@ img{max-width:100%;display:block}
 .sec-tight{padding:clamp(48px,6vw,88px) 0}
 .sec-band{background:var(--paper-band)}
 
+/* ---------- Dark heading strip ----------
+   Thin ink band that carries a section heading. Subordinate to the reversal
+   spread: same surface, a fraction of the height. Tokens invert inside. */
+.strip-dark{
+  background:#3A4149;
+  padding:clamp(20px,2.6vw,30px) 0;
+  --ink:#F4F1EA;
+  --ink-2:#C2BFB6;
+  --ink-3:#928F87;
+  --ink-4:#6F6C65;
+  --accent:#9EA878;
+  --rule:rgba(244,241,234,.24);
+  --rule-2:rgba(244,241,234,.12);
+  color:var(--ink);
+}
+.strip-dark .h2{font-size:clamp(19px,2.1vw,27px);color:var(--ink)}
+.strip-dark .label{color:var(--ink-3)}
+
 /* ---------- The reversal spread ----------
    One dark surface on the whole site, used once. Tokens are redefined inside
    it so every child inverts correctly without a single override. */
 .sec-reverse{
   background:#12161B;
-  padding:clamp(88px,13vw,180px) 0;
+  padding:clamp(56px,7.5vw,104px) 0;
   position:relative;
   overflow:hidden;
   --ink:#F4F1EA;
@@ -379,11 +401,83 @@ img{max-width:100%;display:block}
 /* ---------- Pull quote ---------- */
 .pull{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(23px,4.4vw,52px);
-  line-height:1.14;letter-spacing:-.022em;color:var(--ink);
+  font-size:clamp(21px,3.5vw,41px);
+  line-height:1.1;letter-spacing:-.02em;color:var(--ink);
   margin:0;text-wrap:balance;text-indent:-.42em;
 }
 .pull i{font-style:italic}
+
+/* ---------- Lift-out quote ----------
+   Print lift-out: slate plane, an offset accent frame behind it like a
+   registration mis-hit, and an oversized serif quote mark cropped by the
+   panel edge sitting behind the type. */
+.lift{position:relative;margin:0}
+.lift::after{
+  content:"";position:absolute;z-index:0;
+  left:clamp(9px,1.2vw,18px);right:calc(-1 * clamp(9px,1.2vw,18px));
+  top:clamp(9px,1.2vw,18px);bottom:calc(-1 * clamp(9px,1.2vw,18px));
+  border:1px solid var(--accent);opacity:.42;
+}
+.lift-body{
+  position:relative;z-index:1;overflow:hidden;
+  background:#3A4149;
+  padding:clamp(34px,4.6vw,62px) clamp(28px,3.8vw,60px) clamp(28px,3.6vw,48px);
+  --ink:#F4F1EA;--ink-2:#C8C5BC;--ink-3:#A7AAA2;--accent:#B4BE8C;
+}
+.lift-body::before{
+  content:"\201C";
+  position:absolute;z-index:0;
+  left:clamp(12px,1.6vw,24px);top:clamp(11px,1.7vw,25px);
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(96px,12vw,168px);line-height:.8;
+  color:#B4BE8C;opacity:.2;
+  pointer-events:none;
+}
+.lift-quote{
+  position:relative;z-index:1;margin:0;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(21px,2.7vw,36px);
+  line-height:1.2;letter-spacing:-.018em;
+  color:var(--ink);text-wrap:pretty;
+}
+.lift-quote i{font-style:italic;color:#EDEAE1}
+.lift-foot{
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:14px;
+  margin-top:clamp(22px,2.8vw,34px);
+}
+.lift-foot hr{flex:0 0 clamp(26px,4vw,56px);height:1px;border:0;background:var(--accent);margin:0}
+.lift-foot span{
+  font-family:var(--sans);font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+}
+html[data-register="ink"] .lift-body{
+  background:#E7E3D9;
+  --ink:#12161B;--ink-2:#3D444C;--ink-3:#5F666E;--accent:#525839;
+}
+html[data-register="ink"] .lift-body::before{color:#525839;opacity:.2}
+html[data-register="ink"] .lift-quote i{color:#12161B}
+
+/* ---------- Slate band ----------
+   Full-bleed slate section. Heavier than the strip, lighter than the reversal
+   spread. Tokens invert so children need no overrides. */
+.band-slate{
+  background:#3A4149;
+  padding:clamp(38px,5vw,72px) 0;
+  --ink:#F4F1EA;
+  --ink-2:#C8C5BC;
+  --ink-3:#A7AAA2;
+  --ink-4:#8B8F94;
+  --accent:#B4BE8C;
+  --rule:rgba(244,241,234,.26);
+  --rule-2:rgba(244,241,234,.14);
+  color:var(--ink);
+}
+html[data-register="ink"] .band-slate{
+  background:#E7E3D9;
+  --ink:#12161B;--ink-2:#3D444C;--ink-3:#6C737C;--ink-4:#9AA0A7;--accent:#525839;
+  --rule:rgba(18,22,27,.22);--rule-2:rgba(18,22,27,.11);
+}
 
 /* ---------- Desk list ---------- */
 .desk-row{
@@ -450,7 +544,7 @@ img{max-width:100%;display:block}
 @media(prefers-reduced-motion:reduce){main{animation:none}}
 
 /* ---------- Colophon ---------- */
-.colophon{border-top:1px solid var(--ink);padding:48px 0 32px;margin-top:clamp(72px,10vw,140px)}
+.colophon{border-top:1px solid var(--ink);padding:48px 0 32px;margin-top:0}
 .colophon h4{
   font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
   color:var(--ink-3);margin:0 0 14px;
@@ -458,9 +552,13 @@ img{max-width:100%;display:block}
 .colophon ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
 .colophon li{font-size:14.5px;color:var(--ink-2)}
 .colophon li button:hover{color:var(--accent)}
+.colophon-note{
+  margin:52px 0 0;max-width:62ch;
+  font-size:12.5px;line-height:1.6;color:var(--ink-3);
+}
 .colophon-foot{
   display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  margin-top:56px;padding-top:20px;border-top:1px solid var(--rule-2);
+  margin-top:22px;padding-top:20px;border-top:1px solid var(--rule-2);
   font-size:12.5px;color:var(--ink-3);
 }
 
@@ -472,6 +570,7 @@ img{max-width:100%;display:block}
 html[data-register="bone"]{--paper:#F7F6F3;--paper-band:#EBEAE5;--ink:#0E1216;--accent:#464C31;--rule:rgba(14,18,22,.2);--rule-2:rgba(14,18,22,.11)}
 html[data-register="ink"]{--paper:#12161B;--paper-band:#171C22;--paper-2:#1B2128;--ink:#F4F1EA;--ink-2:#C2BFB6;--ink-3:#928F87;--ink-4:#6F6C65;--accent:#9EA878;--rule:rgba(244,241,234,.24);--rule-2:rgba(244,241,234,.12)}
 html[data-register="ink"] .sec-reverse{background:#F4F1EA;--ink:#12161B;--ink-2:#3D444C;--ink-3:#6C737C;--ink-4:#9AA0A7;--accent:#525839;--rule:rgba(18,22,27,.2);--rule-2:rgba(18,22,27,.1)}
+html[data-register="ink"] .strip-dark{background:#F4F1EA;--ink:#12161B;--ink-2:#3D444C;--ink-3:#6C737C;--ink-4:#9AA0A7;--accent:#525839;--rule:rgba(18,22,27,.2);--rule-2:rgba(18,22,27,.1)}
 html[data-register="ink"] .skyline{filter:invert(1)}
 html[data-register="ink"] body::after{mix-blend-mode:screen;opacity:.035}
 
