@@ -173,7 +173,7 @@ function Globe({ detail = 'dense', speed = 52, showArcs = true }) {
       const ct = Math.cos(TILT), st = Math.sin(TILT);
       const y2 = y1 * ct - z1 * st;
       const z2 = y1 * st + z1 * ct;
-      return { x: cx + x1 * R, y: cy - z2 * R, front: y2 > 0, depth: y2 };
+      return { x: cx - x1 * R, y: cy - z2 * R, front: y2 > 0, depth: y2 };
     };
 
     const stroke = (pts, alpha, lw) => {
@@ -377,8 +377,8 @@ function Globe({ detail = 'dense', speed = 52, showArcs = true }) {
         lastX = ev.clientX;
         dragMoved += Math.abs(dx);
         const k = 0.0055;
-        spin -= dx * k;
-        vel = -dx * k / Math.max(0.008, 1 / 60);
+        spin += dx * k;
+        vel = dx * k / Math.max(0.008, 1 / 60);
         return;
       }
       const r = cvs.getBoundingClientRect();
