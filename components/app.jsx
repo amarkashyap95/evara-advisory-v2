@@ -1,4 +1,4 @@
-/* App entry: routing, the transition between pages, and the tweaks panel */
+/* App entry: routing and the transition between pages */
 
 const { useState: aUseState, useEffect: aUseEffect, useRef: aUseRef } = React;
 
@@ -10,7 +10,8 @@ const PAGES = [
   { name: 'Contact' },
 ];
 
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+/* Shipped art direction. Applied once on mount; no runtime switcher. */
+const ART = /*EDITMODE-BEGIN*/{
   "register": "paper",
   "composure": "considered",
   "atmosphere": "engraved"
@@ -18,42 +19,11 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const OUT_MS = 260;
 
-function applyTweaks(t) {
+function applyArt(t) {
   const r = document.documentElement;
   r.setAttribute('data-register', t.register);
   r.setAttribute('data-composure', t.composure);
   r.setAttribute('data-atmosphere', t.atmosphere);
-}
-
-const TWEAKS = [
-  { k: 'register', label: 'Register', opts: ['paper', 'bone', 'ink'],
-    note: 'The surface the whole site is printed on. Ink flips every page dark and turns the quote spread into the light one.' },
-  { k: 'composure', label: 'Composure', opts: ['quiet', 'considered', 'assertive'],
-    note: 'How loudly the type speaks and how much air it is given. Retunes display scale and section rhythm together.' },
-  { k: 'atmosphere', label: 'Atmosphere', opts: ['bare', 'engraved', 'instrument'],
-    note: 'How present the constructed geometry is. Bare is typography alone; instrument brings the globe forward and sharpens the grid.' },
-];
-
-function TweaksPanel({ open, setOpen, tweaks, set }) {
-  return (
-    <>
-      <button className="tw-toggle" onClick={() => setOpen(!open)}>{open ? 'Close' : 'Tweaks'}</button>
-      <aside className={`tw-panel ${open ? 'open' : ''}`}>
-        <div className="tw-head">Art direction</div>
-        {TWEAKS.map(t => (
-          <div className="tw-row" key={t.k}>
-            <label>{t.label}</label>
-            <div className="tw-ctl">
-              {t.opts.map(v => (
-                <button key={v} className={tweaks[t.k] === v ? 'on' : ''} onClick={() => set(t.k, v)}>{v}</button>
-              ))}
-            </div>
-            <p className="tw-note">{t.note}</p>
-          </div>
-        ))}
-      </aside>
-    </>
-  );
 }
 
 function NotFoundPage({ setPage }) {
@@ -81,17 +51,9 @@ function App() {
   const [shown, setShown] = aUseState(page);
   const [entered, setEntered] = aUseState(false);
   const [leaving, setLeaving] = aUseState(false);
-  const [tweaks, setTweaks] = aUseState(TWEAK_DEFAULTS);
-  const [twOpen, setTwOpen] = aUseState(false);
   const first = aUseRef(true);
 
-  const set = (k, v) => {
-    const next = { ...tweaks, [k]: v };
-    setTweaks(next);
-    try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [k]: v } }, '*'); } catch {}
-  };
-
-  aUseEffect(() => { applyTweaks(tweaks); }, [tweaks]);
+  aUseEffect(() => { applyArt(ART); }, []);
 
   /* First paint: wait for webfonts so the headline masks reveal real letterforms. */
   aUseEffect(() => {
@@ -127,7 +89,7 @@ function App() {
 
   const render = () => {
     switch (shown) {
-      case 'Home':         return <HomePage setPage={setPage} tweaks={tweaks} />;
+      case 'Home':         return <HomePage setPage={setPage} art={ART} />;
       case 'About':        return <AboutPage setPage={setPage} />;
       case 'Services':     return <ServicesPage setPage={setPage} />;
       case 'Track Record': return <TrackRecordPage setPage={setPage} />;
@@ -143,7 +105,6 @@ function App() {
         {render()}
       </main>
       <Colophon setPage={setPage} />
-      <TweaksPanel open={twOpen} setOpen={setTwOpen} tweaks={tweaks} set={set} />
     </>
   );
 }

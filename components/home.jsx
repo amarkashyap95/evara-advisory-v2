@@ -15,11 +15,11 @@ const SELECTED = [
   { w: 'Investor materials and pitch deck', s: 'LegalTech · AU' },
 ];
 
-function Hero({ setPage, tweaks = {} }) {
+function Hero({ setPage, art = {} }) {
   return (
     <section className="sec" style={{ paddingTop: 'clamp(40px,6vw,84px)', paddingBottom: 'clamp(84px,12vw,190px)', overflow: 'hidden' }}>
       <div className="wrap ruled">
-        <Globe detail={tweaks.atmosphere === 'instrument' ? 'dense' : 'fine'} showArcs={tweaks.atmosphere !== 'bare'} />
+        <Globe detail={art.atmosphere === 'instrument' ? 'dense' : 'fine'} showArcs={art.atmosphere !== 'bare'} />
         <div className="colrules" aria-hidden="true">
           {Array.from({ length: 12 }, (_, i) => <span key={i}></span>)}
         </div>
@@ -152,10 +152,10 @@ function Closing({ setPage }) {
   );
 }
 
-function HomePage({ setPage, tweaks = {} }) {
+function HomePage({ setPage, art = {} }) {
   return (
     <div data-screen-label="Home">
-      <Hero setPage={setPage} tweaks={tweaks} />
+      <Hero setPage={setPage} art={art} />
       <PracticeIndex setPage={setPage} />
       <SelectedWork setPage={setPage} />
       <PullQuote />

@@ -1,37 +1,38 @@
 # Changed files only
 
-Copy each over the same path in your repo, commit, push.
+Seven files. Copy each over the same path in your repo, commit, push.
 
+    index.html
     styles/tokens.css
+    components/app.jsx
     components/globe.jsx
     components/home.jsx
     components/pages.jsx
     components/contact.jsx
 
-Nothing else changed. index.html, vercel.json, api/scope.js, the favicons,
-the social card, robots.txt, sitemap.xml and site.webmanifest are untouched
-since the last full package.
+Untouched: vercel.json, api/scope.js, the favicons, evara-social-card.png,
+robots.txt, sitemap.xml, site.webmanifest, principal-portrait.webp, skyline.svg.
 
-## What is in them
+## What changed in this batch
 
-tokens.css        Slate strip and band styles, lift-out quote panel, grid
-                  spans c1-10 / c2-10 / c2-9, globe pointer-events fix,
-                  compacted section spacing, AA-contrast disclaimer colour.
-globe.jsx         47 financial centres, drag-to-spin with inertia, hover
-                  labels with live local time, click-to-focus with a line
-                  back to Sydney. Projection un-mirrored: the camera sits on
-                  +y looking at the origin with +z up, so screen-right is the
-                  -x axis. Continents and cities now render the correct way
-                  round and the globe spins eastward like the real Earth.
-home.jsx          Tightened strip-to-list gaps, even closing block spacing.
-pages.jsx         About / Services / Track Record restyle: strip heads,
-                  slate bands, lift-out quote, equalised masthead gaps.
-contact.jsx       Masthead gap matched to the other pages.
+index.html        Dropped the italic axes from the Google Fonts request; the
+                  site no longer downloads faces it cannot use.
+tokens.css        Italics removed site-wide. New .display-1 style for the
+                  single-line page mastheads. Tweaks-panel CSS deleted.
+app.jsx           Tweaks panel removed. Art direction is now pinned in an ART
+                  constant and applied once on mount, so nothing looks
+                  different. EDITMODE markers kept.
+globe.jsx         Mirrored projection fixed: the camera looks down +y, so
+                  screen-right is the -x axis. Continents and cities were
+                  drawn back to front. Drag sign re-signed to match.
+home.jsx          Renamed the tweaks prop to art. No visual change.
+pages.jsx         Mastheads set on one line.
+contact.jsx       Masthead set on one line.
 
 ## Push
 
     git add -A
-    git commit -m "Globe orientation fix, editorial restyle, spacing pass"
+    git commit -m "Remove tweaks panel and italics, fix globe orientation, single-line mastheads"
     git push origin main
 
 Vercel deploys in about 60 seconds. No build step.
@@ -39,11 +40,8 @@ Vercel deploys in about 60 seconds. No build step.
 ## Then
 
 Hard-refresh (Cmd+Shift+R) before judging it, or you will get the old CSS
-from cache. The Scope Drafter fails on a local static server and works on
-Vercel; that is expected.
+from cache. Check the globe: Sydney should sit right of Perth, and cities
+should drift left to right as Earth spins eastward.
 
-Spot-check the globe: drag it and confirm Australia's east coast, with the
-Sydney dot, sits on the right-hand side.
-
-No social-card or favicon changes in this batch, so the LinkedIn and
-Facebook cache purges are NOT needed this time.
+No favicon or social-card changes, so the LinkedIn and Facebook cache
+purges are not needed this time.

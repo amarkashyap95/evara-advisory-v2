@@ -14,7 +14,7 @@ function PageMast({ kicker, lines }) {
         <p className="label rise" style={{ marginBottom: 14, '--d': '60ms' }}>{kicker}</p>
         <hr className="rule-draw" />
         <div className="g12" style={{ marginTop: 'clamp(24px,3vw,40px)', rowGap: 32, alignItems: 'end' }}>
-          <SplitLines tag="h1" className="display-m c1-7" base={300} lines={lines} />
+          <SplitLines tag="h1" className="display-1 c1-12" base={300} lines={lines} />
         </div>
       </div>
     </section>
@@ -26,7 +26,7 @@ function AboutPage({ setPage }) {
     <div data-screen-label="About">
       <PageMast
         kicker="About the practice"
-        lines={['Both sides of', 'the table.']}
+        lines={['Both sides of the table.']}
       />
 
       <section className="sec" style={{ paddingTop: 0, paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
@@ -142,7 +142,7 @@ function ServicesPage({ setPage }) {
     <div data-screen-label="Services">
       <PageMast
         kicker="Services"
-        lines={['The work, and', <>the <i>shape</i> it takes.</>]}
+        lines={[<>The work, and the <i>shape</i> it takes.</>]}
       />
 
       <StripHead label="Areas of work">
@@ -241,7 +241,7 @@ function TrackRecordPage({ setPage }) {
     <div data-screen-label="Track Record">
       <PageMast
         kicker="Track record"
-        lines={['Work I can', 'talk about.']}
+        lines={['Work I can talk about.']}
       />
 
       <StripHead label="Engagement notes">

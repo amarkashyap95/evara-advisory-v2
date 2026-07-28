@@ -100,8 +100,8 @@ function ContactPage() {
           <div className="wrap">
             <p className="label rise" style={{ marginBottom: 14, '--d': '60ms' }}>Received</p>
             <hr className="rule-draw" />
-            <SplitLines tag="h1" className="display-m" base={300} style={{ marginTop: 48, maxWidth: '13ch' }}
-              lines={['Brief received.', 'Back in touch shortly.']} />
+            <SplitLines tag="h1" className="display-1" base={300} style={{ marginTop: 48 }}
+              lines={['Brief received. Back in touch shortly.']} />
             <p className="note rise" style={{ marginTop: 28, maxWidth: 380, '--d': '620ms' }}>
               Every enquiry is read personally. Expect a reply within two business days.
             </p>
@@ -115,7 +115,7 @@ function ContactPage() {
     <div data-screen-label="Contact">
       <PageMast
         kicker="Contact"
-        lines={['Send a', 'brief.']}
+        lines={['Send a brief.']}
       />
 
       <section className="sec" style={{ paddingTop: 0 }}>
