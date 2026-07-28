@@ -147,6 +147,14 @@ function Globe({ detail = 'dense', speed = 52, showArcs = true }) {
     let lastX = 0;
     let holdUntil = 0;         // auto-spin paused while a centre is focused
     let overDisc = false;      // pointer is within the sphere
+    /* Scroll depth through the first viewport, 1 at the top easing to 0 as the
+       hero leaves. Read from a passive listener so the loop never measures. */
+    let depth = 1;
+    const onDepth = () => {
+      const span = Math.max(1, innerHeight * 0.85);
+      depth = Math.max(0, Math.min(1, 1 - window.scrollY / span));
+      wrap.style.setProperty('--globe-scroll', (0.34 + depth * 0.66).toFixed(3));
+    };
     const geo = { R: 1, cx: 0, cy: 0 };
     let target = null;         // eased spin target after a click
     let focus = -1;            // focused city index
@@ -236,7 +244,10 @@ function Globe({ detail = 'dense', speed = 52, showArcs = true }) {
       } else if (!reduced && now > holdUntil && hover < 0) {
         /* Slow right down while the pointer is on the sphere so a centre can be
            caught, and stop entirely once one is under the cursor. */
-        spin += (speed / 1000) * dt * (overDisc ? 0.22 : 1);
+        /* Eases with reading depth: full pace in the hero, down to a drift once
+           the section has gone by. Interaction still overrides it. */
+        const ease = 0.18 + depth * 0.82;
+        spin += (speed / 1000) * dt * (overDisc ? 0.22 : ease);
       }
       spin = ((spin % TAU) + TAU) % TAU;
 
@@ -417,6 +428,10 @@ function Globe({ detail = 'dense', speed = 52, showArcs = true }) {
     const ro = new ResizeObserver(size);
     ro.observe(wrap);
 
+    onDepth();
+    addEventListener('scroll', onDepth, { passive: true });
+    addEventListener('resize', onDepth);
+
     if (interactive) {
       wrap.classList.add('is-interactive');
       cvs.style.cursor = 'grab';
@@ -434,6 +449,8 @@ function Globe({ detail = 'dense', speed = 52, showArcs = true }) {
       cvs.removeEventListener('pointermove', onMove);
       cvs.removeEventListener('pointerup', onUp);
       cvs.removeEventListener('pointercancel', onUp);
+      removeEventListener('scroll', onDepth);
+      removeEventListener('resize', onDepth);
     };
   }, [detail, speed, showArcs]);
 

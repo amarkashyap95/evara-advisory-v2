@@ -233,12 +233,62 @@ img{max-width:100%;display:block}
 }
 .stage.is-in .rule-draw{transform:scaleX(1)}
 
+/* Scroll-ruled rows.
+   The hairline draws in as the row enters, then the content settles. Replaces
+   the static border so the list appears to be ruled up as you read down it. */
+.scroll-row{position:relative;border-top:0!important}
+.scroll-row::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:var(--rule);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .72s var(--ease-out);
+}
+.scroll-row.is-in::before{transform:scaleX(1)}
+.scroll-row > *{
+  opacity:0;transform:translateY(9px);
+  transition:opacity .68s var(--ease-out) .1s,transform .68s var(--ease-out) .1s;
+}
+.scroll-row.is-in > *{opacity:1;transform:none}
+.index-row.scroll-row:first-child::before,
+.dossier-row.scroll-row:first-child::before{background:var(--ink)}
+.scroll-row:last-child::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:var(--rule);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .72s var(--ease-out) .16s;
+}
+.scroll-row.is-in:last-child::after{transform:scaleX(1)}
+
+/* Running head.
+   Print convention: the current section name pins under the masthead while you
+   are inside that section, and swaps as you cross into the next. */
+.runhead{
+  position:sticky;top:0;z-index:55;
+  height:0;overflow:visible;pointer-events:none;
+}
+.runhead-in{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);
+  display:flex;align-items:center;height:30px;
+}
+.runhead-label{
+  font-family:var(--sans);font-size:10.5px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);
+  opacity:0;transform:translateY(-4px);
+  transition:opacity .34s var(--ease-out),transform .34s var(--ease-out);
+}
+.runhead.show .runhead-label{opacity:1;transform:none}
+@media(max-width:560px){.runhead{display:none}}
+
 /* Page exit — the outgoing surface lifts away */
 .stage{transition:opacity .26s ease,transform .26s ease}
 .stage.is-out{opacity:0;transform:translateY(-10px)}
 
 @media(prefers-reduced-motion:reduce){
   .lines .line > span,.rise,.rule-draw,.stage{transition:none!important}
+  .scroll-row::before,.scroll-row::after,.scroll-row > *,.runhead-label{transition:none!important}
+  .scroll-row::before,.scroll-row::after{transform:scaleX(1)}
+  .scroll-row > *{opacity:1;transform:none}
   .lines .line > span{transform:none}
   .rise{opacity:1;transform:none}
   .rule-draw{transform:scaleX(1)}
@@ -641,7 +691,7 @@ html[data-atmosphere="instrument"] .skyline{opacity:.34}
   mask-image:radial-gradient(closest-side,rgba(0,0,0,1) 58%,rgba(0,0,0,.45) 82%,transparent 100%);
 }
 .globe canvas{display:block}
-.stage.is-in .globe{opacity:var(--globe-op,.34)}
+.stage.is-in .globe{opacity:calc(var(--globe-op,.34) * var(--globe-scroll,1))}
 /* Interactive: accept the pointer, and lift out of the background while in use
    so the centre labels are actually readable. */
 .globe.is-interactive{pointer-events:auto}
@@ -651,10 +701,10 @@ html[data-atmosphere="instrument"] .skyline{opacity:.34}
 .wrap.ruled .over{pointer-events:none}
 .wrap.ruled .over button,.wrap.ruled .over a{pointer-events:auto}
 .globe.is-interactive canvas{touch-action:none}
-.stage.is-in .globe.is-live{opacity:min(1,calc(var(--globe-op,.34) + .36));transition:opacity 420ms var(--ease-out);transition-delay:0ms}
+.stage.is-in .globe.is-live{opacity:min(1,calc(var(--globe-op,.34) * var(--globe-scroll,1) + .36));transition:opacity 420ms var(--ease-out);transition-delay:0ms}
 @media(max-width:900px){
   .globe{right:-30%;top:62%;width:118vw;height:118vw}
-  .stage.is-in .globe{opacity:calc(var(--globe-op,.34) * .6)}
+  .stage.is-in .globe{opacity:calc(var(--globe-op,.34) * .6 * var(--globe-scroll,1))}
 }
 @media(prefers-reduced-motion:reduce){.globe{transition:none}}
 

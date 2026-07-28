@@ -111,6 +111,80 @@ function Masthead({ page, setPage, pages }) {
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
 
+/* ScrollRows — rules each child row in as it enters, 70ms apart down the list.
+   Children keep their own classes; this only adds .scroll-row and .is-in. */
+function ScrollRows({ children, sel = ':scope > *', stagger = 70, className, style }) {
+  const box = sUseRef(null);
+  sUseEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const rows = [...el.querySelectorAll(sel)];
+    rows.forEach(r => r.classList.add('scroll-row'));
+    if (REDUCED()) { rows.forEach(r => r.classList.add('is-in')); return; }
+    let batch = [], flush = null;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        batch.push(e.target);
+        clearTimeout(flush);
+        /* Group entries that land in the same frame so the stagger reads as one
+           sweep rather than each row timing from its own crossing. */
+        flush = setTimeout(() => {
+          batch.forEach((r, i) => setTimeout(() => r.classList.add('is-in'), i * stagger));
+          batch = [];
+        }, 40);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
+    rows.forEach(r => io.observe(r));
+    return () => { io.disconnect(); clearTimeout(flush); };
+  }, [sel, stagger]);
+  return <div ref={box} className={className} style={style}>{children}</div>;
+}
+
+/* RunningHead — pins the current section label under the masthead.
+   Reads the labels already present on the strip heads, so nothing is duplicated. */
+function RunningHead({ page }) {
+  const box = sUseRef(null);
+  const lab = sUseRef(null);
+  sUseEffect(() => {
+    const wrap = box.current, out = lab.current;
+    if (!wrap || !out) return;
+    const heads = [...document.querySelectorAll('.strip-dark, .band-slate, .sec-reverse')]
+      .map(el => ({ el, text: (el.querySelector('.label')?.textContent || '').trim() }))
+      .filter(h => h.text);
+    if (!heads.length) return;
+    let cur = '';
+    const onScroll = () => {
+      const y = wrap.getBoundingClientRect().bottom;
+      let found = '';
+      for (const h of heads) {
+        const r = h.el.getBoundingClientRect();
+        /* Show a label once its own strip has passed above the line, and drop it
+           when the following strip arrives. */
+        if (r.bottom <= y) found = h.text;
+        if (r.top <= y && r.bottom > y) found = '';
+      }
+      const last = heads[heads.length - 1].el.getBoundingClientRect();
+      if (last.bottom < -240) found = '';
+      if (found !== cur) {
+        cur = found;
+        out.textContent = found;
+        wrap.classList.toggle('show', !!found);
+      }
+    };
+    onScroll();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    return () => { removeEventListener('scroll', onScroll); removeEventListener('resize', onScroll); };
+  }, [page]);
+  return (
+    <div className="runhead" ref={box} aria-hidden="true">
+      <div className="runhead-in"><span className="runhead-label" ref={lab}></span></div>
+    </div>
+  );
+}
+
 /* Section opener. The label behaves like a running head, holding while you read. */
 function Opener({ label, children, className = '' }) {
   return (
@@ -195,4 +269,4 @@ function Colophon({ setPage }) {
   );
 }
 
-Object.assign(window, { StripHead, Masthead, Colophon, Opener, ROMAN, SplitLines, useParallax, REDUCED });
+Object.assign(window, { StripHead, Masthead, Colophon, Opener, ROMAN, SplitLines, useParallax, REDUCED, ScrollRows, RunningHead });

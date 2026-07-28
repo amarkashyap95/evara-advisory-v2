@@ -57,7 +57,7 @@ function PracticeIndex({ setPage }) {
       <section className="sec-tight" style={{ paddingTop: 'clamp(19px,2.4vw,35px)' }}>
       <div className="wrap">
         <div className="g12">
-          <div className="c1-12">
+          <ScrollRows className="c1-12">
             {PRACTICE.map((p, i) => (
               <div className="index-row" key={p.t}>
                 <span className="index-num">{ROMAN[i]}</span>
@@ -65,7 +65,7 @@ function PracticeIndex({ setPage }) {
                 <p className="note index-body">{p.d}</p>
               </div>
             ))}
-          </div>
+          </ScrollRows>
         </div>
 
         <div className="g12" style={{ marginTop: 36 }}>

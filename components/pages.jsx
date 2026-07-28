@@ -99,7 +99,7 @@ function AboutPage({ setPage }) {
       <section className="sec" style={{ paddingTop: 'clamp(30px,4vw,54px)', paddingBottom: 0 }}>
         <div className="wrap">
           <div className="g12">
-            <div className="c4-12">
+            <ScrollRows className="c4-12">
             {DOSSIER.map(d => (
               <div className="dossier-row" key={d.y}>
                 <span className="label tabular" style={{ paddingTop: 5 }}>{d.y}</span>
@@ -110,7 +110,7 @@ function AboutPage({ setPage }) {
                 </div>
               </div>
             ))}
-            </div>
+            </ScrollRows>
           </div>
         </div>
       </section>
@@ -194,13 +194,10 @@ function ServicesPage({ setPage }) {
         <div className="wrap">
           <Opener label="A note on method">
             <p className="standfirst" style={{ maxWidth: '36ch' }}>
-              AI tools sit underneath most of what I do. They take the grind out of research,
-              first drafts and document work. What they do not do is decide anything, and
-              nothing leaves here without me having gone through it line by line.
-            </p>
-            <p className="note" style={{ maxWidth: '56ch', marginTop: 26, color: 'var(--ink-3)', fontSize: 13 }}>
-              Engagements are commercial advisory only. No Australian Financial Services
-              Licence is held, and nothing provided is financial product advice.
+              AI handles the administrative weight: collating research, formatting documents,
+              the repetitive work that used to eat a week. The parts that matter are not
+              delegated. Structuring a model, reading what the numbers are actually saying,
+              deciding what belongs in front of a board. That is judgement, and it stays human.
             </p>
           </Opener>
         </div>
@@ -251,7 +248,7 @@ function TrackRecordPage({ setPage }) {
       <section className="sec" style={{ paddingTop: 'clamp(26px,3.4vw,48px)', paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
         <div className="wrap">
           <div className="g12">
-            <div className="c1-12">
+            <ScrollRows className="c1-12">
               {ENGAGEMENTS.map((e, i) => (
                 <div className="index-row" key={e.t}>
                   <span className="index-num">{ROMAN[i]}</span>
@@ -262,7 +259,7 @@ function TrackRecordPage({ setPage }) {
                   <p className="note index-body">{e.d}</p>
                 </div>
               ))}
-            </div>
+            </ScrollRows>
           </div>
         </div>
       </section>

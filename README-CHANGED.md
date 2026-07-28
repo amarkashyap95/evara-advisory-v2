@@ -1,47 +1,43 @@
 # Changed files only
 
-Seven files. Copy each over the same path in your repo, commit, push.
+Six files. Copy each over the same path in your repo, commit, push.
 
-    index.html
     styles/tokens.css
     components/app.jsx
+    components/shell.jsx
     components/globe.jsx
     components/home.jsx
     components/pages.jsx
-    components/contact.jsx
 
-Untouched: vercel.json, api/scope.js, the favicons, evara-social-card.png,
-robots.txt, sitemap.xml, site.webmanifest, principal-portrait.webp, skyline.svg.
+Untouched this batch: index.html, vercel.json, api/scope.js, the favicons,
+evara-social-card.png, robots.txt, sitemap.xml, site.webmanifest,
+principal-portrait.webp, skyline.svg.
 
-## What changed in this batch
+## What changed
 
-index.html        Dropped the italic axes from the Google Fonts request; the
-                  site no longer downloads faces it cannot use.
-tokens.css        Italics removed site-wide. New .display-1 style for the
-                  single-line page mastheads. Tweaks-panel CSS deleted.
-app.jsx           Tweaks panel removed. Art direction is now pinned in an ART
-                  constant and applied once on mount, so nothing looks
-                  different. EDITMODE markers kept.
-globe.jsx         Mirrored projection fixed: the camera looks down +y, so
-                  screen-right is the -x axis. Continents and cities were
-                  drawn back to front. Drag sign re-signed to match.
-home.jsx          Renamed the tweaks prop to art. No visual change.
-pages.jsx         Mastheads set on one line.
-contact.jsx       Masthead set on one line.
+tokens.css     Scroll-reveal styles for ruled rows, sticky running-head
+               styles, globe opacity now multiplied by scroll depth.
+app.jsx        Mounts the running head.
+shell.jsx      New ScrollRows and RunningHead components.
+globe.jsx      Rotation and opacity ease with reading depth, read from a
+               passive listener so the render loop never measures layout.
+home.jsx       Practice index rows reveal on scroll.
+pages.jsx      Engagement notes and About dossier reveal on scroll.
+               Services method note rewritten (AI scoped to admin work).
+               Duplicate AFSL disclaimer removed; it remains in the colophon.
 
 ## Push
 
     git add -A
-    git commit -m "Remove tweaks panel and italics, fix globe orientation, single-line mastheads"
+    git commit -m "Scroll reveals, running heads, globe scroll depth, copy edits"
     git push origin main
 
 Vercel deploys in about 60 seconds. No build step.
 
 ## Then
 
-Hard-refresh (Cmd+Shift+R) before judging it, or you will get the old CSS
-from cache. Check the globe: Sydney should sit right of Perth, and cities
-should drift left to right as Earth spins eastward.
+Hard-refresh (Cmd+Shift+R) or you will get cached CSS. Scroll the home page:
+section labels should pin under the masthead, list hairlines should draw in as
+you reach them, and the globe should ease as the hero leaves.
 
-No favicon or social-card changes, so the LinkedIn and Facebook cache
-purges are not needed this time.
+No favicon or social-card changes, so no LinkedIn or Facebook cache purge.

@@ -101,6 +101,7 @@ function App() {
   return (
     <>
       <Masthead page={page} setPage={setPage} pages={PAGES} />
+      <RunningHead page={shown} />
       <main className={`stage ${entered ? 'is-in' : ''} ${leaving ? 'is-out' : ''}`}>
         {render()}
       </main>
