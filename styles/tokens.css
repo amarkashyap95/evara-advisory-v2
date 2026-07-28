@@ -639,6 +639,16 @@ html[data-atmosphere="instrument"] .skyline{opacity:.34}
 }
 .globe canvas{display:block}
 .stage.is-in .globe{opacity:var(--globe-op,.34)}
+/* Interactive: accept the pointer, and lift out of the background while in use
+   so the centre labels are actually readable. */
+.globe.is-interactive{pointer-events:auto}
+/* The hero's layout containers span the full column and would otherwise swallow
+   every pointer event before it reaches the globe behind them. Let them pass
+   through; the controls inside opt back in. */
+.wrap.ruled .over{pointer-events:none}
+.wrap.ruled .over button,.wrap.ruled .over a{pointer-events:auto}
+.globe.is-interactive canvas{touch-action:none}
+.stage.is-in .globe.is-live{opacity:min(1,calc(var(--globe-op,.34) + .36));transition:opacity 420ms var(--ease-out);transition-delay:0ms}
 @media(max-width:900px){
   .globe{right:-30%;top:62%;width:118vw;height:118vw}
   .stage.is-in .globe{opacity:calc(var(--globe-op,.34) * .6)}
