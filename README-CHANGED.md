@@ -1,43 +1,50 @@
-# Changed files only
+# Deploy — Services rewrite + About page close
 
-Six files. Copy each over the same path in your repo, commit, push.
+Two files changed. Nothing else in the repo is touched: no new dependencies,
+no build step, no config changes.
 
-    styles/tokens.css
-    components/app.jsx
-    components/shell.jsx
-    components/globe.jsx
-    components/home.jsx
-    components/pages.jsx
+```
+components/pages.jsx
+styles/tokens.css
+```
 
-Untouched this batch: index.html, vercel.json, api/scope.js, the favicons,
-evara-social-card.png, robots.txt, sitemap.xml, site.webmanifest,
-principal-portrait.webp, skyline.svg.
+Copy both over the versions in your repo, keeping the same paths, and push to
+`main`. Vercel redeploys in ~60s.
+
+---
 
 ## What changed
 
-tokens.css     Scroll-reveal styles for ruled rows, sticky running-head
-               styles, globe opacity now multiplied by scroll depth.
-app.jsx        Mounts the running head.
-shell.jsx      New ScrollRows and RunningHead components.
-globe.jsx      Rotation and opacity ease with reading depth, read from a
-               passive listener so the render loop never measures layout.
-home.jsx       Practice index rows reveal on scroll.
-pages.jsx      Engagement notes and About dossier reveal on scroll.
-               Services method note rewritten (AI scoped to admin work).
-               Duplicate AFSL disclaimer removed; it remains in the colophon.
+**components/pages.jsx**
 
-## Push
+- Services page rewritten around five practice areas: Commercial strategy,
+  Unit economics, Operating models, Investor readiness, Commercial due
+  diligence. Each carries a kicker line and four named workstreams.
+- New full-width intro paragraph under the Services title.
+- New "Both ends of the same table" block splitting operators from investors
+  and boards.
+- Removed: the old five-service list, the "A note on method" AI section, the
+  fund-structuring adjacent line.
+- Removed the closing call-to-action from About, Services and Track Record.
+  The `Closer` component is still defined and exported, just unused.
+- About page now ends on a full-bleed navy band.
 
-    git add -A
-    git commit -m "Scroll reveals, running heads, globe scroll depth, copy edits"
-    git push origin main
+**styles/tokens.css**
 
-Vercel deploys in about 60 seconds. No build step.
+- `.svc-list` — the workstream lists under each Services practice area.
+- `.strip-rule` — the navy band closing the About page. Height derived from
+  the same clamps as `.strip-dark` so the two always match.
+- `main:has(.strip-rule--foot) + .colophon` — suppresses the footer hairline
+  on pages that end with the band.
+- `.no-tail-rule` — removes the closing rule under the About dossier list.
+- `.lines .line` bottom padding raised from `.1em` to `.24em`. This fixes
+  descenders being clipped in masked headlines, which the word "capital" in
+  the new Services title exposed. Affects every page, spacing unchanged.
 
-## Then
+## Verify after deploy
 
-Hard-refresh (Cmd+Shift+R) or you will get cached CSS. Scroll the home page:
-section labels should pin under the masthead, list hairlines should draw in as
-you reach them, and the globe should ease as the hero leaves.
-
-No favicon or social-card changes, so no LinkedIn or Facebook cache purge.
+1. Services page loads and shows five practice areas
+2. Services title "and the capital behind them." — the "p" descender is not clipped
+3. About page ends with the navy band, no hairline above the footer
+4. No closing call-to-action on About, Services or Track Record
+5. Home and Contact unchanged, Scope Drafter still works
