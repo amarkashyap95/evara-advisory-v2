@@ -1,11 +1,11 @@
 /* Home */
 
 const PRACTICE = [
-  { t: 'Investor readiness', d: 'Narrative, model, deck and data room, assembled to the standard an institutional investor expects before they will spend real diligence time on you.' },
-  { t: 'Financial modelling', d: 'Operating models, three-statement builds, cap tables and dilution. Constructed to reconcile to the accounts and survive a hostile question.' },
-  { t: 'Transaction support', d: 'Capital raises, secondaries and selective M&A. Senior cover from first conversation through term sheet to close.' },
-  { t: 'Fund structuring', d: 'For emerging managers, family offices and corporate venture programmes: vehicle design, economics, LP materials and IC process.' },
-  { t: 'Strategic advisory', d: 'Standing counsel to a small number of founders, chief executives and allocators on the decisions that move capital.' },
+  { t: 'Commercial strategy', d: 'Pricing, packaging and mix. The decisions that determine whether a good product becomes a good business.' },
+  { t: 'Unit economics', d: 'What one customer, one site, one cohort actually earns, and what it costs to get.' },
+  { t: 'Operating models', d: 'The internal model the business is steered on. Driver-based, reconciling to the accounts, updated monthly.' },
+  { t: 'Investor readiness', d: 'Narrative, model, deck and data room, built to the standard an institutional investor expects.' },
+  { t: 'Commercial due diligence', d: 'For anyone about to buy, back or merge with a business: the target’s numbers taken apart properly.' },
 ];
 
 const SELECTED = [
