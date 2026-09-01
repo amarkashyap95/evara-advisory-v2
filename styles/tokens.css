@@ -207,7 +207,7 @@ img{max-width:100%;display:block}
    ============================================================ */
 
 /* Line-masked headline reveal */
-.lines .line{display:block;overflow:hidden;padding:.06em .12em .1em 0;margin:-.06em 0 -.1em -.02em}
+.lines .line{display:block;overflow:hidden;padding:.06em .12em .24em 0;margin:-.06em 0 -.24em -.02em}
 .lines .line > span{
   display:block;transform:translateY(112%);
   transition:transform 1s var(--ease-out);
@@ -371,6 +371,11 @@ img{max-width:100%;display:block}
 .strip-dark .h2{font-size:clamp(19px,2.1vw,27px);color:var(--ink)}
 .strip-dark .label{color:var(--ink-3)}
 
+/* Bare strip: the same ink band with no heading, closing a section. */
+.strip-rule{background:#3A4149;height:calc(clamp(20px,2.6vw,30px) * 2 + clamp(19px,2.1vw,27px) * 1.15)}
+/* When it closes a page, it replaces the colophon's own hairline. */
+main:has(.strip-rule--foot) + .colophon{border-top:0}
+
 /* ---------- The reversal spread ----------
    One dark surface on the whole site, used once. Tokens are redefined inside
    it so every child inverts correctly without a single override. */
@@ -428,6 +433,9 @@ img{max-width:100%;display:block}
 .cta-line:hover{color:var(--accent)}
 .cta-line:hover::before{transform:scaleX(0)}
 .cta-line:hover::after{transform:scaleX(1)}
+
+.no-tail-rule .scroll-row:last-child::after{display:none}
+.no-tail-rule .dossier-row:last-child,.no-tail-rule .index-row:last-child{border-bottom:0}
 
 /* ---------- Index (table of contents) ---------- */
 .index-row{
@@ -638,6 +646,7 @@ html[data-register="bone"]{--paper:#F7F6F3;--paper-band:#EBEAE5;--ink:#0E1216;--
 html[data-register="ink"]{--paper:#12161B;--paper-band:#171C22;--paper-2:#1B2128;--ink:#F4F1EA;--ink-2:#C2BFB6;--ink-3:#928F87;--ink-4:#6F6C65;--accent:#9EA878;--rule:rgba(244,241,234,.24);--rule-2:rgba(244,241,234,.12)}
 html[data-register="ink"] .sec-reverse{background:#F4F1EA;--ink:#12161B;--ink-2:#3D444C;--ink-3:#6C737C;--ink-4:#9AA0A7;--accent:#525839;--rule:rgba(18,22,27,.2);--rule-2:rgba(18,22,27,.1)}
 html[data-register="ink"] .strip-dark{background:#F4F1EA;--ink:#12161B;--ink-2:#3D444C;--ink-3:#6C737C;--ink-4:#9AA0A7;--accent:#525839;--rule:rgba(18,22,27,.2);--rule-2:rgba(18,22,27,.1)}
+html[data-register="ink"] .strip-rule{background:#F4F1EA}
 html[data-register="ink"] .skyline{filter:invert(1)}
 html[data-register="ink"] body::after{mix-blend-mode:screen;opacity:.035}
 
@@ -659,6 +668,12 @@ html[data-atmosphere="instrument"] .skyline{opacity:.34}
 @media(max-width:860px){.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.cols-2,.cols-3{grid-template-columns:1fr}}
 .mono-off{font-variant-numeric:tabular-nums}
+
+/* ---------- Services: workstreams under each practice area ---------- */
+.svc-list{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 28px}
+.svc-list li{position:relative;padding-left:15px;font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--ink-3);text-wrap:pretty}
+.svc-list li::before{content:"";position:absolute;left:0;top:.66em;width:8px;height:1px;background:var(--accent)}
+@media(max-width:640px){.svc-list{grid-template-columns:1fr}}
 
 /* ---------- Portrait ---------- */
 .portrait{margin:0}

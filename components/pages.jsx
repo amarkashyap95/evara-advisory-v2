@@ -96,10 +96,10 @@ function AboutPage({ setPage }) {
         <h2 className="h2">The route here.</h2>
       </StripHead>
 
-      <section className="sec" style={{ paddingTop: 'clamp(30px,4vw,54px)', paddingBottom: 0 }}>
+      <section className="sec" style={{ paddingTop: 'clamp(30px,4vw,54px)', paddingBottom: 'clamp(16px,2vw,24px)' }}>
         <div className="wrap">
           <div className="g12">
-            <ScrollRows className="c4-12">
+            <ScrollRows className="c4-12 no-tail-rule">
             {DOSSIER.map(d => (
               <div className="dossier-row" key={d.y}>
                 <span className="label tabular" style={{ paddingTop: 5 }}>{d.y}</span>
@@ -115,7 +115,7 @@ function AboutPage({ setPage }) {
         </div>
       </section>
 
-      <Closer setPage={setPage} title={<>Worth a<br />conversation?</>} note="An intro call costs nothing and usually clarifies more than a brief does." />
+      <div className="strip-rule strip-rule--foot"></div>
     </div>
   );
 }
@@ -123,17 +123,53 @@ function AboutPage({ setPage }) {
 /* ============================================================ */
 
 const SERVICES = [
-  { t: 'Investor readiness', d: 'Narrative, model, deck and data room, assembled to the standard an institutional investor expects before they will spend real diligence time on you.' },
-  { t: 'Financial modelling', d: 'Operating models, three-statement builds, cap tables and dilution. Constructed to reconcile to the accounts and survive a hostile question.' },
-  { t: 'Transaction support', d: 'Capital raises, secondaries and selective M&A. Senior cover from first conversation through term sheet to close, including the awkward parts.' },
-  { t: 'Fund structuring', d: 'For emerging managers, family offices and corporate venture programmes: vehicle design, economics, LP materials and IC process.' },
-  { t: 'Strategic advisory', d: 'Standing counsel to a small number of founders, chief executives and allocators on the decisions that move capital.' },
+  {
+    t: 'Commercial strategy',
+    k: 'Where the margin comes from',
+    d: 'Pricing, packaging and mix. The decisions that determine whether a good product becomes a good business, answered with the numbers underneath them.',
+    w: ['Pricing and packaging', 'Segment, channel and mix', 'Go-to-market economics', 'Board and ExCo strategy papers'],
+  },
+  {
+    t: 'Unit economics',
+    k: 'The engine, isolated',
+    d: 'What one customer, one site, one cohort actually earns and what it costs to get. Contribution margin traced back to its drivers, so a growth plan can be argued about on evidence.',
+    w: ['Contribution margin by segment', 'Acquisition cost and payback', 'Cohort, retention and expansion', 'Capacity and cost-to-serve'],
+  },
+  {
+    t: 'Operating models',
+    k: 'Built to be run weekly',
+    d: 'The internal model the business is actually steered on: driver-based, reconciling to the accounts, updated monthly without a rebuild. Three-statement where the situation calls for it.',
+    w: ['Driver-based operating models', 'Three-statement builds', 'Scenario and sensitivity analysis', 'Budget, forecast and variance'],
+  },
+  {
+    t: 'Investor readiness',
+    k: 'Legible from the other side',
+    d: 'Narrative, model, deck and data room assembled to the standard an institutional investor expects before they will spend real diligence time on you. Written by someone who has run that diligence.',
+    w: ['Equity story and investor narrative', 'Deck, model and data room', 'Diligence preparation and Q&A', 'Cap table, dilution and term sheets'],
+  },
+  {
+    t: 'Commercial due diligence',
+    k: 'The same rigour, pointed outward',
+    d: 'For anyone about to buy, back or merge with a business: the target’s numbers taken apart properly. Where the earnings actually come from, which of them survive the transaction, and what the plan assumes that the market will not give it.',
+    w: ['Revenue and margin quality', 'Market, demand and competitive position', 'Management case, tested', 'Post-deal value creation plan'],
+  },
+];
+
+const AUDIENCES = [
+  {
+    n: 'For operators',
+    d: 'Founders and chief executives who need the commercial engine understood and the plan defensible, and who would rather hear how an investor will read it before an investor does.',
+  },
+  {
+    n: 'For investors and boards',
+    d: 'Allocators, funds and family offices who need a target’s numbers taken apart properly, or a portfolio company’s operating model rebuilt into something the board can actually govern with.',
+  },
 ];
 
 const SHAPES = [
-  { n: 'Project', d: 'Defined deliverable, fixed scope. Four to eight weeks.' },
-  { n: 'Retainer', d: 'Ongoing capacity at a monthly cadence, reviewed quarterly.' },
-  { n: 'Second opinion', d: 'A short, sharp read on a single model, memo or decision.' },
+  { n: 'Project', d: 'Defined deliverable, fixed scope. A pricing review, a model build, a raise prepared. Four to eight weeks.' },
+  { n: 'Retainer', d: 'Ongoing commercial capacity at a monthly cadence. The model kept live, the decisions worked through as they arrive.' },
+  { n: 'Second opinion', d: 'A short, sharp read on a single model, price change, memo or investment decision.' },
   { n: 'Advisory board', d: 'A named seat on a company or fund advisory board.' },
 ];
 
@@ -142,24 +178,64 @@ function ServicesPage({ setPage }) {
     <div data-screen-label="Services">
       <PageMast
         kicker="Services"
-        lines={[<>The work, and the <i>shape</i> it takes.</>]}
+        lines={[<>Commercial decisions,</>, <>and the <i>capital</i> behind them.</>]}
       />
 
-      <StripHead label="Areas of work">
+      <section className="sec" style={{ paddingTop: 0, paddingBottom: 'clamp(26px,3.4vw,48px)' }}>
+        <div className="wrap">
+          <hr className="rule" />
+          <p className="standfirst" style={{ marginTop: 'clamp(20px,2.6vw,32px)', maxWidth: 'none' }}>
+            Commercial consulting, done by someone who has spent years in direct investment as
+            well. The unit economics that decide how a business should be priced are the same ones
+            an investment committee interrogates before it writes a cheque.
+          </p>
+        </div>
+      </section>
+
+      <StripHead label="Practice areas">
         <h2 className="h2">What I am hired to do.</h2>
       </StripHead>
 
       <section className="sec" style={{ paddingTop: 'clamp(26px,3.4vw,48px)', paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
         <div className="wrap">
           <div className="g12">
-            <div className="c1-12">
+            <ScrollRows className="c1-12">
               {SERVICES.map((s, i) => (
                 <div className="index-row" key={s.t}>
                   <span className="index-num">{ROMAN[i]}</span>
-                  <h3 className="h3">{s.t}</h3>
-                  <p className="note index-body">{s.d}</p>
+                  <div>
+                    <h3 className="h3">{s.t}</h3>
+                    <p className="label label-accent" style={{ marginTop: 10 }}>{s.k}</p>
+                  </div>
+                  <div className="index-body">
+                    <p className="note">{s.d}</p>
+                    <ul className="svc-list">
+                      {s.w.map(w => <li key={w}>{w}</li>)}
+                    </ul>
+                  </div>
                 </div>
               ))}
+            </ScrollRows>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec" style={{ paddingTop: 0, paddingBottom: 'clamp(40px,5.4vw,76px)' }}>
+        <div className="wrap">
+          <div className="g12" style={{ alignItems: 'baseline', rowGap: 8, marginBottom: 'clamp(22px,3vw,38px)' }}>
+            <div className="c1-3"><p className="label">Who it is for</p></div>
+            <div className="c4-12"><h2 className="h2">Both ends of the same table.</h2></div>
+          </div>
+          <div className="g12">
+            <div className="c4-12">
+              <div className="cols-2">
+                {AUDIENCES.map(a => (
+                  <div key={a.n} style={{ borderTop: '1px solid var(--rule)', paddingTop: 16 }}>
+                    <h3 className="h3" style={{ marginBottom: 10 }}>{a.n}</h3>
+                    <p className="note">{a.d}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -189,21 +265,6 @@ function ServicesPage({ setPage }) {
           </div>
         </div>
       </section>
-
-      <section className="sec" style={{ paddingTop: 'clamp(34px,4.6vw,68px)', paddingBottom: 0 }}>
-        <div className="wrap">
-          <Opener label="A note on method">
-            <p className="standfirst" style={{ maxWidth: '36ch' }}>
-              AI handles the administrative weight: collating research, formatting documents,
-              the repetitive work that used to eat a week. The parts that matter are not
-              delegated. Structuring a model, reading what the numbers are actually saying,
-              deciding what belongs in front of a board. That is judgement, and it stays human.
-            </p>
-          </Opener>
-        </div>
-      </section>
-
-      <Closer setPage={setPage} title={<>Something<br /><i>specific</i> in mind?</>} note="Describe the situation and I will come back with an indicative scope." cta="Send a brief" />
     </div>
   );
 }
@@ -282,8 +343,6 @@ function TrackRecordPage({ setPage }) {
           </div>
         </div>
       </section>
-
-      <Closer setPage={setPage} title={<>Want the<br />long version?</>} note="Happy to walk through any of these in detail on a call." />
     </div>
   );
 }
