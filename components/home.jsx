@@ -83,7 +83,6 @@ function PracticeIndex({ setPage }) {
 function SelectedWork({ setPage }) {
   return (
     <>
-      <div style={{ height: 'clamp(20px,3vw,44px)' }}></div>
       <StripHead label="Selected engagements" more="Engagement notes" onMore={() => setPage('Track Record')}>
         <h2 className="h2">Client names are held in confidence.</h2>
       </StripHead>
@@ -124,27 +123,6 @@ function PullQuote() {
                 <span style={{ color: 'var(--ink-4)' }}>Australian franchise group</span>
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Closing({ setPage }) {
-  return (
-    <section className="sec" style={{ paddingTop: 'clamp(48px,6.5vw,88px)', paddingBottom: 'clamp(24px,3vw,44px)' }}>
-      <div className="wrap">
-        <div className="g12" style={{ rowGap: 24, alignItems: 'end' }}>
-          <h2 className="display-m c1-7">
-            Worth a<br />conversation?
-          </h2>
-          <div className="c9-12">
-            <p className="note" style={{ maxWidth: 300, marginBottom: 18 }}>
-              An intro call costs nothing and usually clarifies more than a brief does.
-              Every enquiry is read personally.
-            </p>
-            <button className="cta" onClick={() => setPage('Contact')}><Swap>Send a brief</Swap></button>
           </div>
         </div>
       </div>

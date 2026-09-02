@@ -392,20 +392,4 @@ function TrackRecordPage({ setPage }) {
 
 /* ============================================================ */
 
-function Closer({ setPage, title, note, cta = 'Start a conversation' }) {
-  return (
-    <section className="sec" style={{ paddingTop: 'clamp(48px,6.5vw,88px)', paddingBottom: 'clamp(48px,6.5vw,88px)' }}>
-      <div className="wrap">
-        <div className="g12" style={{ rowGap: 24, alignItems: 'end' }}>
-          <h2 className="display-m c1-7">{title}</h2>
-          <div className="c9-12">
-            <p className="note" style={{ maxWidth: 300, marginBottom: 18 }}>{note}</p>
-            <button className="cta" onClick={() => setPage('Contact')}><Swap>{cta}</Swap></button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-Object.assign(window, { AboutPage, ServicesPage, TrackRecordPage, PageMast, Closer });
+Object.assign(window, { AboutPage, ServicesPage, TrackRecordPage, PageMast });

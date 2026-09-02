@@ -4,19 +4,7 @@ const { useEffect: sUseEffect, useState: sUseState, useRef: sUseRef, useLayoutEf
 
 const REDUCED = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Line-drawn mark — the frame and bars draw themselves once, then hold. */
-function MarkDraw({ className = '' }) {
-  return (
-    <div className={`markdraw ${className}`} role="img" aria-label="Evara Advisory mark">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <rect className="md-frame" x="1.4" y="1.4" width="97.2" height="97.2" pathLength="100"></rect>
-        <line className="md-bar md-b1" x1="25.1" y1="31" x2="75.1" y2="31" pathLength="100"></line>
-        <line className="md-bar md-b2" x1="25.1" y1="49.8" x2="62.5" y2="49.8" pathLength="100"></line>
-        <line className="md-bar md-b3" x1="25.1" y1="68.2" x2="68.8" y2="68.2" pathLength="100"></line>
-      </svg>
-    </div>
-  );
-}
+/* Line-drawn mark placeholder removed; the framed Mark below is the one in use. */
 
 /* Evara mark — framed square with the three-bar E. Inline so it inherits
    currentColor and lands exactly on the hairline grid at any size. */
@@ -153,7 +141,7 @@ function Masthead({ page, setPage, pages }) {
               {p.name}
             </button>
           ))}
-          <button className={`cta-line cta-sm ${page === 'Contact' ? 'on' : ''}`} onClick={() => setPage('Contact')}><Swap>Contact</Swap></button>
+          <button className={`nav-cta ${page === 'Contact' ? 'on' : ''}`} onClick={() => setPage('Contact')}>Contact</button>
         </nav>
       </div>
       <span className="mast-bar" aria-hidden="true"></span>
@@ -205,7 +193,7 @@ function ScrollRows({ children, sel = ':scope > *', stagger = 70, className, sty
   return <div ref={box} className={className} style={style}>{children}</div>;
 }
 
-/* Retained for compatibility; the redesign drops the pinned running head. */
+/* Retained for compatibility with older markup. */
 function RunningHead() { return null; }
 
 /* AutoReveal — everything below the fold loads in as you scroll, sitewide.
@@ -368,4 +356,4 @@ function Colophon({ setPage }) {
   );
 }
 
-Object.assign(window, { Logo, Mark, MarkDraw, Field, Swap, Clock, StripHead, Masthead, Colophon, Opener, ROMAN, SplitLines, useParallax, REDUCED, ScrollRows, RunningHead, AutoReveal });
+Object.assign(window, { Logo, Mark, Field, Swap, Clock, StripHead, Masthead, Colophon, Opener, ROMAN, SplitLines, useParallax, REDUCED, ScrollRows, RunningHead, AutoReveal });
