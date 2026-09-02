@@ -15,32 +15,26 @@ const SELECTED = [
   { w: 'Investor materials and pitch deck', s: 'LegalTech · AU' },
 ];
 
-function Hero({ setPage, art = {} }) {
+function Hero({ setPage }) {
   return (
-    <section className="sec" style={{ paddingTop: 'clamp(40px,6vw,84px)', paddingBottom: 'clamp(84px,12vw,190px)', overflow: 'hidden' }}>
-      <div className="wrap ruled">
-        <Globe detail={art.atmosphere === 'instrument' ? 'dense' : 'fine'} showArcs={art.atmosphere !== 'bare'} />
-        <div className="colrules" aria-hidden="true">
-          {Array.from({ length: 12 }, (_, i) => <span key={i}></span>)}
-        </div>
-        <p className="label rise over" style={{ marginBottom: 14, '--d': '60ms' }}>
+    <section className="sec" style={{ paddingTop: 'clamp(44px,6.5vw,100px)', paddingBottom: 'clamp(56px,8vw,130px)' }}>
+      <div className="wrap">
+        <p className="label rise" style={{ marginBottom: 14, '--d': '60ms' }}>
           Independent commercial advisory &nbsp;·&nbsp; Sydney &nbsp;·&nbsp; Est. 2026
         </p>
-        <hr className="rule-draw over" />
-
-        <div className="g12 over" style={{ marginTop: 'clamp(40px,6vw,80px)', alignItems: 'end', rowGap: 40 }}>
-          <SplitLines tag="h1" className="display c1-8" base={300}
+        <hr className="rule-draw" />
+        <div className="g12" style={{ marginTop: 'clamp(36px,5vw,72px)', rowGap: 32, alignItems: 'center' }}>
+          <SplitLines tag="h1" className="display c1-9" base={280}
             lines={['Commercial clarity,', 'custom-built.']} />
         </div>
-
-        <div className="g12 over" style={{ marginTop: 'clamp(17px,3vw,33px)', rowGap: 28 }}>
-          <p className="standfirst c1-6 rise" style={{ '--d': '760ms' }}>
+        <div className="g12" style={{ marginTop: 'clamp(28px,4vw,56px)', rowGap: 28, alignItems: 'end' }}>
+          <p className="standfirst c1-7 rise" style={{ '--d': '700ms' }}>
             Clarity on the decisions that move capital, for founders raising,
             operators scaling, and allocators deploying.
           </p>
-          <div className="c1-6 rise" style={{ '--d': '860ms', display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center', marginTop: 8 }}>
-            <button className="cta" onClick={() => setPage('Contact')}>Start a conversation</button>
-            <button className="cta-line" onClick={() => setPage('Services')}>See the practice areas</button>
+          <div className="c9-12 rise" style={{ '--d': '820ms', display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
+            <button className="cta" onClick={() => setPage('Contact')}><Swap>Start a conversation</Swap></button>
+            <button className="cta-line" onClick={() => setPage('Services')}><Swap>See the practice areas</Swap></button>
           </div>
         </div>
       </div>
@@ -48,32 +42,39 @@ function Hero({ setPage, art = {} }) {
   );
 }
 
+/* Static rail of the practice areas. Hairline-divided, no motion. */
+function Rail() {
+  return (
+    <div className="wrap">
+      <div className="rail">
+        {PRACTICE.map((p, i) => (
+          <span key={p.t}><span className="rail-num">{ROMAN[i]}</span>{p.t}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function PracticeIndex({ setPage }) {
   return (
     <>
-      <StripHead label="Practice areas">
-        <h2 className="h2">Five lines of work, <i>one operator</i> behind each.</h2>
+      <StripHead label="Practice areas" more="See all" onMore={() => setPage('Services')}>
+        <h2 className="h2">Five lines of work, one operator behind each.</h2>
       </StripHead>
       <section className="sec-tight" style={{ paddingTop: 'clamp(19px,2.4vw,35px)' }}>
-      <div className="wrap">
-        <div className="g12">
-          <ScrollRows className="c1-12">
-            {PRACTICE.map((p, i) => (
-              <div className="index-row" key={p.t}>
-                <span className="index-num">{ROMAN[i]}</span>
-                <h3 className="h3">{p.t}</h3>
-                <p className="note index-body">{p.d}</p>
-              </div>
-            ))}
-          </ScrollRows>
-        </div>
-
-        <div className="g12" style={{ marginTop: 36 }}>
-          <div className="c1-12">
-            <button className="cta-line" onClick={() => setPage('Services')}>How engagements are structured</button>
+        <div className="wrap">
+          <div className="g12">
+            <ScrollRows className="c1-12">
+              {PRACTICE.map((p, i) => (
+                <div className="index-row" key={p.t}>
+                  <span className="index-num">{ROMAN[i]}</span>
+                  <h3 className="h3">{p.t}</h3>
+                  <p className="note index-body">{p.d}</p>
+                </div>
+              ))}
+            </ScrollRows>
           </div>
         </div>
-      </div>
       </section>
     </>
   );
@@ -82,25 +83,23 @@ function PracticeIndex({ setPage }) {
 function SelectedWork({ setPage }) {
   return (
     <>
-      <StripHead label="Selected engagements">
-        <h2 className="h2">Client names are <i>held in confidence.</i></h2>
+      <div style={{ height: 'clamp(20px,3vw,44px)' }}></div>
+      <StripHead label="Selected engagements" more="Engagement notes" onMore={() => setPage('Track Record')}>
+        <h2 className="h2">Client names are held in confidence.</h2>
       </StripHead>
-      <section className="sec-tight" style={{ paddingTop: 'clamp(19px,2.4vw,35px)' }}>
-      <div className="wrap">
-        <div className="g12" style={{ rowGap: 32, alignItems: 'start' }}>
-          <div className="c1-12">
+      <section className="sec-tight" style={{ paddingTop: 'clamp(30px,3.8vw,54px)' }}>
+        <div className="wrap">
+          <ScrollRows>
             {SELECTED.map(d => (
-              <div className="desk-row" key={d.w}>
-                <span style={{ fontSize: 17, color: 'var(--ink)' }}>{d.w}</span>
-                <span className="label" style={{ letterSpacing: '.1em' }}>{d.s}</span>
-              </div>
+              <button className="work-row" key={d.w} onClick={() => setPage('Track Record')}>
+                <span className="work-title">{d.w}</span>
+                <span className="label" style={{ letterSpacing: '.1em', flex: 'none', display: 'inline-flex', alignItems: 'center', gap: 14 }}>
+                  {d.s}<span className="work-arrow" aria-hidden="true">→</span>
+                </span>
+              </button>
             ))}
-            <button className="cta-line" style={{ marginTop: 26 }} onClick={() => setPage('Track Record')}>
-              Read the engagement notes
-            </button>
-          </div>
+          </ScrollRows>
         </div>
-      </div>
       </section>
     </>
   );
@@ -108,22 +107,23 @@ function SelectedWork({ setPage }) {
 
 function PullQuote() {
   return (
-    <section className="sec-reverse">
-      <img className="skyline" src="skyline.svg" alt="" aria-hidden="true" loading="lazy" />
-      <div className="wrap">
-        <div className="g12" style={{ rowGap: 28 }}>
-          <p className="label c1-12" style={{ marginBottom: 'clamp(18px,2.4vw,30px)' }}>In their words</p>
-          <blockquote className="pull c2-9" style={{ margin: 0 }}>
-            “The model behaves less like a spreadsheet and more like a live tool.
-            It has given the board more clarity on the decisions in front of us than
-            anything we have worked with before.”
-          </blockquote>
-          <div className="c9-12" style={{ alignSelf: 'end' }}>
-            <hr className="rule" />
-            <p className="label" style={{ marginTop: 12 }}>
-              Group Managing Director<br />
-              <span style={{ color: 'var(--ink-4)' }}>Australian franchise group</span>
-            </p>
+    <section className="stack">
+      <div className="stack-panel band-slate">
+        <div className="wrap" style={{ width: '100%' }}>
+          <div className="g12" style={{ rowGap: 28 }}>
+            <p className="label c1-12" style={{ marginBottom: 'clamp(18px,2.4vw,30px)' }}>In their words</p>
+            <blockquote className="pull c1-8" style={{ margin: 0 }}>
+              “The model behaves less like a spreadsheet and more like a live tool.
+              It has given the board more clarity on the decisions in front of us than
+              anything we have worked with before.”
+            </blockquote>
+            <div className="c9-12" style={{ alignSelf: 'end' }}>
+              <hr className="rule" />
+              <p className="label" style={{ marginTop: 12 }}>
+                Group Managing Director<br />
+                <span style={{ color: 'var(--ink-4)' }}>Australian franchise group</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -133,7 +133,7 @@ function PullQuote() {
 
 function Closing({ setPage }) {
   return (
-    <section className="sec" style={{ paddingTop: 'clamp(48px,6.5vw,88px)', paddingBottom: 'clamp(48px,6.5vw,88px)' }}>
+    <section className="sec" style={{ paddingTop: 'clamp(48px,6.5vw,88px)', paddingBottom: 'clamp(24px,3vw,44px)' }}>
       <div className="wrap">
         <div className="g12" style={{ rowGap: 24, alignItems: 'end' }}>
           <h2 className="display-m c1-7">
@@ -144,7 +144,7 @@ function Closing({ setPage }) {
               An intro call costs nothing and usually clarifies more than a brief does.
               Every enquiry is read personally.
             </p>
-            <button className="cta" onClick={() => setPage('Contact')}>Send a brief</button>
+            <button className="cta" onClick={() => setPage('Contact')}><Swap>Send a brief</Swap></button>
           </div>
         </div>
       </div>
@@ -152,14 +152,14 @@ function Closing({ setPage }) {
   );
 }
 
-function HomePage({ setPage, art = {} }) {
+function HomePage({ setPage }) {
   return (
     <div data-screen-label="Home">
-      <Hero setPage={setPage} art={art} />
+      <Hero setPage={setPage} />
+      <Rail />
       <PracticeIndex setPage={setPage} />
       <SelectedWork setPage={setPage} />
       <PullQuote />
-      <Closing setPage={setPage} />
     </div>
   );
 }

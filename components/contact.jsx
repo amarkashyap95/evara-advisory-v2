@@ -49,7 +49,7 @@ function ContactPage() {
       const res = await fetch('https://formspree.io/f/xbdpvgwj', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, _subject: `Evara enquiry: ${form.name}${form.company ? ' · ' + form.company : ''}`, _replyto: form.email }),
       });
       if (res.ok) { setStatus('sent'); setForm(EMPTY); } else setStatus('error');
     } catch { setStatus('error'); }
@@ -135,6 +135,7 @@ function ContactPage() {
                 <div style={{ marginTop: 32, paddingTop: 18, borderTop: '1px solid var(--rule-2)' }}>
                   <p className="label" style={{ marginBottom: 12 }}>Reach</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 15, alignItems: 'flex-start' }}>
+                    <a className="wipe" href="mailto:amar@evaraadvisory.com.au">amar@evaraadvisory.com.au</a>
                     <a className="wipe" href="https://www.linkedin.com/in/amar-kashyap" target="_blank" rel="noreferrer">LinkedIn</a>
                     <span style={{ color: 'var(--ink-3)' }}>Sydney, Australia · AEST</span>
                   </div>
@@ -164,9 +165,9 @@ function ContactPage() {
                 </label>
                 <div style={{ display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap', marginTop: 6 }}>
                   <button type="submit" className="cta" disabled={status === 'sending' || !form.name || !form.email || !form.message}>
-                    {status === 'sending' ? 'Sending…' : 'Submit brief'}
+                    {status === 'sending' ? 'Sending…' : <Swap>Submit brief</Swap>}
                   </button>
-                  {status === 'error' && <span className="note" style={{ color: 'var(--accent)' }}>Did not send. Try again, or reach out on LinkedIn.</span>}                </div>
+                  {status === 'error' && <span className="note" style={{ color: 'var(--accent)' }}>Did not send. Email <a href="mailto:amar@evaraadvisory.com.au">amar@evaraadvisory.com.au</a> or reach out on LinkedIn.</span>}                </div>
               </form>
             </div>
           </div>
@@ -197,7 +198,7 @@ function ContactPage() {
                   ))}
                 </div>
                 <button className="cta" onClick={generateScope} disabled={loading || !situation.trim()}>
-                  {loading ? 'Drafting…' : 'Sketch a scope'}
+                  {loading ? 'Drafting…' : <Swap>Sketch a scope</Swap>}
                 </button>
               </div>
               <div>

@@ -1,5 +1,7 @@
 /* About, Services, Track Record */
 
+const { useState: pUseState } = React;
+
 const DOSSIER = [
   { y: '2019–22', r: 'Institutional Banking & Ventures', o: 'ANZ', n: 'M&A advisory and leveraged finance in the Institutional division, structuring and syndicating facilities for mid-market and corporate clients.' },
   { y: '2022–23', r: 'Corporate Ventures & Strategy', o: 'PEXA Group', n: 'Strategy and corporate venture work inside an ASX-listed property-technology operator.' },
@@ -80,7 +82,7 @@ function AboutPage({ setPage }) {
             <figure className="lift c2-10">
               <div className="lift-body">
                 <blockquote className="lift-quote">
-                  I’ve sat on both sides of the table. The work is <i>translating fluently</i> between them.
+                  I’ve sat on both sides of the table. The work is translating fluently between them.
                 </blockquote>
                 <div className="lift-foot">
                   <hr />
@@ -96,7 +98,7 @@ function AboutPage({ setPage }) {
         <h2 className="h2">The route here.</h2>
       </StripHead>
 
-      <section className="sec" style={{ paddingTop: 'clamp(30px,4vw,54px)', paddingBottom: 'clamp(16px,2vw,24px)' }}>
+      <section className="sec" style={{ paddingTop: 'clamp(30px,4vw,54px)', paddingBottom: 'clamp(8px,1vw,14px)' }}>
         <div className="wrap">
           <div className="g12">
             <ScrollRows className="c4-12 no-tail-rule">
@@ -114,8 +116,6 @@ function AboutPage({ setPage }) {
           </div>
         </div>
       </section>
-
-      <div className="strip-rule strip-rule--foot"></div>
     </div>
   );
 }
@@ -178,7 +178,7 @@ function ServicesPage({ setPage }) {
     <div data-screen-label="Services">
       <PageMast
         kicker="Services"
-        lines={[<>Commercial decisions,</>, <>and the <i>capital</i> behind them.</>]}
+        lines={['Commercial decisions,', 'and the capital behind them.']}
       />
 
       <section className="sec" style={{ paddingTop: 0, paddingBottom: 'clamp(26px,3.4vw,48px)' }}>
@@ -229,8 +229,9 @@ function ServicesPage({ setPage }) {
           <div className="g12">
             <div className="c4-12">
               <div className="cols-2">
-                {AUDIENCES.map(a => (
-                  <div key={a.n} style={{ borderTop: '1px solid var(--rule)', paddingTop: 16 }}>
+                {AUDIENCES.map((a, i) => (
+                  <div key={a.n} style={{ borderTop: '1px solid var(--rule-2)', paddingTop: 16 }}>
+                    <p className="label" style={{ marginBottom: 14 }}>{String(i + 1).padStart(2, '0')}</p>
                     <h3 className="h3" style={{ marginBottom: 10 }}>{a.n}</h3>
                     <p className="note">{a.d}</p>
                   </div>
@@ -243,7 +244,7 @@ function ServicesPage({ setPage }) {
 
       <section className="band-slate">
         <div className="wrap">
-          <div className="g12" style={{ alignItems: 'baseline', rowGap: 8, marginBottom: 'clamp(26px,3.4vw,44px)' }}>
+          <div className="g12" style={{ alignItems: 'baseline', rowGap: 8, marginBottom: 'clamp(30px,4vw,56px)' }}>
             <div className="c1-3">
               <p className="label">Engagement shapes</p>
             </div>
@@ -251,17 +252,14 @@ function ServicesPage({ setPage }) {
               <h2 className="h2">Four ways in.</h2>
             </div>
           </div>
-          <div className="g12">
-            <div className="c4-12">
-              <div className="cols-2">
-                {SHAPES.map(s => (
-                  <div key={s.n} style={{ borderTop: '1px solid var(--rule)', paddingTop: 16 }}>
-                    <h3 className="h3" style={{ marginBottom: 10 }}>{s.n}</h3>
-                    <p className="note">{s.d}</p>
-                  </div>
-                ))}
+          <div className="steps">
+            {SHAPES.map((s, i) => (
+              <div className="step" key={s.n}>
+                <span className="step-num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="h3" style={{ marginBottom: 10 }}>{s.n}</h3>
+                <p className="note">{s.d}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -276,25 +274,78 @@ const ENGAGEMENTS = [
     t: 'European private equity fund formation',
     m: 'Franchise group and family office · Australia / Europe',
     d: 'Structuring of a European private equity vehicle for one of Australia’s largest franchise groups and its associated family office, delivered with the full financial model and the complete investor documentation suite.',
+    f: [
+      ['Mandate', 'Give an Australian franchise group and its family office a vehicle they could deploy through into European operators, on terms an outside investor would also accept.'],
+      ['Built', 'Jurisdiction and structure comparison, fund economics and distribution waterfall, the full investor documentation suite, and the governance and committee design that sits behind it.'],
+      ['Where it landed', 'A documented vehicle with a model and an investor pack that stand up to institutional questioning, and a group that understands its own economics before a single commitment is signed.'],
+    ],
   },
   {
     t: 'Group commercial strategy',
     m: 'Franchise group and family office · Australia / Europe',
     d: 'A wider commercial strategy mandate across the group, with the supporting financial modelling and the board strategy papers that carried it.',
+    f: [
+      ['Mandate', 'Work out where group margin actually comes from across brands, territories and channels, and set the commercial priorities from that rather than from history.'],
+      ['Built', 'Site and brand level unit economics, a pricing and franchisee margin model, a driver-based group operating model reconciling to the accounts, and board papers each meeting cycle.'],
+      ['Where it landed', 'Board decisions taken against one reconciled model, with the same numbers used in the strategy paper, the budget and the investor conversation.'],
+    ],
   },
   {
     t: 'Financial modelling and investor materials',
     m: 'Beauty technology · Consumer',
     d: 'Operating and fundraising model built from the ground up, with the investor materials to match, for a consumer beauty-technology business.',
+    f: [
+      ['Mandate', 'A consumer hardware and subscription business with real traction and no model an investor could interrogate.'],
+      ['Built', 'Cohort and retention analysis, acquisition cost and payback by channel, contribution margin by product and market, then a fundraising model, deck and data room built on top of the same engine.'],
+      ['Where it landed', 'One model serving both the monthly operating cycle and the raise, so the plan shown to investors is the plan the business is run on.'],
+    ],
   },
   {
     t: 'Investor materials preparation',
     m: 'LegalTech · Enterprise software',
     d: 'Financial model, investor pitch deck and supporting documentation prepared ahead of an institutional raise.',
+    f: [
+      ['Mandate', 'Prepare an enterprise software business for institutional diligence, with the materials written the way the other side of the table reads them.'],
+      ['Built', 'Three-statement and ARR build, equity story and pitch deck, data room index, diligence question bank with prepared answers, and cap table and dilution scenarios across term sheet variants.'],
+      ['Where it landed', 'A founder who could answer the hard questions in the room, with the supporting evidence already sitting in the data room.'],
+    ],
   },
 ];
 
+function CaseRow({ e, i, open, onToggle }) {
+  return (
+    <div className={`case ${open ? 'is-open' : ''}`}>
+      <button className="case-head" aria-expanded={open} onClick={onToggle}>
+        <span className="index-num">{ROMAN[i]}</span>
+        <span>
+          <span className="h3" style={{ display: 'block' }}>{e.t}</span>
+          <span className="label label-accent" style={{ display: 'block', marginTop: 10 }}>{e.m}</span>
+        </span>
+        <span className="note index-body">{e.d}</span>
+        <span className="case-sign" aria-hidden="true"></span>
+      </button>
+      <div className="case-body">
+        <div>
+          <div className="case-inner">
+            <span></span>
+            <span className="label">{open ? 'Detail' : ''}</span>
+            <dl className="facts">
+              {e.f.map(([k, v]) => (
+                <div className="fact" key={k}>
+                  <dt className="label">{k}</dt>
+                  <dd className="note">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TrackRecordPage({ setPage }) {
+  const [open, setOpen] = pUseState(0);
   return (
     <div data-screen-label="Track Record">
       <PageMast
@@ -308,19 +359,11 @@ function TrackRecordPage({ setPage }) {
 
       <section className="sec" style={{ paddingTop: 'clamp(26px,3.4vw,48px)', paddingBottom: 'clamp(34px,4.6vw,68px)' }}>
         <div className="wrap">
-          <div className="g12">
-            <ScrollRows className="c1-12">
-              {ENGAGEMENTS.map((e, i) => (
-                <div className="index-row" key={e.t}>
-                  <span className="index-num">{ROMAN[i]}</span>
-                  <div>
-                    <h3 className="h3">{e.t}</h3>
-                    <p className="label label-accent" style={{ marginTop: 10 }}>{e.m}</p>
-                  </div>
-                  <p className="note index-body">{e.d}</p>
-                </div>
-              ))}
-            </ScrollRows>
+          <p className="label" style={{ marginBottom: 18 }}>Select a row for the detail</p>
+          <div>
+            {ENGAGEMENTS.map((e, i) => (
+              <CaseRow key={e.t} e={e} i={i} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
+            ))}
           </div>
         </div>
       </section>
@@ -357,7 +400,7 @@ function Closer({ setPage, title, note, cta = 'Start a conversation' }) {
           <h2 className="display-m c1-7">{title}</h2>
           <div className="c9-12">
             <p className="note" style={{ maxWidth: 300, marginBottom: 18 }}>{note}</p>
-            <button className="cta" onClick={() => setPage('Contact')}>{cta}</button>
+            <button className="cta" onClick={() => setPage('Contact')}><Swap>{cta}</Swap></button>
           </div>
         </div>
       </div>

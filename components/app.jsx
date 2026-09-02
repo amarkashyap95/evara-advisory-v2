@@ -36,7 +36,7 @@ function NotFoundPage({ setPage }) {
           <SplitLines tag="h1" className="display-m" style={{ marginTop: 48, maxWidth: '12ch' }}
             lines={['That page is', 'not here.']} />
           <div className="rise" style={{ marginTop: 36, '--d': '560ms' }}>
-            <button className="cta" onClick={() => setPage('Home')}>Back to the front</button>
+            <button className="cta" onClick={() => setPage('Home')}><Swap>Back to the front</Swap></button>
           </div>
         </div>
       </section>
@@ -100,10 +100,12 @@ function App() {
 
   return (
     <>
+      <Field />
       <Masthead page={page} setPage={setPage} pages={PAGES} />
       <RunningHead page={shown} />
       <main className={`stage ${entered ? 'is-in' : ''} ${leaving ? 'is-out' : ''}`}>
         {render()}
+        <AutoReveal page={shown} />
       </main>
       <Colophon setPage={setPage} />
     </>
