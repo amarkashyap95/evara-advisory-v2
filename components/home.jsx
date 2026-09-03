@@ -32,7 +32,7 @@ function Hero({ setPage }) {
             Clarity on the decisions that move capital, for founders raising,
             operators scaling, and allocators deploying.
           </p>
-          <div className="c9-12 rise" style={{ '--d': '820ms', display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <div className="c9-12 rise hero-cta" style={{ '--d': '820ms' }}>
             <button className="cta" onClick={() => setPage('Contact')}><Swap>Start a conversation</Swap></button>
             <button className="cta-line" onClick={() => setPage('Services')}><Swap>See the practice areas</Swap></button>
           </div>

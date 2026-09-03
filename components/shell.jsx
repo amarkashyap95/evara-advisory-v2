@@ -309,7 +309,7 @@ function Colophon({ setPage }) {
           </div>
         </div>
         <div className="foot-grid g12" style={{ rowGap: 36 }}>
-          <div className="c1-5" style={{ gridColumn: '1/6' }}>
+          <div className="c1-5">
             <p className="note" style={{ maxWidth: 300, color: 'var(--ink-3)' }}>
               Independent commercial advisory.<br />Sydney, Australia.
             </p>
