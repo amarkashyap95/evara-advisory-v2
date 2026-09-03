@@ -206,11 +206,16 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .colophon-foot{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-block:18px 26px;border-top:1px solid var(--rule);margin-top:clamp(20px,2.6vw,32px)}
 .clock{font-variant-numeric:tabular-nums}
 .mast-bar{position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--ink);transform:scaleX(var(--sp,0));transform-origin:left;opacity:.5}
+/* hero kicker — wraps cleanly on narrow screens */
+.hero-kicker{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.kick-dot{color:var(--ink-4)}
 /* calls to action beside the standfirst */
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
 /* responsive */
 @media (max-width:900px){
 .hero-cta{justify-content:flex-start}
+.strip-dark .c1-3{flex-direction:row!important;justify-content:space-between!important;align-items:center!important;align-self:auto!important}
+.strip-dark .more-link{flex:none}
 .nav button{min-height:44px;display:inline-flex;align-items:center}
 .brand{min-height:44px;align-items:center}
 .display{font-size:clamp(33px,9.2vw,58px);letter-spacing:-.026em}
@@ -278,9 +283,11 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .foot li{font-size:15px;display:flex}
 .foot li>*{min-height:44px;display:inline-flex;align-items:center}
 .rail{grid-template-columns:1fr}
-.rail span{border-left:0;border-top:1px solid var(--rule);min-height:46px;padding-left:0}
+.rail span{border-left:0;border-top:1px solid var(--rule);min-height:46px;padding:10px 0}
 .rail span:first-child{border-top:0}
+.rail span:nth-child(2){border-top:1px solid var(--rule)}
 .rail span:nth-child(2n){border-left:0;padding-left:0}
+.hero-kicker{gap:3px 10px;font-size:9.5px;letter-spacing:.15em;line-height:1.9}
 .index-row .index-body,.fact dd{max-width:none}
 .colophon-note{font-size:10.5px}
 .foot-glyph{width:30px;height:30px;margin-bottom:20px}

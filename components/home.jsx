@@ -19,8 +19,8 @@ function Hero({ setPage }) {
   return (
     <section className="sec" style={{ paddingTop: 'clamp(44px,6.5vw,100px)', paddingBottom: 'clamp(56px,8vw,130px)' }}>
       <div className="wrap">
-        <p className="label rise" style={{ marginBottom: 14, '--d': '60ms' }}>
-          Independent commercial advisory &nbsp;·&nbsp; Sydney &nbsp;·&nbsp; Est. 2026
+        <p className="label rise hero-kicker" style={{ marginBottom: 14, '--d': '60ms' }}>
+          <span>Independent commercial advisory</span><span className="kick-dot">·</span><span>Sydney</span><span className="kick-dot">·</span><span>Est. 2026</span>
         </p>
         <hr className="rule-draw" />
         <div className="g12" style={{ marginTop: 'clamp(36px,5vw,72px)', rowGap: 32, alignItems: 'center' }}>
