@@ -216,6 +216,8 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .hero-cta{justify-content:flex-start}
 .strip-dark .c1-3{flex-direction:row!important;justify-content:space-between!important;align-items:center!important;align-self:auto!important}
 .strip-dark .more-link{flex:none}
+.work-arrow{display:none}
+.work-row .label{line-height:1.6}
 .nav button{min-height:44px;display:inline-flex;align-items:center}
 .brand{min-height:44px;align-items:center}
 .display{font-size:clamp(33px,9.2vw,58px);letter-spacing:-.026em}
@@ -280,8 +282,8 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .cta,.cta-line{padding:13px 18px;font-size:14px;min-height:44px}
 .wipe,.more-link{min-height:44px;display:inline-flex;align-items:center}
 .foot ul{gap:0}
-.foot li{font-size:15px;display:flex}
-.foot li>*{min-height:44px;display:inline-flex;align-items:center}
+.foot li{font-size:15px;display:flex;align-items:center;gap:6px;min-height:44px}
+.foot li>*{display:inline-flex;align-items:center}
 .rail{grid-template-columns:1fr}
 .rail span{border-left:0;border-top:1px solid var(--rule);min-height:46px;padding:10px 0}
 .rail span:first-child{border-top:0}
