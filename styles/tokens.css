@@ -1,5 +1,5 @@
 /* Evara Advisory — design tokens & system. New Genre-inspired: warm paper, oversized sentence type, hairline rules, ink bands. */
-:root{--paper:#F4F1E9;--paper-2:#EAE6DB;--ink:#14161A;--ink-2:#3A3E45;--ink-3:#6A6F78;--ink-4:#9A9EA6;--rule:rgba(20,22,26,.15);--rule-2:rgba(20,22,26,.32);--sans:'Archivo',system-ui,sans-serif;--serif:'Newsreader',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--accent:#3A3E45}
+:root{--paper:#F4F1E9;--paper-2:#EAE6DB;--ink:#14161A;--ink-2:#3A3E45;--ink-3:#6A6F78;--ink-4:#9A9EA6;--rule:rgba(20,22,26,.15);--rule-2:rgba(20,22,26,.32);--sans:'Archivo',system-ui,sans-serif;--serif:'Newsreader',Georgia,serif;--mono:'Archivo',system-ui,sans-serif;--accent:#3A3E45}
 *{box-sizing:border-box}
 html{background:var(--paper);scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.5;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -25,7 +25,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .h3{font-family:var(--sans);font-weight:500;font-size:clamp(19px,1.8vw,26px);line-height:1.15;letter-spacing:-.02em}
 .standfirst{font-family:var(--sans);font-weight:400;font-size:clamp(18px,1.7vw,26px);line-height:1.4;letter-spacing:-.012em;color:var(--ink-2);max-width:56ch;text-wrap:pretty}
 .note{font-size:15px;line-height:1.65;color:var(--ink-2);text-wrap:pretty}
-.label{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums lining-nums}
 .label-accent{color:var(--ink-3)}
 .tabular{font-variant-numeric:tabular-nums}
 .prose p{font-size:17px;line-height:1.7;color:var(--ink-2);text-wrap:pretty}
@@ -74,7 +74,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .brand{display:flex;align-items:center;gap:11px;flex:none}
 .brand-glyph{width:22px;height:22px;display:block;color:var(--ink);flex:none}
 .brand-mark{height:15px;width:auto;display:block;fill:var(--ink);margin-left:2px}
-.brand-sub{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3);padding-left:11px;border-left:1px solid var(--rule);line-height:1;align-self:center}
+.brand-sub{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);padding-left:11px;border-left:1px solid var(--rule);line-height:1;align-self:center}
 .nav{margin-left:auto;display:flex;gap:clamp(14px,2.4vw,30px);align-items:center}
 .nav button{font-size:14px;color:var(--ink-2);letter-spacing:-.01em;transition:color .2s}
 .nav button:hover{color:var(--ink)}
@@ -100,7 +100,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .cta-sm{padding:10px 15px;font-size:12.5px}
 .wipe{transition:opacity .2s;text-decoration:none;color:var(--ink-2);font-size:15px}
 .wipe:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-.chip{font-family:var(--mono);font-size:11px;letter-spacing:.06em;border:1px solid var(--rule);border-radius:2px;padding:7px 12px;color:var(--ink-3);transition:border-color .2s,color .2s}
+.chip{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.05em;border:1px solid var(--rule);border-radius:2px;padding:7px 12px;color:var(--ink-3);transition:border-color .2s,color .2s}
 .chip:hover{border-color:var(--ink);color:var(--ink)}
 /* ticker removed with the marquee */
 .more-link{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;letter-spacing:-.01em;color:var(--ink-2);transition:color .2s}
@@ -110,7 +110,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 /* mini globe placeholder removed with the globe */
 /* sector rail — static, hairline-divided index of the practice */
 .rail{border-block:1px solid var(--rule);display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-.rail span{display:flex;align-items:center;gap:10px;min-height:58px;padding:12px clamp(10px,1.4vw,22px);font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);border-left:1px solid var(--rule)}
+.rail span{display:flex;align-items:center;gap:10px;min-height:58px;padding:12px clamp(10px,1.4vw,22px);font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);border-left:1px solid var(--rule)}
 .rail span:first-child{border-left:0;padding-left:0}
 .rail .rail-num{color:var(--ink-4);min-height:0;padding:0;border:0;display:inline}
 /* section heads (StripHead) */
@@ -121,10 +121,10 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 @media (hover:hover) and (min-width:901px){.index-row:hover{padding-left:clamp(10px,1.2vw,20px)}.index-row::after{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.65,.1,1)}.index-row:hover::after{transform:scaleX(1)}}
 .index-row:first-child{border-top:0}
 .index-row .h3{font-size:clamp(20px,2.1vw,32px);letter-spacing:-.024em}
-.index-num{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-4);font-variant-numeric:tabular-nums;padding-top:.5em}
+.index-num{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;color:var(--ink-4);font-variant-numeric:tabular-nums;padding-top:.5em}
 .index-body{max-width:56ch}
 .svc-list{list-style:none;margin:18px 0 0;padding:0}
-.svc-list li{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-3);border-top:1px solid var(--rule);padding:8px 0}
+.svc-list li{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--ink-3);border-top:1px solid var(--rule);padding:8px 0}
 /* expandable case rows */
 .case{border-top:1px solid var(--rule)}
 .case:last-child{border-bottom:1px solid var(--rule)}
@@ -155,7 +155,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .step{border-top:1px solid var(--rule-2);border-left:1px solid var(--rule);padding:clamp(18px,2.2vw,30px) clamp(14px,1.6vw,26px) clamp(22px,3vw,40px)}
 .step:first-child{border-left:0;padding-left:0}
 .step:last-child{padding-right:0}
-.step-num{display:block;font-family:var(--mono);font-size:clamp(28px,3.4vw,52px);line-height:1;letter-spacing:-.04em;color:var(--ink-4);font-variant-numeric:tabular-nums;margin-bottom:clamp(24px,3.4vw,52px)}
+.step-num{display:block;font-family:var(--mono);font-weight:500;font-size:clamp(28px,3.4vw,52px);line-height:1;letter-spacing:-.03em;color:var(--ink-4);font-variant-numeric:tabular-nums lining-nums;margin-bottom:clamp(24px,3.4vw,52px)}
 /* pinned panel — the quote holds the viewport while the page moves past it */
 .stack{position:relative;height:68vh}
 .stack-panel{position:sticky;top:0;min-height:53vh;display:flex;align-items:center;padding-block:clamp(30px,3.8vw,54px)}
@@ -171,7 +171,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .lift-quote{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.2vw,52px);line-height:1.16;letter-spacing:-.018em;text-wrap:balance}
 .lift-foot{margin-top:clamp(22px,3vw,36px);display:flex;align-items:center;gap:18px}
 .lift-foot hr{border:0;border-top:1px solid var(--rule);flex:0 0 clamp(48px,6vw,96px);margin:0}
-.lift-foot span{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.lift-foot span{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .strip-rule{background:var(--ink)}
 .strip-rule--foot{height:clamp(56px,7vw,96px);margin-top:clamp(28px,4vw,56px)}
 /* ink bands — rounded plates floating on the colour field */
@@ -185,13 +185,13 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .plain{list-style:none;margin:0;padding:0}
 /* forms */
 .field{display:block;margin-bottom:22px}
-.field span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.field span{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
 .field input,.field select,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--rule-2);padding:9px 0 11px;font:inherit;font-size:16px;color:var(--ink);border-radius:0;outline:none;transition:border-color .25s}
 .field textarea{resize:vertical;line-height:1.55}
 .field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--ink)}
 .field ::placeholder{color:var(--ink-4)}
 .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236E6A5C' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center}
-.scope-out{border:1px solid var(--rule);padding:22px;font-family:var(--mono);font-size:12.5px;line-height:1.65;white-space:pre-wrap;min-height:300px;color:var(--ink-2);background:color-mix(in srgb,var(--paper-2) 55%,transparent)}
+.scope-out{border:1px solid var(--rule);padding:22px;font-family:var(--sans);font-size:14px;line-height:1.7;white-space:pre-wrap;min-height:300px;color:var(--ink-2);background:color-mix(in srgb,var(--paper-2) 55%,transparent)}
 .sec-band{background:color-mix(in srgb,var(--paper-2) 60%,transparent);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 /* footer */
 .foot{border-top:1px solid var(--rule-2);margin-top:clamp(24px,3vw,48px);overflow:hidden}
@@ -199,11 +199,11 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .foot-glyph{display:block;width:clamp(34px,3.4vw,46px);height:clamp(34px,3.4vw,46px);color:var(--ink);margin-bottom:clamp(24px,3vw,40px)}
 .foot-big{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6vw,102px);line-height:1.02;letter-spacing:-.028em;margin-top:clamp(20px,3vw,40px);text-wrap:balance}
 .foot-grid{border-top:1px solid var(--rule);padding-block:clamp(24px,3vw,42px)}
-.foot h4{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+.foot h4{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
 .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
 .foot li{font-size:15px;color:var(--ink-2)}
-.colophon-note{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--ink-4);max-width:760px;padding-block:clamp(20px,2.6vw,32px) 0}
-.colophon-foot{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-block:18px 26px;border-top:1px solid var(--rule);margin-top:clamp(20px,2.6vw,32px)}
+.colophon-note{font-family:var(--sans);font-size:12.5px;line-height:1.75;color:var(--ink-4);max-width:760px;padding-block:clamp(20px,2.6vw,32px) 0}
+.colophon-foot{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-block:18px 26px;border-top:1px solid var(--rule);margin-top:clamp(20px,2.6vw,32px)}
 .clock{font-variant-numeric:tabular-nums}
 .mast-bar{position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--ink);transform:scaleX(var(--sp,0));transform-origin:left;opacity:.5}
 /* hero kicker — wraps cleanly on narrow screens */
@@ -229,7 +229,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .pull{font-size:clamp(21px,5.4vw,30px);line-height:1.3}
 .lift-quote{font-size:clamp(23px,6vw,34px)}
 .foot-big{font-size:clamp(30px,8.4vw,54px)}
-.label{font-size:10px;letter-spacing:.17em}
+.label{font-size:10.5px;letter-spacing:.14em}
 .index-row .h3,.work-title{font-size:clamp(19px,5vw,26px)}
 .index-row,.case-head{padding-block:20px}
 .work-row{padding:18px 0}
@@ -289,7 +289,7 @@ h1,h2,h3,h4,p,figure,blockquote{margin:0}
 .rail span:first-child{border-top:0}
 .rail span:nth-child(2){border-top:1px solid var(--rule)}
 .rail span:nth-child(2n){border-left:0;padding-left:0}
-.hero-kicker{gap:3px 10px;font-size:9.5px;letter-spacing:.15em;line-height:1.9}
+.hero-kicker{gap:3px 10px;font-size:10px;letter-spacing:.13em;line-height:1.9}
 .index-row .index-body,.fact dd{max-width:none}
 .colophon-note{font-size:10.5px}
 .foot-glyph{width:30px;height:30px;margin-bottom:20px}
