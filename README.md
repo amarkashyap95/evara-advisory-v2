@@ -25,7 +25,7 @@ site.webmanifest, robots.txt, sitemap.xml, vercel.json
 
 - **Copy:** edit the text directly in the relevant `index.html`. The header, footer and closing band are repeated in each page, so a change there needs making in all five pages (and `404.html`).
 - **Colours and type:** the tokens at the top of `styles/site.css`.
-- **Hero video:** replace `media/hero-1920.mp4` (desktop) and `media/hero-m.mp4` (phone, portrait 720x1280) and `media/hero-poster.jpg`. Keep files under about 8 MB.
+- **Hero video:** replace `media/hero-1920.mp4` (desktop) and `media/hero-m-v2.mp4` (phone, portrait 720x1280) and `media/hero-poster.jpg`. Keep files under about 8 MB.
 - **Contact form:** posts to Formspree form `xbdpvgwj`. Change the URL in `scripts/site.js` if the Formspree form changes.
 
 ## Local preview

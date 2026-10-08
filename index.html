@@ -66,7 +66,7 @@
 <div class="page" data-page="home">
   <section class="film" id="film">
     <img class="poster" src="/media/hero-poster.jpg" alt="">
-    <video id="film-video" muted playsinline webkit-playsinline loop autoplay preload="auto" disablepictureinpicture disableremoteplayback poster="/media/hero-poster.jpg" data-d="/media/hero-1920.mp4" data-m="/media/hero-m.mp4" aria-hidden="true"></video>
+    <video id="film-video" muted playsinline webkit-playsinline loop autoplay preload="auto" disablepictureinpicture disableremoteplayback poster="/media/hero-poster.jpg" data-d="/media/hero-1920.mp4" data-m="/media/hero-m-v2.mp4" aria-hidden="true"></video>
     <script>(function(v){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;v.muted=true;v.src=matchMedia("(max-width: 860px)").matches?v.dataset.m:v.dataset.d;var p=v.play();if(p&&p.catch)p.catch(function(){});})(document.getElementById("film-video"));</script>
     <div class="shade"></div>
     <div class="wrap clock-wrap"><span class="label clock-tag">Sydney <span data-clock></span></span></div>
@@ -136,7 +136,7 @@
 </div>
 <section class="close" id="close">
   <img class="poster" src="/media/water-poster.jpg" alt="">
-  <video id="close-video" muted playsinline webkit-playsinline loop autoplay preload="none" disablepictureinpicture disableremoteplayback poster="/media/water-poster.jpg" data-d="/media/water-1600.mp4" data-m="/media/water-m.mp4" aria-hidden="true"></video>
+  <video id="close-video" muted playsinline webkit-playsinline loop autoplay preload="none" disablepictureinpicture disableremoteplayback poster="/media/water-poster.jpg" data-d="/media/water-1600.mp4" data-m="/media/water-m-v2.mp4" aria-hidden="true"></video>
   <script>(function(v){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;function go(){if(v.getAttribute("src"))return;v.muted=true;v.preload="auto";v.src=matchMedia("(max-width: 860px)").matches?v.dataset.m:v.dataset.d;}if(document.readyState==="complete")setTimeout(go,150);else addEventListener("load",function(){setTimeout(go,150)});})(document.getElementById("close-video"));</script>
   <div class="shade"></div>
   <div class="wrap close-in">
