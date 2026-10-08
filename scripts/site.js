@@ -170,9 +170,25 @@
 
   }
 
+  /* first-visit loader: lift once the hero can play (or the page has loaded), never before 1.9s, never after 3s */
+  const loading = root.classList.contains('loading');
+  const wait = ms => new Promise(r => setTimeout(r, Math.max(0, ms)));
+  let loaderDone = Promise.resolve();
+  if (loading) {
+    const fv = $('#film-video');
+    const ready = new Promise(res => {
+      if (fv) { if (fv.readyState >= 3) return res(); ['canplay', 'playing', 'error'].forEach(t => fv.addEventListener(t, res, { once: true })); }
+      else if (document.readyState === 'complete') res(); else addEventListener('load', res, { once: true });
+    });
+    const fontsOk = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    loaderDone = Promise.race([Promise.all([ready, fontsOk]), wait(3000 - performance.now())])
+      .then(() => wait(1900 - performance.now()))
+      .then(() => { root.classList.add('loader-done'); setTimeout(() => root.classList.remove('loading', 'loader-done'), 1400); return wait(420); });
+  }
+
   const boot = () => {
     navState(); setTimeout(navState, 400); addEventListener('load', navState);
-    requestAnimationFrame(() => requestAnimationFrame(() => buildMotion(page)));
+    loaderDone.then(() => requestAnimationFrame(() => requestAnimationFrame(() => buildMotion(page))));
     if (root.classList.contains('arriving') && hasG && !reduce) {
       gsap.fromTo(curtain, { scaleY: 1, transformOrigin: 'top' }, { scaleY: 0, duration: .75, ease: 'expo.inOut', delay: .05, onComplete: () => root.classList.remove('arriving') });
       setTimeout(() => { gsap.set(curtain, { scaleY: 0 }); root.classList.remove('arriving'); }, 1600); // cover always lifts

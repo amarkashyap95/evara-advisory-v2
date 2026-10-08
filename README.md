@@ -13,7 +13,7 @@ contact/index.html         Contact (brief form posts to Formspree)
 404.html                   Not-found page
 
 styles/site.css            All styles (design tokens at the top, in :root)
-scripts/site.js            Motion (GSAP), video loading, nav state, page transitions, contact form
+scripts/site.js            Motion (GSAP), first-visit loader, video loading, nav state, page transitions, contact form
 media/                     Hero loop (Sydney harbour), closing loop (water), poster images
 principal-portrait.webp    About page portrait
 evara-social-card-2026.jpg Link preview image (1200x630)

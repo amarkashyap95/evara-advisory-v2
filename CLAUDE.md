@@ -11,6 +11,7 @@ Static multi-page site, hosted on Vercel, auto-deploys from `main`. Domain `www.
 - Voice: plain, specific, no em dashes. Third person for the practice ("Evara", "Amar"), first person only in "What I am hired to do" and "Work I can talk about".
 - Evara Advisory is a sole trader business. Never write "Pty Ltd".
 - No stock photography beyond the hero and closing video loops.
+- First-visit loader (`.loader`, duplicated in each page): shown once per browser session, drawn by CSS, lifted by `site.js` when the hero can play (1.9s minimum, 3s cap). The head script falls back to removing it at 4.5s.
 
 ## Design tokens (styles/site.css :root)
 
