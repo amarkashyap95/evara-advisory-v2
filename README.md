@@ -1,49 +1,47 @@
-# Evara Advisory — website
+# Evara Advisory website
 
-Institutional advisory site. Static HTML + inline-JSX (React via Babel) + one Vercel serverless function for the Scope Drafter on the Contact page.
+Static site for [evaraadvisory.com.au](https://www.evaraadvisory.com.au). Plain HTML, CSS and JavaScript: no build step, no framework, no serverless functions. Vercel serves the files as they are.
 
 ## Structure
 
 ```
-index.html           entry point (Vercel serves this at /)
-vercel.json          function + caching config
-DEPLOY.md            deployment runbook (read this before pushing to Vercel)
+index.html                 Home
+about/index.html           About
+services/index.html        Services
+track-record/index.html    Track record
+contact/index.html         Contact (brief form posts to Formspree)
+404.html                   Not-found page
 
-api/
-  scope.js           serverless function — calls Anthropic API for scope drafter
-
-components/
-  app.jsx            top-level React app + page routing
-  shell.jsx          chrome: header, footer, ticker, tweaks panel
-  home.jsx           home page + Workbench artifacts (valuation, dilution, waterfall)
-  pages.jsx          About, Services, Track Record, Contact pages
-
-styles/
-  tokens.css         color / typography / spacing design tokens
+styles/site.css            All styles (design tokens at the top, in :root)
+scripts/site.js            Motion (GSAP), video loading, nav state, page transitions, contact form
+media/                     Hero loop (Sydney harbour), closing loop (water), poster images
+principal-portrait.webp    About page portrait
+evara-social-card-2026.jpg Link preview image (1200x630)
+favicon-*, favicon.ico     Icons
+site.webmanifest, robots.txt, sitemap.xml, vercel.json
 ```
 
-## Local dev
+## Editing
 
-Any static file server works — no build step needed:
+- **Copy:** edit the text directly in the relevant `index.html`. The header, footer and closing band are repeated in each page, so a change there needs making in all five pages (and `404.html`).
+- **Colours and type:** the tokens at the top of `styles/site.css`.
+- **Hero video:** replace `media/hero-1920.mp4` (desktop) and `media/hero-m.mp4` (phone, portrait 720x1280) and `media/hero-poster.jpg`. Keep files under about 8 MB.
+- **Contact form:** posts to Formspree form `xbdpvgwj`. Change the URL in `scripts/site.js` if the Formspree form changes.
+
+## Local preview
 
 ```sh
-# pick whichever you have:
 python3 -m http.server 8000
-# or
-npx serve .
+# open http://localhost:8000
 ```
-
-Note: the `/api/scope` serverless function only runs on Vercel (or with `vercel dev` locally). When testing locally via a plain file server, the Scope Drafter will fall back to its "unable to generate" state — this is expected. It works in production.
 
 ## Deploying
 
-See `DEPLOY.md` for the full runbook. Short version:
-1. Push to your GitHub repo → Vercel auto-deploys
-2. Add `ANTHROPIC_API_KEY` env var in Vercel Settings → Environment Variables
-3. Redeploy (env changes need a fresh deploy to take effect)
+Push to `main`. Vercel redeploys automatically in about a minute.
 
-## Required env vars
+## Credits
 
-| Name | Where | Why |
-|---|---|---|
-| `ANTHROPIC_API_KEY` | Vercel → Settings → Environment Variables | Powers the Contact-page Scope Drafter. Without it, that one feature silently fails; the rest of the site works fine. |
+- Hero footage: Pexels video 10741255 (Sydney Opera House and Harbour Bridge at sunset), free under the Pexels licence.
+- Closing loop: original render.
+- Fonts: Newsreader and Archivo, via Google Fonts.
+- Motion: GSAP 3.12.5, loaded from cdnjs.
