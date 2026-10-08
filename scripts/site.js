@@ -119,6 +119,7 @@
     try { sessionStorage.setItem('evara-nav', '1'); } catch (err) {}
     gsap.timeline().set(curtain, { transformOrigin: 'bottom' })
       .to(curtain, { scaleY: 1, duration: .5, ease: 'expo.inOut', onComplete: () => { location.href = url.href; } });
+    setTimeout(() => { location.href = url.href; }, 900); // never strand a click if frames stall
   });
   addEventListener('pageshow', e => { if (e.persisted && hasG) gsap.set(curtain, { scaleY: 0 }); });
 
@@ -164,6 +165,7 @@
     requestAnimationFrame(() => requestAnimationFrame(() => buildMotion(page)));
     if (root.classList.contains('arriving') && hasG && !reduce) {
       gsap.fromTo(curtain, { scaleY: 1, transformOrigin: 'top' }, { scaleY: 0, duration: .75, ease: 'expo.inOut', delay: .05, onComplete: () => root.classList.remove('arriving') });
+      setTimeout(() => { gsap.set(curtain, { scaleY: 0 }); root.classList.remove('arriving'); }, 1600); // cover always lifts
     } else root.classList.remove('arriving');
   };
   if (document.fonts && document.fonts.ready) Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1200))]).then(boot); else boot();
