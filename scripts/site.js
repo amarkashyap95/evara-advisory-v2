@@ -14,13 +14,23 @@
   /* videos: right cut for the screen, play only while visible */
   function wireVideo(v) {
     if (!v) return;
-    v.src = small ? v.dataset.m : v.dataset.d;
     v.muted = true;
     if (reduce) { v.removeAttribute('autoplay'); return; }
-    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { rootMargin: '200px' }).observe(v);
+    const src = small ? v.dataset.m : v.dataset.d;
+    const ensure = () => { if (!v.getAttribute('src')) { v.preload = 'auto'; v.src = src; } };
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { ensure(); v.play().catch(() => {}); } else v.pause();
+    }), { rootMargin: '400px' }).observe(v);
     v.addEventListener('playing', () => { const p = v.parentElement.querySelector('.poster'); if (p) p.style.opacity = 0; }, { once: true });
   }
   wireVideo($('#film-video')); wireVideo($('#close-video'));
+  /* iPhone Low Power Mode blocks autoplay: start any visible loop on the first tap */
+  const kick = () => $$('video').forEach(v => {
+    if (!v.paused || !v.getAttribute('src')) return;
+    const r = v.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight) v.play().catch(() => {});
+  });
+  ['touchend', 'click'].forEach(t => addEventListener(t, kick, { passive: true }));
 
   /* track record: index jumps to each case */
   $$('.case-index .ix').forEach(a => a.addEventListener('click', e => {

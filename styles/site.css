@@ -86,6 +86,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .film{position:relative;height:min(94svh,1000px);min-height:580px;overflow:hidden;background:#3a3029;color:#fff;isolation:isolate}
 .film video,.film .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
 .poster{transition:opacity .8s}
+.film video,.close video{pointer-events:none}
+video::-webkit-media-controls,video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button,video::-webkit-media-controls-panel{display:none!important;-webkit-appearance:none;opacity:0!important}
 .film::after{content:"";position:absolute;inset:0 0 auto;height:220px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(18,16,20,.5),rgba(18,16,20,0))}
 .film .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,22,.42) 0%,rgba(14,16,22,.12) 50%,rgba(14,16,22,0) 80%),linear-gradient(0deg,rgba(14,16,22,.74) 0%,rgba(14,16,22,.3) 34%,rgba(14,16,22,0) 58%)}
 .film-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(28px,4.4vw,64px)}
